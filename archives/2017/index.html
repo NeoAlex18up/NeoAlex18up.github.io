@@ -334,7 +334,6 @@
 
 
           
-
         </div>
         
           
@@ -632,6 +631,31 @@
 
 
 
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: 'yangyiqing',
+                   repo: 'yangyiqing.github.io',
+                   oauth: {
+                       client_id: '19d6c24bb57ba75a8f5f',
+                       client_secret: 'fe3604f4ce4c91a503710a7b8c4004ac32befbb0',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
 
 
   
