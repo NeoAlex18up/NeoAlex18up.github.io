@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T09:40:16.803Z</updated>
+  <updated>2017-11-28T09:41:40.797Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2017/11/28/%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/11/28/安全问题/</id>
-    <published>2017-11-28T09:40:16.800Z</published>
-    <updated>2017-11-28T09:40:16.803Z</updated>
+    <title>使用gitment过程中域名重定向的安全问题[已解决]</title>
+    <link href="http://yoursite.com/2017/11/28/%E4%BD%BF%E7%94%A8gitment%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5D/"/>
+    <id>http://yoursite.com/2017/11/28/使用gitment过程中域名重定向的安全问题[已解决]/</id>
+    <published>2017-11-28T09:41:40.797Z</published>
+    <updated>2017-11-28T09:41:40.797Z</updated>
     
-    <content type="html"><![CDATA[<p>bplist00�XUTI-Data�<em>$com.apple.traditional-mac-plain-text</em>public.utf8-plain-text_public.utf16-plain-textO��ӭʹ��CSDN-markdown�༭��ok”��Ou(CSDN-markdown��VhO(“kΏO(uCSDN-markdown��hVB[u��    �</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>填写 ‘Authorization callback URL’ 的时候，以http而不是https开头<br>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yangyiqing.cn</span><br></pre></td></tr></table></figure></p><p>就要改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yangyiqing.cn</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;bplist00�XUTI-Data�&lt;em&gt;$com.apple.traditional-mac-plain-text&lt;/em&gt;public.utf8-plain-text_public.utf16-plain-textO��ӭʹ��CSDN
-      
+      在使用gitment过程中，使用github的OAuth application进行域名重定向，其中我在填写‘Authorization callback URL’为自己的域名以后(https://yangyiqing.cn)，每次sign in的授权过程中都会出现连接的安全问题
     
     </summary>
     
+      <category term="编程" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
