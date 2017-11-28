@@ -1943,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f1398a;
+  background: #9a776e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2538,9 +2538,6 @@ pre .javascript .function {
 .category-all-page .category-list-count:after {
   display: inline;
   content: ") ";
-}
-.category-all-page .category-list-child {
-  padding-left: 10px;
 }
 #schedule ul#event-list {
   padding-left: 30px;
