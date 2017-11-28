@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="杨一瓶">
 <meta property="og:description" content="在使用gitment过程中，使用github的OAuth application进行域名重定向，其中我在填写‘Authorization callback URL’为自己的域名以后(https://yangyiqing.cn)，每次sign in的授权过程中都会出现连接的安全问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-28T09:41:40.797Z">
+<meta property="og:updated_time" content="2017-11-28T11:16:13.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用gitment过程中域名重定向的安全问题[已解决]">
 <meta name="twitter:description" content="在使用gitment过程中，使用github的OAuth application进行域名重定向，其中我在填写‘Authorization callback URL’为自己的域名以后(https://yangyiqing.cn)，每次sign in的授权过程中都会出现连接的安全问题">
@@ -340,6 +340,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/使用gitment过程中域名重定向的安全问题[已解决]/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/28/使用gitment过程中域名重定向的安全问题[已解决]/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -381,6 +391,8 @@
       
         <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>填写 ‘Authorization callback URL’ 的时候，以http而不是https开头<br>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yangyiqing.cn</span><br></pre></td></tr></table></figure></p>
 <p>就要改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yangyiqing.cn</span><br></pre></td></tr></table></figure></p>
+<p>&lt;!DOCTYPE html&gt;</p>
+<html lang="en"><br><head><br>    <meta charset="UTF-8"><br>    <title>Valine - A simple comment system based on Leancloud.</title><br>    <!--Leancloud 操作库:--><br>    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><br>    <!--Valine 的核心代码库:--><br>    <script src="./dist/Valine.min.js"></script><br></head><br><body><br>    <div class="comment"></div><br>    <script><br>        new Valine({<br>            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)<br>            av: AV,<br>            el: ‘.comment’, //<br>            app_id: ‘Rh1LcY9kTliJfzVj7aC8r2fm-gzGzoHsz’, // 这里填写上面得到的APP ID<br>            app_key: ‘gkJEvSV3D9NAqzOBzuYYfvsj’, // 这里填写上面得到的APP KEY<br>            placeholder: ‘ヾﾉ≧∀≦)o来啊，快活啊!’ // [v1.0.7 new]留言框占位提示文字<br>        });<br>    </script><br></body><br></html>
 
       
     </div>
@@ -483,8 +495,6 @@
 
           
   <div class="comments" id="comments">
-      
-      <div id="gitalk-container"></div>
     
   </div>
 
@@ -812,25 +822,6 @@
 
 
   
-    //_config.yml文件若没有添加enable: true可删除该判断
-
-          
-      <link rel='stylesheet' href="https://yiyeti.cc/usr/themes/veryse/css/gitalk.css">
-      <script src="https://yiyeti.cc/usr/themes/veryse/css/gitalk.min.js"></script>
-      <script type="text/javascript">
-          var gitalk = new Gitalk({
-            clientID:  'ec671ab15be1ea23d4bc', 
-            clientSecret: 'a1b502998fad78e2e4003bd0b28d3fd6a01fe69',
-            id: window.location.pathname,
-            repo: 'comments', 
-            owner: 'NeoAlex18up', 
-            admin: 'NeoAlex18up', 
-            distractionFreeMode: 'true',
-          })
-          gitalk.render('gitalk-container')
-      </script>
-    
-
   
 
   
