@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T11:16:13.747Z</updated>
+  <updated>2017-11-28T11:26:11.989Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2017/11/28/%E4%BD%BF%E7%94%A8gitment%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5D/"/>
     <id>http://yoursite.com/2017/11/28/使用gitment过程中域名重定向的安全问题[已解决]/</id>
     <published>2017-11-28T09:41:40.797Z</published>
-    <updated>2017-11-28T11:16:13.747Z</updated>
+    <updated>2017-11-28T11:26:11.989Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>填写 ‘Authorization callback URL’ 的时候，以http而不是https开头<br>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yangyiqing.cn</span><br></pre></td></tr></table></figure></p><p>就要改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yangyiqing.cn</span><br></pre></td></tr></table></figure></p><p>&lt;!DOCTYPE html&gt;</p><html lang="en"><br><head><br>    <meta charset="UTF-8"><br>    <title>Valine - A simple comment system based on Leancloud.</title><br>    <!--Leancloud 操作库:--><br>    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><br>    <!--Valine 的核心代码库:--><br>    <script src="./dist/Valine.min.js"></script><br></head><br><body><br>    <div class="comment"></div><br>    <script><br>        new Valine({<br>            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)<br>            av: AV,<br>            el: ‘.comment’, //<br>            app_id: ‘Rh1LcY9kTliJfzVj7aC8r2fm-gzGzoHsz’, // 这里填写上面得到的APP ID<br>            app_key: ‘gkJEvSV3D9NAqzOBzuYYfvsj’, // 这里填写上面得到的APP KEY<br>            placeholder: ‘ヾﾉ≧∀≦)o来啊，快活啊!’ // [v1.0.7 new]留言框占位提示文字<br>        });<br>    </script><br></body><br></html>]]></content>
+    <content type="html"><![CDATA[<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>填写 ‘Authorization callback URL’ 的时候，以http而不是https开头<br>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yangyiqing.cn</span><br></pre></td></tr></table></figure></p><p>就要改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yangyiqing.cn</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
