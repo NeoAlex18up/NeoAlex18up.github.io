@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T16:29:19.362Z</updated>
+  <updated>2017-11-28T11:26:11.989Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>哲学集锦</title>
-    <link href="http://yoursite.com/2017/11/29/%E8%AF%95%E8%AF%95/"/>
-    <id>http://yoursite.com/2017/11/29/试试/</id>
-    <published>2017-11-28T16:13:35.526Z</published>
-    <updated>2017-11-28T16:29:19.362Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="香蕉君"><a href="#香蕉君" class="headerlink" title="香蕉君"></a>香蕉君</h3><h2 id="1-原版"><a href="#1-原版" class="headerlink" title="1.原版"></a>1.原版</h2><iframe src="https://www.bilibili.com/video/av13353063/?from=search&seid=8751942064502868529" width="640" height="480" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe>]]></content>
-    
-    <summary type="html">
-    
-      今晚秋名山见
-    
-    </summary>
-    
-      <category term="视频" scheme="http://yoursite.com/categories/%E8%A7%86%E9%A2%91/"/>
-    
-    
-      <category term="哲♂学" scheme="http://yoursite.com/tags/%E5%93%B2%E2%99%82%E5%AD%A6/"/>
-    
-  </entry>
   
   <entry>
     <title>使用gitment过程中域名重定向的安全问题[已解决]</title>
