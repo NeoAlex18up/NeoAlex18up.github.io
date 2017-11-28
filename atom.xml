@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T06:40:15.897Z</updated>
+  <updated>2017-11-28T06:50:38.439Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2017/11/27/test/"/>
     <id>http://yoursite.com/2017/11/27/test/</id>
     <published>2017-11-27T15:19:19.000Z</published>
-    <updated>2017-11-28T06:40:15.897Z</updated>
+    <updated>2017-11-28T06:50:38.439Z</updated>
     
     <summary type="html">
     
-      一些比较实用的python编程小技巧
+      测试
     
     </summary>
     
