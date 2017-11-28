@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[哲学集锦]]></title>
+    <url>%2F2017%2F11%2F29%2F%E8%AF%95%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[###香蕉君 ##1.原版]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>哲♂学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用gitment过程中域名重定向的安全问题[已解决]]]></title>
     <url>%2F2017%2F11%2F28%2F%E4%BD%BF%E7%94%A8gitment%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5D%2F</url>
     <content type="text"><![CDATA[解决方法填写 ‘Authorization callback URL’ 的时候，以http而不是https开头例如1https://yangyiqing.cn 就要改为1http://yangyiqing.cn]]></content>
