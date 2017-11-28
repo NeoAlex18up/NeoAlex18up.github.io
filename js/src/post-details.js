@@ -31,7 +31,7 @@ $(document).ready(function () {
   // Sidebar float
   function initAffix () {
     var headerHeight = $('.header-inner').height();
-    var footerOffset = parseInt($('.main').css('padding-bottom'), 10);
+    // var footerOffset = parseInt($('.main').css('padding-bottom'), 10);
 
     /*jshint camelcase: false */
     var sidebarTop = (CONFIG.sidebar.offset_float === 0) ?
@@ -42,7 +42,7 @@ $(document).ready(function () {
     $('.sidebar-inner').affix({
       offset: {
         top: sidebarTop,
-        bottom: footerOffset
+        // bottom: footerOffset
       }
     });
 
