@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/27/test/</loc>
+    <lastmod>2017-11-28T06:37:38.658Z</lastmod>
+    <data>
+        <display>
+        <title>python高效编程的小技巧</title>
+        <pubTime>2017-11-27T15:19:19.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/27/hello-world/</loc>
     <lastmod>2017-11-28T06:28:18.713Z</lastmod>
     <data>
