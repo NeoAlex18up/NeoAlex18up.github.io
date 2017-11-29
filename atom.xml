@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T11:26:11.989Z</updated>
+  <updated>2017-11-29T10:11:37.860Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用gitment过程中域名重定向的安全问题[已解决]</title>
+    <title>hexo中添加视频</title>
     <link href="http://yoursite.com/2017/11/28/%E4%BD%BF%E7%94%A8gitment%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5D/"/>
     <id>http://yoursite.com/2017/11/28/使用gitment过程中域名重定向的安全问题[已解决]/</id>
     <published>2017-11-28T09:41:40.797Z</published>
-    <updated>2017-11-28T11:26:11.989Z</updated>
+    <updated>2017-11-29T10:11:37.860Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>填写 ‘Authorization callback URL’ 的时候，以http而不是https开头<br>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yangyiqing.cn</span><br></pre></td></tr></table></figure></p><p>就要改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yangyiqing.cn</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"video"</span> <span class="attr">controls</span>=<span class="string">""</span> <span class="attr">preload</span>=<span class="string">"none"</span> <span class="attr">poster</span>=<span class="string">"http://media.w3.org/2010/05/sintel/poster.png"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">source</span> <span class="attr">id</span>=<span class="string">"mp4"</span> <span class="attr">src</span>=<span class="string">"http://media.w3.org/2010/05/sintel/trailer.mp4"</span> <span class="attr">type</span>=<span class="string">"video/mp4"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">source</span> <span class="attr">id</span>=<span class="string">"webm"</span> <span class="attr">src</span>=<span class="string">"http://media.w3.org/2010/05/sintel/trailer.webm"</span> <span class="attr">type</span>=<span class="string">"video/webm"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">source</span> <span class="attr">id</span>=<span class="string">"ogv"</span> <span class="attr">src</span>=<span class="string">"http://media.w3.org/2010/05/sintel/trailer.ogv"</span> <span class="attr">type</span>=<span class="string">"video/ogg"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Your user agent does not support the HTML5 Video element.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure> <video id="video" controls preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png"><br>      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4"><br>      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm"><br>      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg"><br>      <p>Your user agent does not support the HTML5 Video element.</p><br>    </video>]]></content>
     
     <summary type="html">
     
-      在使用gitment过程中，使用github的OAuth application进行域名重定向，其中我在填写‘Authorization callback URL’为自己的域名以后(https://yangyiqing.cn)，每次sign in的授权过程中都会出现连接的安全问题
+      这里主要测试如何在hexo中添加视频
     
     </summary>
     
