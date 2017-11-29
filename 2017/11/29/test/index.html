@@ -872,13 +872,13 @@ var jiathis_config={
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
         el: '#comments' ,
-        verify: true,
+        verify: false,
         notify: false,
         appId: '8pBLe47wGmYot2Yf640c9r42-gzGzoHsz',
         appKey: 'ELRrPBsu8dq1c895H7R2gsht',
