@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-29T11:09:27.755Z</updated>
+  <updated>2017-11-29T11:22:43.679Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,24 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>测试</title>
-    <link href="http://yoursite.com/2017/08/19/test/"/>
-    <id>http://yoursite.com/2017/08/19/test/</id>
-    <published>2017-08-18T16:00:00.000Z</published>
-    <updated>2017-11-29T11:09:27.755Z</updated>
+    <title>测试文章</title>
+    <link href="http://yoursite.com/2017/11/29/test/"/>
+    <id>http://yoursite.com/2017/11/29/test/</id>
+    <published>2017-11-29T11:09:27.415Z</published>
+    <updated>2017-11-29T11:22:43.679Z</updated>
     
-    <content type="html"><![CDATA[<p>only for test.</p>]]></content>
+    <content type="html"><![CDATA[<p>时间测试：<br>2017年11月29日 19时16分32秒</p><p><strong><em>==字体加粗高亮斜体测试==</em></strong></p><p><a href="www.baidu.com">百度链接测试</a></p><p>代码测试<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p><p>插入图片测试<br><img src="./images/pic_6_1.png" alt="enter description here" title="pic_6"></p><p>添加附件测试<br>=<a href="./images/pic_6_2.png">点击下载</a></p><hr>]]></content>
     
     <summary type="html">
     
-      only for test
+      测试markdown
     
     </summary>
     
       <category term="编程" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="机器学习,python" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-python/"/>
+      <category term="python,机器学习" scheme="http://yoursite.com/tags/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

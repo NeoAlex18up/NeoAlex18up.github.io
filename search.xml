@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[测试]]></title>
-    <url>%2F2017%2F08%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[only for test.]]></content>
+    <title><![CDATA[测试文章]]></title>
+    <url>%2F2017%2F11%2F29%2Ftest%2F</url>
+    <content type="text"><![CDATA[时间测试：2017年11月29日 19时16分32秒 ==字体加粗高亮斜体测试== 百度链接测试 代码测试1import numpy as np 插入图片测试 添加附件测试=点击下载]]></content>
       <categories>
         <category>编程</category>
       </categories>
       <tags>
-        <tag>机器学习,python</tag>
+        <tag>python,机器学习</tag>
       </tags>
   </entry>
 </search>
