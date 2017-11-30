@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://pic1.zhimg.com/50/v2-d0fffc210bb74aa212f9b2ee55fce81c_hd.jpg">
 <meta property="og:image" content="http://nooverfit.com/wp/wp-content/uploads/2017/01/Screenshot-from-2017-03-12-120248.png">
 <meta property="og:image" content="http://nooverfit.com/wp/wp-content/uploads/2017/01/rl_interaction.png">
-<meta property="og:updated_time" content="2017-11-29T17:11:01.039Z">
+<meta property="og:updated_time" content="2017-11-30T04:53:28.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监督学习 半监督学习 非监督学习 强化学习">
 <meta name="twitter:description" content="统计学习的方法是基于数据构建统计模型从而对数据进行预测和分析，统计学习由监督学习，非监督学习，半监督学习和强化学习组成，本文主要详细解释这四种方法及其区别">
@@ -424,8 +424,14 @@
 <h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul>
 <li>有标注好的训练样本</li>
 <li>有输入有输出</li>
-<li>通常的任务为分类和回归</li>
+<li><p>通常的任务为分类和回归以及标注</p>
+<p>这里提一下标注：<br>标注问题也是一个监督学习问题。可以认为标记问题是分类问题的一个推广。</p>
+</li>
 </ul>
+<p>标注问题的输入是一个观测序列，输出的是一个标记序列或状态序列。也就是说，分类问题的输出是一个值，而标注问题输出是一个向量，向量的每个值属于一种标记类型。</p>
+<p>标注问题也可以分为两步：学习和标注两个过程。首先给定一个训练数据集<br>T = (x_1,y_1),(x_2,y_2),\dots,(x_N,y_N)<br>这里，x_i = (x_i^{(1)},x_i^{(2)},\dots,x_i^{(n)})^T,i = 1,2,\dots,N 是输入观测序列，y_i = (y_i^{(1)},y_i^{(2)},\dots,y<em>i^{(n)})^T 是相应的输出标记序列，nn是序列的长度，对于不同样本可以有不同的值。学习系统基于训练数据集构建一个模型，表示为条件概率分布：<br>P(Y^{(1)},Y^{(2)},\dots,Y^{(n)}|X^{(1)},X^{(2)},\dots,X^{(n)})<br>这里，每一个 X^{(i)}(i=1,2,\dots,N) 取值为所有可能的观测，每一个 Y^{(i)}(i=1,2,\dots,N) 取值为所有可能的标记，一般 n \ll N 。标注系统按照学习得到的条件概率分布模型，对新的输入观测序列找到相应的输出标记序列。具体地，对一个观测序列 x</em>{N+1} = (x<em>{N+1}^{(1)},x</em>{N+1}^{(2)},\dots,x<em>{N+1}^{(n)})^T 找到使条件概率 P(y</em>{N+1}^{(1)},y<em>{N+1}^{(2)},\dots,y</em>{n+1}^{(n)}|x<em>{N+1}^{(1)},x</em>{N+1}^{(2)},\dots,x<em>{N+1}^{(n)}) 最大的标记序列 y</em>{N+1} = (y<em>{N+1}^{(1)},y</em>{N+1}^{(2)},\dots,y_{N+1}^{(n)})^T 评价标注模型的指标与评价分类的模型指标一样，常用的有标注准确率、精确率和召回率等。</p>
+<p>标注常用的机器学习方法有：隐性马尔可夫模型、条件随机场。</p>
+<p>自然语言处理中的词性标注（part of speech tagging）就是一个典型的标注问题：给定一个由单词组成的句子，对这个句子中的每一个单词进行词性标注，即对一个单词序列预测其对应的词性标记序列。</p>
 <h3 id="常用的监督学习算法"><a href="#常用的监督学习算法" class="headerlink" title="常用的监督学习算法"></a>常用的监督学习算法</h3><ul>
 <li>K近邻算法（KNN）</li>
 <li>决策树 （Decision Tree）</li>
