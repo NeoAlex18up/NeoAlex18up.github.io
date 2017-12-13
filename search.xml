@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode （easy难度篇）]]></title>
+    <url>%2F2017%2F12%2F13%2Fleetcode%2F</url>
+    <content type="text"><![CDATA[*Q:Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice.* Example:1234Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1]. 给定一个数组和一个特定的数字，找出这个数组中两个和为该数字的index.（假定只有一组解） A:123456789def twoSum(self, nums, target): if len(nums) &lt;= 1: return False buff_dict = &#123;&#125; for i in range(len(nums)): if nums[i] in buff_dict: return [buff_dict[nums[i]], i] else: buff_dict[target - nums[i]] = i 思路：建立一个字典并遍历数组，键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[测试文章]]></title>
     <url>%2F2017%2F11%2F29%2Ftest%2F</url>
     <content type="text"><![CDATA[时间测试：2017年11月29日 19时16分32秒 ==字体加粗高亮斜体测试== ###百度链接测试 ###代码测试1import numpy as np ###插入图片测试 ###添加附件测试=点击下载 ###多标签写法123tags: - python - 机器学习]]></content>
