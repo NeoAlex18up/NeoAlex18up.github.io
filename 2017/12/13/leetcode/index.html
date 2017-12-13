@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="杨一瓶">
 <meta property="og:description" content="长期更新，leetcode easy难度篇的解法和相关解释">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T06:35:08.826Z">
+<meta property="og:updated_time" content="2017-12-13T06:38:08.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode （easy难度篇）">
 <meta name="twitter:description" content="长期更新，leetcode easy难度篇的解法和相关解释">
@@ -413,12 +413,12 @@
       
 
       
-        <p>*Q:Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.*</p>
+        <h1 id="Two-sum"><a href="#Two-sum" class="headerlink" title="Two sum"></a>Two sum</h1><p>Q:Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
 <p>Example:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</span><br><span class="line"></span><br><span class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</span><br><span class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</span><br></pre></td></tr></table></figure></p>
 <p>给定一个数组和一个特定的数字，找出这个数组中两个和为该数字的index.（假定只有一组解）</p>
-<p>A:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    buff_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        <span class="keyword">if</span> nums[i] <span class="keyword">in</span> buff_dict:</span><br><span class="line">            <span class="keyword">return</span> [buff_dict[nums[i]], i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            buff_dict[target - nums[i]] = i</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路：建立一个字典并遍历数组，键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index"><a href="#思路：建立一个字典并遍历数组，键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index" class="headerlink" title="思路：建立一个字典并遍历数组，键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]"></a><em>思路：建立一个字典并遍历数组，键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]</em></h2>
+<p>Sample solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    buff_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        <span class="keyword">if</span> nums[i] <span class="keyword">in</span> buff_dict:</span><br><span class="line">            <span class="keyword">return</span> [buff_dict[nums[i]], i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            buff_dict[target - nums[i]] = i</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路：建立一个字典并遍历数组，存入键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index"><a href="#思路：建立一个字典并遍历数组，存入键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index" class="headerlink" title="思路：建立一个字典并遍历数组，存入键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]"></a>思路：建立一个字典并遍历数组，存入键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]</h2>
       
     </div>
     
@@ -715,7 +715,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路：建立一个字典并遍历数组，键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index"><span class="nav-number">1.</span> <span class="nav-text">思路：建立一个字典并遍历数组，键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-sum"><span class="nav-number">1.</span> <span class="nav-text">Two sum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路：建立一个字典并遍历数组，存入键-和-加数1-加数1-index-遍历寻找加数2使得-和-加数1-加数2-，输出-加数1-index-加数2-index"><span class="nav-number">1.1.</span> <span class="nav-text">思路：建立一个字典并遍历数组，存入键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]</span></a></li></ol></li></ol></div>
             
 
           </div>
