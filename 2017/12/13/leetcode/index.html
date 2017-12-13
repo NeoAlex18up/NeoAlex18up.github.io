@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ML,merchine learning,yangyiqing" />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Easy come , Easy go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index-1.html">
+<meta name="description" content="(长期更新)leetcode(easy难度篇)的解法和相关解释">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode_easy">
+<meta property="og:url" content="http://yoursite.com/2017/12/13/leetcode/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="Easy come , Easy go">
+<meta property="og:description" content="(长期更新)leetcode(easy难度篇)的解法和相关解释">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-28T15:13:11.008Z">
+<meta property="og:updated_time" content="2017-12-13T08:24:16.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Easy come , Easy go">
+<meta name="twitter:title" content="Leetcode_easy">
+<meta name="twitter:description" content="(长期更新)leetcode(easy难度篇)的解法和相关解释">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/index-1.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/13/leetcode/"/>
 
 
 
 
 
-  <title>categories | 杨一瓶</title>
+  <title>Leetcode_easy | 杨一瓶</title>
   
 
 
@@ -286,33 +287,291 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/13/leetcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangyiqing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://i2.bvimg.com/620746/00469b19726e3b20t.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨一瓶">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">Leetcode_easy</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T00:00:00+08:00">
+                2017-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/13/leetcode/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/13/leetcode/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/13/leetcode/" class="leancloud_visitors" data-flag-title="Leetcode_easy">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  (长期更新)leetcode(easy难度篇)的解法和相关解释
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="Two-sum"><a href="#Two-sum" class="headerlink" title="Two sum"></a>Two sum</h1><p>**Q:Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.**</p>
+<p>Example:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</span><br><span class="line"></span><br><span class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</span><br><span class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</span><br></pre></td></tr></table></figure></p>
+<p>给定一个数组和一个特定的数字，找出这个数组中两个和为该数字的index.（假定只有一组解）</p>
+<p>Sample solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    buff_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        <span class="keyword">if</span> nums[i] <span class="keyword">in</span> buff_dict:</span><br><span class="line">            <span class="keyword">return</span> [buff_dict[nums[i]], i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            buff_dict[target - nums[i]] = i</span><br></pre></td></tr></table></figure></p>
+<p><strong>思路：建立一个字典并遍历数组，存入键[和-加数1] = [加数1.index],遍历寻找加数2使得(和-加数1=加数2)，输出[加数1.index,加数2.index]</strong></p>
+<hr>
+<h1 id="Reverse-Integer"><a href="#Reverse-Integer" class="headerlink" title="Reverse Integer"></a>Reverse Integer</h1><p>Q:Given a 32-bit signed integer, reverse digits of an integer.<br>Example 1:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">123</span></span><br><span class="line">Output:  <span class="number">321</span></span><br></pre></td></tr></table></figure></p>
+<p>Example 2:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">-123</span></span><br><span class="line">Output:  <span class="number">-321</span></span><br></pre></td></tr></table></figure></p>
+<p>Example 3:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">120</span></span><br><span class="line">Output:  <span class="number">21</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br>Assume we are dealing with an environment which could only hold integers within the 32-bit signed integer range. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<p>My Answer:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(str(nums))&gt;<span class="number">0</span> <span class="keyword">and</span> nums != <span class="number">0</span> <span class="keyword">and</span> nums &lt;= math.pow(<span class="number">2</span>,<span class="number">31</span>):</span><br><span class="line">            nums = str(nums)</span><br><span class="line">            newStr = <span class="string">''</span></span><br><span class="line">            <span class="comment"># len(nums)-1 to -1 , -1 not included , interval is -1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">                newStr = newStr + nums[i]</span><br><span class="line">            print(newStr)</span><br><span class="line">            <span class="keyword">while</span> newStr[<span class="number">0</span>] == <span class="string">'0'</span>:</span><br><span class="line">                newStr= newStr[<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">if</span> newStr[<span class="number">-1</span>]==<span class="string">'-'</span>:</span><br><span class="line">                newStr=<span class="string">'-'</span>+newStr[:len(newStr)<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> math.fabs(int(newStr)) &gt;= math.pow(<span class="number">2</span>,<span class="number">31</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span>(int(newStr))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>思路：主要注意几点</strong><br>1.32位有符号整数范围判断<br>2.逆序以后0的处理<br>3.切片时注意索引是否会超范围，也就是只输入0的情况<br>4.对于是否为负的处理</p>
+<h2 id="python-math"><a href="#python-math" class="headerlink" title="python math"></a>python math</h2><h3 id="Number-theoretic-and-representation-functions"><a href="#Number-theoretic-and-representation-functions" class="headerlink" title="Number-theoretic and representation functions"></a>Number-theoretic and representation functions</h3><p><em>里附上一些常用的math方法:</em>(python 3.6.4 standard)</p>
+<ul>
+<li><strong>math.ceil(x)</strong> 上限，返回大于或等于x的最小整数</li>
+<li>math.copysign(x,y) 赋值符号,返回x的绝对值，使用y的符号,返回类型为float</li>
+<li>math.fabs(x) 返回x的绝对值</li>
+<li>math.factorial(x) 返回x的阶乘，如果x为非正整数会报错</li>
+<li>math.floor(x) 下限，小于或等于x的最大整数 </li>
+<li>math.fmod(x,y) 返回x对y取模的余数（x决定余数符号），与x%y不同（y决定余数符号）</li>
+<li>math.frexp(x) 返回一个元组(m,n),根据x = m<em>(2*</em>n)即 m乘以2的n次方,一般用来拆分一个浮点数（文档写的是m,e，我觉得容易造成误会改成n了）</li>
+<li>math.fsum(iterable) 返回数组的和，比内置sum要准确，例如10个0.1相加，内置sum可能会得到0.99999999999</li>
+<li>math.gcd(a,b) 返回最大公约数,a,b必须为整数</li>
+<li>math.isclose(a,b,*,rel_tol=1e-09, abs_tol=0.0) 用来比较a,b两个数是否接近，判断是否接近的标准就是rel_tol和abs_tol.rel_tol 是 relative tolerance 相对误差(指a.b之间可以允许的最大误差)，默认值是1e-09,也就是输入的值相对差值小于1e-09才算closeToEachOther，rel_tol必须大于0;abs_tol是绝对误差;简单来讲，rel_tol是差值百分比，abs_tol是差值绝对值，举例:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(math.isclose(<span class="number">1</span>,<span class="number">0.8</span>,rel_tol=<span class="number">0.18</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出为False<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(math.isclose(<span class="number">1</span>,<span class="number">0.8</span>,rel_tol=<span class="number">0.2</span>))</span><br></pre></td></tr></table></figure></p>
+<p>输出为True<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(math.isclose(<span class="number">12</span>,<span class="number">0.8</span>,abs_tol = <span class="number">10</span>))</span><br></pre></td></tr></table></figure></p>
+<p>输出为False<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(math.isclose(<span class="number">12</span>,<span class="number">0.8</span>,abs_tol = <span class="number">11.3</span>))</span><br></pre></td></tr></table></figure></p>
+<p>输出为True</p>
+<ul>
+<li>math.isfinite(x) 判断一个数是否是有限的，如果是 infinite 或者 nan , NaN（包括np.NaN） 会输出False，否则为True,(注意，判断不是有限的并不代表是无限的，可能是NaN -&gt; not a number)</li>
+<li><p>math.isinf(x) 判断一个数是否是无限的（正无限和负无限），无法判断是否是NAN</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正无穷</span></span><br><span class="line">float(<span class="string">'inf'</span>)</span><br><span class="line"><span class="comment"># 负无穷</span></span><br><span class="line">float(<span class="string">'-inf'</span>)</span><br><span class="line">-float(<span class="string">'inf'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>math.isnan(x) 判断是否是NAN（not a number）</p>
+</li>
+<li>math.ldexp(x,i) 返回 x乘2的i次方，是frexp()函数的逆，一个是把数分解为两元，一个是两元合成一个数</li>
+<li>math.modf(x) 分别返回x的小数部分和整数部分，同时带x的符号，例如<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(math.modf(<span class="number">-1.89</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出(-0.8899999999999999, -1.0)</p>
+<ul>
+<li>math.trunc(x) 在3.5版本中跟floor没区别，在2.7版本中，floor返回的是浮点整数，trunc返回的整数</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatQR.png" alt="Yangyiqing 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AlipayQR.png" alt="Yangyiqing 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/29/test/" rel="next" title="测试文章">
+                <i class="fa fa-chevron-left"></i> 测试文章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"测试测试测试测试",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2150691" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
   </div>
 
 
@@ -348,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -478,6 +746,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-sum"><span class="nav-number">1.</span> <span class="nav-text">Two sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse-Integer"><span class="nav-number">2.</span> <span class="nav-text">Reverse Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-math"><span class="nav-number">2.1.</span> <span class="nav-text">python math</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-theoretic-and-representation-functions"><span class="nav-number">2.1.1.</span> <span class="nav-text">Number-theoretic and representation functions</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
