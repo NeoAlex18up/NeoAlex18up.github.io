@@ -61,30 +61,6 @@
   </entry>
   
   <entry>
-    <title>测试文章</title>
-    <link href="http://yoursite.com/2017/11/29/test/"/>
-    <id>http://yoursite.com/2017/11/29/test/</id>
-    <published>2017-11-29T11:09:27.415Z</published>
-    <updated>2017-11-29T11:43:10.665Z</updated>
-    
-    <content type="html"><![CDATA[<p>时间测试：<br>2017年11月29日 19时16分32秒</p><p><strong><em>==字体加粗高亮斜体测试==</em></strong></p><p>###<a href="www.baidu.com">百度链接测试</a></p><p>###代码测试<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p><p>###插入图片测试<br><img src="http://i2.bvimg.com/620746/e754fd9fe8ce585b.png" alt="Markdown"></p><p>###添加附件测试<br>=<a href="http://i2.bvimg.com/620746/e754fd9fe8ce585b.png" target="_blank" rel="noopener">点击下载</a></p><hr><p>###多标签写法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - python</span><br><span class="line">  - 机器学习</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      测试markdown
-    
-    </summary>
-    
-      <category term="编程" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>监督学习 半监督学习 非监督学习 强化学习</title>
     <link href="http://yoursite.com/2017/11/29/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB/"/>
     <id>http://yoursite.com/2017/11/29/统计学习方法的分类/</id>

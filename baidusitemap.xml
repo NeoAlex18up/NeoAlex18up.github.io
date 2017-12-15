@@ -63,28 +63,6 @@
     </url>
 
     
-  <url>
-    <loc>http://yoursite.com/2017/11/29/test/</loc>
-    <lastmod>2017-11-29T11:43:10.665Z</lastmod>
-    <data>
-        <display>
-        <title>测试文章</title>
-        <pubTime>2017-11-29T11:09:27.415Z</pubTime>
-        
-        <tag>python</tag>
-         
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
     
     
     
