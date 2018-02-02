@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170215174429487?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvempzZ2h3dw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://i1.bvimg.com/620746/8fb6d8adb6285060s.png">
 <meta property="og:image" content="http://i1.bvimg.com/620746/6bbfdf02e262ce31s.png">
-<meta property="og:updated_time" content="2018-01-31T14:07:12.391Z">
+<meta property="og:updated_time" content="2018-02-02T04:12:26.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow学习笔记">
 <meta name="twitter:description" content="从零开始TensorFlow">
@@ -472,7 +472,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">初始梯度 [ <span class="number">0.39880029</span>  <span class="number">2.39851299</span>  <span class="number">1.09756494</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用梯度下降找到最优参数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logistic</span><span class="params">(theta,X,y,eta)</span>:</span></span><br><span class="line">    loss_list = []</span><br><span class="line">    minLoss = <span class="number">1000</span></span><br><span class="line">    minTheta = <span class="keyword">None</span></span><br><span class="line">    <span class="comment"># 定义迭代次数</span></span><br><span class="line">    theLoss = <span class="number">0</span></span><br><span class="line">    iteration_times = <span class="number">5000</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(iteration_times):</span><br><span class="line">        <span class="comment"># 每一轮迭代更新损失theta向量和损失函数值</span></span><br><span class="line">        theta = theta - eta * Gradient(theta,X,y)</span><br><span class="line">        theLoss = loss(theta,X,y)</span><br><span class="line">        <span class="keyword">if</span> theLoss &lt; minLoss:</span><br><span class="line">            minLoss = theLoss</span><br><span class="line">            minTheta = theta</span><br><span class="line">        loss_list.append(theLoss)</span><br><span class="line">    <span class="keyword">return</span> loss_list,minLoss,minTheta</span><br><span class="line">loss_list,minLoss,minTheta = logistic(init_theta,X,y,<span class="number">0.01</span>)</span><br><span class="line"><span class="comment"># 画出收敛曲线的图</span></span><br><span class="line">axis_x = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(len(loss_list))]</span><br><span class="line">plt.xlabel(<span class="string">'iteration times'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'loss function value'</span>)</span><br><span class="line">plt.plot(axis_x,loss_list,linestyle=<span class="string">'-'</span>,color=<span class="string">'b'</span>,label=<span class="string">'Convergent curve'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="http://i1.bvimg.com/620746/6bbfdf02e262ce31s.png" alt="pic"></p>
-
+<hr>
+<h1 id="交叉熵Corss-entropy和Softmax"><a href="#交叉熵Corss-entropy和Softmax" class="headerlink" title="交叉熵Corss-entropy和Softmax"></a>交叉熵Corss-entropy和Softmax</h1>
       
     </div>
     
@@ -531,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/1970/01/01/剑指offer/" rel="next" title="剑指offer">
-                <i class="fa fa-chevron-left"></i> 剑指offer
+              <a href="/1970/01/01/数据结构/" rel="next" title="数据结构">
+                <i class="fa fa-chevron-left"></i> 数据结构
               </a>
             
           </div>
@@ -773,7 +774,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用flags定义命令行参数"><span class="nav-number">1.</span> <span class="nav-text">使用flags定义命令行参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow实现线性回归"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow实现线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归原理"><span class="nav-number">2.1.</span> <span class="nav-text">线性回归原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-multiply和tf-matmul区别"><span class="nav-number">3.</span> <span class="nav-text">tf.multiply和tf.matmul区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#np-dot"><span class="nav-number">3.1.</span> <span class="nav-text">np.dot</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动实现Logistic"><span class="nav-number">4.</span> <span class="nav-text">手动实现Logistic</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用flags定义命令行参数"><span class="nav-number">1.</span> <span class="nav-text">使用flags定义命令行参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow实现线性回归"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow实现线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归原理"><span class="nav-number">2.1.</span> <span class="nav-text">线性回归原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-multiply和tf-matmul区别"><span class="nav-number">3.</span> <span class="nav-text">tf.multiply和tf.matmul区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#np-dot"><span class="nav-number">3.1.</span> <span class="nav-text">np.dot</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动实现Logistic"><span class="nav-number">4.</span> <span class="nav-text">手动实现Logistic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交叉熵Corss-entropy和Softmax"><span class="nav-number">5.</span> <span class="nav-text">交叉熵Corss-entropy和Softmax</span></a></li></ol></div>
             
 
           </div>
