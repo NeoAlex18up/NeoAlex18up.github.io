@@ -4,12 +4,32 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/13/leetcode/</loc>
-    <lastmod>2018-02-07T04:12:58.398Z</lastmod>
+    <loc>http://yoursite.com/2088/01/20/TFCookBook/</loc>
+    <lastmod>2018-02-14T05:03:02.279Z</lastmod>
     <data>
         <display>
-        <title>Leetcode</title>
-        <pubTime>2017-12-12T16:00:00.000Z</pubTime>
+        <title>《Tensorflow CookBook ML》</title>
+        <pubTime>2088-01-19T16:00:00.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/1970/01/01/%E5%89%91%E6%8C%87offer/</loc>
+    <lastmod>2018-02-08T14:50:51.581Z</lastmod>
+    <data>
+        <display>
+        <title>剑指offer</title>
+        <pubTime>1970-01-01T00:03:21.819Z</pubTime>
         
         <tag>算法</tag>
          
@@ -24,12 +44,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/1970/01/01/%E5%89%91%E6%8C%87offer/</loc>
-    <lastmod>2018-02-06T08:51:21.371Z</lastmod>
+    <loc>http://yoursite.com/2017/12/13/leetcode/</loc>
+    <lastmod>2018-02-07T06:14:32.510Z</lastmod>
     <data>
         <display>
-        <title>剑指offer</title>
-        <pubTime>1970-01-01T00:03:21.819Z</pubTime>
+        <title>Leetcode</title>
+        <pubTime>2017-12-12T16:00:00.000Z</pubTime>
         
         <tag>算法</tag>
          
