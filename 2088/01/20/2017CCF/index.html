@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="杨一瓶">
 <meta property="og:description" content="比赛记录和思路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2088/01/20/2017CCF/img/data.png">
+<meta property="og:image" content="http://yoursite.com/2088/01/20/2017CCF/data.png">
 <meta property="og:updated_time" content="2018-02-05T02:41:47.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 CCF 大数据竞赛top4%">
 <meta name="twitter:description" content="比赛记录和思路">
-<meta name="twitter:image" content="http://yoursite.com/2088/01/20/2017CCF/img/data.png">
+<meta name="twitter:image" content="http://yoursite.com/2088/01/20/2017CCF/data.png">
 
 
 
@@ -422,7 +422,7 @@
 <h2 id="3-具体做法"><a href="#3-具体做法" class="headerlink" title="3.具体做法"></a>3.具体做法</h2><h3 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1.数据预处理"></a>1.数据预处理</h3><ul>
 <li>删除公共wifi，因为本题中给出了mall信息，当两个mall距离较远的情况下，同一个wifiId在这两个mall或多个mall都出现过的话，那么就可以判定这个wifiId是公共wifi或者是个人热点。</li>
 <li>训练集和测试集wifi取交集，因为对于wifi指纹或我们后来构造的wifi特征来说，只在train中出现过或只在test中出现过的wifi都是无用的，甚至可能是噪音。</li>
-<li>离群值的去除，没发现有什么离群点，部分wifi强度值有缺失，这里没有进行处理，因为模型对缺失值自动处理的效果比较好<h3 id="2-经纬度信息"><a href="#2-经纬度信息" class="headerlink" title="2.经纬度信息"></a>2.经纬度信息</h3>给了两种经纬度信息，一种是店铺经纬度（固定值），一种是买家付款时的经纬度，两种经纬度理论上差距应该很小，实际部分差距很大<br><img src="img/data.png" alt="pic1"></li>
+<li>离群值的去除，没发现有什么离群点，部分wifi强度值有缺失，这里没有进行处理，因为模型对缺失值自动处理的效果比较好<h3 id="2-经纬度信息"><a href="#2-经纬度信息" class="headerlink" title="2.经纬度信息"></a>2.经纬度信息</h3>给了两种经纬度信息，一种是店铺经纬度（固定值），一种是买家付款时的经纬度，两种经纬度理论上差距应该很小，实际部分差距很大<br><img src="/2088/01/20/2017CCF/data.png" alt="pic1"></li>
 <li>通过对精度的调整做了一个小的离散化处理</li>
 <li>欧氏距离特征</li>
 <li>曼哈顿距离特征</li>
@@ -530,6 +530,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2088/03/04/剑指offer-1/" rel="prev" title="剑指offer">
+                剑指offer <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -639,7 +643,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
