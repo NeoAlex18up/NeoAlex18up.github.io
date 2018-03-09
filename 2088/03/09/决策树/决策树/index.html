@@ -85,16 +85,16 @@
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树原理">
-<meta property="og:url" content="http://yoursite.com/2088/03/09/决策树/index.html">
+<meta property="og:url" content="http://yoursite.com/2088/03/09/决策树/决策树/index.html">
 <meta property="og:site_name" content="杨一瓶">
 <meta property="og:description" content="决策树原理，生成与剪枝策略等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/tree1.jpg">
-<meta property="og:updated_time" content="2018-03-09T08:32:20.247Z">
+<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/决策树/tree1.jpg">
+<meta property="og:updated_time" content="2018-03-09T09:29:51.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树原理">
 <meta name="twitter:description" content="决策树原理，生成与剪枝策略等">
-<meta name="twitter:image" content="http://yoursite.com/2088/03/09/决策树/tree1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2088/03/09/决策树/决策树/tree1.jpg">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2088/03/09/决策树/"/>
+  <link rel="canonical" href="http://yoursite.com/2088/03/09/决策树/决策树/"/>
 
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2088/03/09/决策树/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2088/03/09/决策树/决策树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -371,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2088/03/09/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2088/03/09/决策树/" itemprop="commentCount"></span>
+                <a href="/2088/03/09/决策树/决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2088/03/09/决策树/决策树/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,7 +380,7 @@
 
           
           
-             <span id="/2088/03/09/决策树/" class="leancloud_visitors" data-flag-title="决策树原理">
+             <span id="/2088/03/09/决策树/决策树/" class="leancloud_visitors" data-flag-title="决策树原理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,8 +419,10 @@
 <ul>
 <li>特征选择</li>
 <li>决策树生成</li>
-<li>剪枝<br>2.可以将决策树看成一个if-else规则的集合，其特点是<strong>所有的路径互斥且完备</strong>，给出一个测试用例，有且只有一条路径满足条件。<br>3.决策树还表示给定特征条件下的条件概率分布，这一条件概率分布定义特征空间的一个划分上，决策树的一条路径对应于划分中的一个单元，<strong>决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成</strong>。<br><img src="/2088/03/09/决策树/tree1.jpg" alt=""><br>4.<strong>决策树的学习的损失函数通常是正则化的极大似然函数</strong>，决策树学习的策略是以损失函数为目标函数的最小化<br>5.<br>“从所有可能的决策树种选择最优决策树是NP完全问题，所以现实中决策树学习算法通常采用启发式方法，近似求解这一最优化问题，这样得到的决策数是‘次最优’的” – 《统计学习方法》<br><strong>我的理解是由于最优决策树是不可推导的(只能列举全部可能情况)，所以只能通过局部最优解来递归的解决，在特征选择的过程中每次选择信息增益最大的特征来作为当前划分区域的特征。</strong></li>
+<li>剪枝</li>
 </ul>
+<p>2.可以将决策树看成一个if-else规则的集合，其特点是<strong>所有的路径互斥且完备</strong>，给出一个测试用例，有且只有一条路径满足条件。<br>3.决策树还表示给定特征条件下的条件概率分布，这一条件概率分布定义特征空间的一个划分上，决策树的一条路径对应于划分中的一个单元，<strong>决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成</strong>。<br><img src="/2088/03/09/决策树/决策树/tree1.jpg" alt=""><br>4.<strong>决策树的学习的损失函数通常是正则化的极大似然函数</strong>，决策树学习的策略是以损失函数为目标函数的最小化<br>5.<br>“从所有可能的决策树种选择最优决策树是NP完全问题，所以现实中决策树学习算法通常采用启发式方法，近似求解这一最优化问题，这样得到的决策数是‘次最优’的” – 《统计学习方法》<br><strong>我的理解是由于最优决策树是不可推导的(只能列举全部可能情况)，所以只能通过局部最优解来递归的解决，在特征选择的过程中每次选择信息增益最大的特征来作为当前划分区域的特征,也就是递归的解局部最优</strong></p>
+<h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>特征选择是选择对数据具有良好区分度的特征，通常对决策树来说衡量特征对label区分度的能力用信息增益或信息增益比来表示。</p>
 
       
     </div>
@@ -718,7 +720,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树概念"><span class="nav-number">1.</span> <span class="nav-text">决策树概念</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树概念"><span class="nav-number">1.</span> <span class="nav-text">决策树概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">2.</span> <span class="nav-text">特征选择</span></a></li></ol></div>
             
 
           </div>
