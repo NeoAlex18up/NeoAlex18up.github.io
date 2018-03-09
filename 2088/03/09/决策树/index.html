@@ -91,17 +91,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/tree1.jpg">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/5.1.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/2.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/3.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/4.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/6.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/7.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/8.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/9.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/10.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/11.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/12.png">
-<meta property="og:updated_time" content="2018-03-09T11:31:51.258Z">
+<meta property="og:updated_time" content="2018-03-09T16:40:58.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树原理">
 <meta name="twitter:description" content="决策树原理，生成与剪枝策略等">
@@ -434,10 +429,14 @@
 </ul>
 <p>2.可以将决策树看成一个if-else规则的集合，其特点是<strong>所有的路径互斥且完备</strong>，给出一个测试用例，有且只有一条路径满足条件。<br>3.决策树还表示给定特征条件下的条件概率分布，这一条件概率分布定义特征空间的一个划分上，决策树的一条路径对应于划分中的一个单元，<strong>决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成</strong>。<br><img src="/2088/03/09/决策树/tree1.jpg" alt=""><br>4.<strong>决策树的学习的损失函数通常是正则化的极大似然函数</strong>，决策树学习的策略是以损失函数为目标函数的最小化<br>5.<br>“从所有可能的决策树种选择最优决策树是NP完全问题，所以现实中决策树学习算法通常采用启发式方法，近似求解这一最优化问题，这样得到的决策数是‘次最优’的” – 《统计学习方法》<br><strong>我的理解是由于最优决策树是不可推导的(只能列举全部可能情况)，所以只能通过局部最优解来递归的解决，在特征选择的过程中每次选择信息增益最大的特征来作为当前划分区域的特征,也就是递归的解局部最优</strong></p>
 <h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>特征选择是选择对数据具有良好区分度的特征，通常对决策树来说衡量特征对label区分度的能力用信息增益或信息增益比来表示。<br>以书上的数据表作为例子：<br><img src="/2088/03/09/决策树/5.1.png" alt=""><br>为了从中找出更有区分度的特征，这里引入信息增益的概念:</p>
-<h2 id="熵-entropy"><a href="#熵-entropy" class="headerlink" title="熵(entropy)"></a><strong>熵(entropy)</strong></h2><p>是表示随机变量不确定性的度量，对熵的定义:<br><img src="/2088/03/09/决策树/2.png" alt=""><br>熵越大，随机变量的不确定性就越大，举例当随机变量只有两个取值的时候:<br><img src="/2088/03/09/决策树/3.png" alt=""><br>这个时候，熵随着概率p的变化曲线如下图所示，当概率为0.5的时候，也就是取两个值得概率相等时，熵的值最大。这也很容易理解，<strong>因为当两个值取值相等时，不确定性最大，而熵又是衡量随机变量的不确定性的，所以此时熵最大</strong>。<br><img src="/2088/03/09/决策树/4.png" alt=""></p>
-<h2 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a><strong>条件熵</strong></h2><p>随机变量X给定条件下随机变量Y的条件熵H(Y|X)，定义为X为给定条件下的Y的条件概率分布的熵对X的数学期望:<br><img src="/2088/03/09/决策树/6.png" alt=""></p>
-<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a><strong>信息增益</strong></h2><p>表示得到特征X的信息以后使得类Y的信息不确定性减少的程度。<br>比如有个本来的经验熵为H(D),这个时候又加入了一个特征A，那么加入特征A以后的经验熵就是H(D|A),则信息增益：<br>g(D,A) = H(D) = H(D|A)<br><strong>假设本来的经验熵为1，加入特征A以后的经验熵变为0.8,那么信息熵就减少了0.2,说明类别的不确定性减少了，那么对于分类来说就更准确了</strong><br>一般来说，熵与条件熵之差称为<strong>互信息</strong>，决策树学习中的信息增益等价于训练数据集中类与特征的互信息</p>
-<h3 id="信息增益算法"><a href="#信息增益算法" class="headerlink" title="信息增益算法"></a>信息增益算法</h3><p>(1) 计算数据集D的经验熵H(D)<br>其中k是指一共多少个类别，Ck是该类别在数据集D中出现的次数<br><img src="/2088/03/09/决策树/7.png" alt=""><br>(2) 计算特征A对数据集D的条件经验熵H(D|A)<br>其中n是指特征A中的类别，k是指label的类别<br><img src="/2088/03/09/决策树/8.png" alt=""><br>(3) 计算信息增益</p>
+<h2 id="熵-entropy"><a href="#熵-entropy" class="headerlink" title="熵(entropy)"></a><strong>熵(entropy)</strong></h2><p>是表示随机变量不确定性的度量，对熵的定义:<br>在信息论与概率统计中，熵是表示随机变量不确定性的度量。设X是一个取有限个值得离散随机变量，其概率分布为<br><strong>$$P(X = x_i)=p_i,i=1,2,3..n$$</strong><br>则随机变量X的熵定义为<br><strong>$$H(x)=-\sum_{i=1}^np_ilog_2p_i$$</strong><br>熵越大，随机变量的不确定性就越大，举例当随机变量只有两个取值的时候:<br>$$H(p)=-plog_2p-(1-p)log_2(1-p)$$<br>这个时候，熵随着概率p的变化曲线如下图所示，当概率为0.5的时候，也就是取两个值得概率相等时，熵的值最大。这也很容易理解，<strong>因为当两个值取值相等时，不确定性最大，而熵又是衡量随机变量的不确定性的，所以此时熵最大</strong>。<br><img src="/2088/03/09/决策树/4.png" alt=""></p>
+<h2 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a><strong>条件熵</strong></h2><p>随机变量X给定条件下随机变量Y的条件熵H(Y|X)，定义为X为给定条件下的Y的条件概率分布的熵对X的数学期望:<br>$$H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)$$</p>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a><strong>信息增益</strong></h2><p>表示得到特征X的信息以后使得类Y的信息不确定性减少的程度。<br>比如有个本来的经验熵为H(D),这个时候又加入了一个特征A，那么加入特征A以后的经验熵就是H(D|A),则信息增益：$g(D,A) = H(D) - H(D|A)$<br><strong>假设本来的经验熵为1，加入特征A以后的经验熵变为0.8,那么信息熵就减少了0.2,说明类别的不确定性减少了，那么对于分类来说就更准确了</strong><br>一般来说，熵与条件熵之差称为<strong>互信息</strong>，决策树学习中的信息增益等价于训练数据集中类与特征的互信息</p>
+<h3 id="信息增益算法"><a href="#信息增益算法" class="headerlink" title="信息增益算法"></a>信息增益算法</h3><p>(1) 计算数据集D的<strong>经验熵H(D)</strong><br>其中k是指一共多少个类别，Ck是该类别在数据集D中出现的次数</p>
+<p>$$H(D)=-\sum_{k=1}^K\frac{|C_k|}{D}log_2\frac{|C_k|}{|D|}$$</p>
+<p>(2) 计算特征A对数据集D的条件经验熵H(D|A)<br>其中n是指特征A中的类别，k是指label的类别</p>
+<p>$$H(D|A)=\sum_{i=1}^n\frac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^n\frac{|D_i|}{|D|}\sum_{k=1}^K\frac{|D_ik|}{|D_i|}log_2\frac{|D_ik|}{|D_i|}$$</p>
+<p>(3) 计算信息增益</p>
 <p>根据以上公式，可以计算上面例子数据集中每个特征的信息增益：<br>$$-\frac{2}{5}log\frac{2}{5}-\frac{3}{5}log\frac{3}{5}=0.971$$<br>然后计算每个特征的信息增益:<br>以年龄特征为例：<br>$$g(D,A_1)=H(D)-[\frac{5}{15}H(D_1)+\frac{5}{15}H(D_2)+\frac{5}{15}H(D_2)]$$<br>其中以$H(D_1)$为例：<br><img src="/2088/03/09/决策树/9.png" alt=""><br>$$H(D_1)=-\frac{2}{5}log\frac{2}{5}-\frac{3}{5}log\frac{3}{5}$$<br>其余同理，这样最终算出的信息增益:<br>$g(D,A1) = 0.083$<br>$g(D,A2) = 0.324$<br>$g(D,A3) = 0.420$<br>$g(D,A4) = 0.363$<br>这样，特征A3的信息增益最大，所以选择A3作为最优特征。</p>
 <h2 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h2><h3 id="引入信息增益比的原因"><a href="#引入信息增益比的原因" class="headerlink" title="引入信息增益比的原因"></a>引入信息增益比的原因</h3><p>只依赖信息增益来选择特征可能会出现问题，会存在偏向于选择取值较多的特征，就是哪个特征中的类别越多，可能其信息增益就会越大，<strong>原因是分类越多，那么在子数据集中lable全部相同的概率就越大（一种极端情况），在这种情况下，该子数据集的熵为0，如果这种子数据集多的话，那么其条件熵$H(D|A)$就会越小,那么$g(D,A) = H(D) - H(D|A)$就会越大。</strong></p>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>$$信息增益比 = \frac{信息增益}{特征A的熵}$$<br>一目了然，引入了特征A的熵最为分母，特征A的取值(类别数)越多，那么其熵值越大，这样就防止了因为取值多而造成的偏向问题</p>
@@ -504,8 +503,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2088/01/20/2017JDD/" rel="next" title="2017-JDD京东金融算法大赛15th解决方案">
-                <i class="fa fa-chevron-left"></i> 2017-JDD京东金融算法大赛15th解决方案
+              <a href="/2088/01/20/2017CCF/" rel="next" title="2017 CCF 大数据竞赛top4%">
+                <i class="fa fa-chevron-left"></i> 2017 CCF 大数据竞赛top4%
               </a>
             
           </div>

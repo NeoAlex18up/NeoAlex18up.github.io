@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2088/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
+    <lastmod>2018-03-09T16:40:58.163Z</lastmod>
+    <data>
+        <display>
+        <title>决策树原理</title>
+        <pubTime>2088-03-09T08:10:10.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="理论" url="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/12/13/DTree/</loc>
     <lastmod>2018-03-09T13:22:17.638Z</lastmod>
     <data>
@@ -37,26 +57,6 @@
            
              
               <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2088/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
-    <lastmod>2018-03-09T11:31:51.258Z</lastmod>
-    <data>
-        <display>
-        <title>决策树原理</title>
-        <pubTime>2088-03-09T08:10:10.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="理论" url="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/"/>
           
         </display>
     </data>
