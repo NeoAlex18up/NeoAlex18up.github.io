@@ -4,8 +4,48 @@
 
     
   <url>
-    <loc>http://yoursite.com/2088/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
-    <lastmod>2018-03-09T09:29:51.083Z</lastmod>
+    <loc>http://yoursite.com/2017/12/13/DTree/</loc>
+    <lastmod>2018-03-09T13:22:17.638Z</lastmod>
+    <data>
+        <display>
+        <title>DTree</title>
+        <pubTime>2017-12-12T16:00:00.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2088/01/20/Tensorflow/</loc>
+    <lastmod>2018-03-09T13:02:48.979Z</lastmod>
+    <data>
+        <display>
+        <title>Tensorflow</title>
+        <pubTime>2088-01-19T16:00:00.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2088/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
+    <lastmod>2018-03-09T11:31:51.258Z</lastmod>
     <data>
         <display>
         <title>决策树原理</title>
@@ -32,26 +72,6 @@
         <pubTime>2088-01-15T13:57:10.000Z</pubTime>
         
         <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2088/01/20/Tensorflow/</loc>
-    <lastmod>2018-03-04T15:16:55.263Z</lastmod>
-    <data>
-        <display>
-        <title>Tensorflow</title>
-        <pubTime>2088-01-19T16:00:00.000Z</pubTime>
-        
-        <tag>机器学习</tag>
          
          
            
