@@ -96,8 +96,8 @@
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/10.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/11.png">
 <meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/12.png">
-<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/11.png">
-<meta property="og:updated_time" content="2018-03-10T10:36:30.238Z">
+<meta property="og:image" content="http://yoursite.com/2088/03/09/决策树/14.png">
+<meta property="og:updated_time" content="2018-03-10T10:39:32.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树原理">
 <meta name="twitter:description" content="特征选择,生成,剪枝,ID3,C4.5,CART算法">
@@ -456,7 +456,7 @@
 <p><strong>决策树的损失函数最小化相当于正则化的极大似然估计</strong><br><strong>决策树的剪枝算法：</strong><br>输入：生成算法产生的整个树T，参数α：<br>输出：修建后的子树Tα<br>（1） 计算每个结点的经验熵<br>（2） 递归地从树的叶结点向上回缩<br>设一组叶结点回缩到其父结点之前与之后的整体树分别为$T_B$与$T_A$，其对应的损失函数值分别为$C_α(T_B)$与$C_α(T_A)$，<strong>如果</strong><br><strong>$$C_{\alpha}(T_A)\le C_{\alpha}(T_B)$$</strong><br><strong>则进行剪枝</strong>，即将父结点变为新的叶结点。(3)返回(2)，直至不能继续为止，得到损失函数最小的子树$T_α$</p>
 <h2 id="CART-算法"><a href="#CART-算法" class="headerlink" title="CART 算法"></a>CART 算法</h2><p><strong>CART(classification and regression tree)是指分类与回归树</strong>，同样特征选择，树的生成，树的剪枝构成，既可以用于<strong>分类也可以用于回归</strong>，<strong>CART是二叉树</strong>。<br>得到D以后，CART算法<strong>递归的二分每个特征</strong>，将数据集划分为有限个单元，给定一个测试用例，则其预测依据为<strong>给定条件下的条件概率分布</strong>。<br><strong>(1) 决策树的生成</strong><br>CART算法在树的生成过程中递归的二分特征，要求构建的树要尽量大，关于特征选择的评估指标，在ID3算法中是信息增益，在C4.5算法中是信息增益比，而在CART算法中，特征选择的评估标准是：<br>$$\begin{cases}<br>分类树：基尼系数\<br>回归树：平方误差\<br>\end{cases}<br>$$<br>依据最小化这两个评估标准的原则进行特征选择，在选择完特征以后把特征划分为<strong>两部分</strong>。<br><strong>那么怎么样根据这个评估标准来选择最优特征呢</strong>，在ID3和C4.5算法中，可以根据每个特征计算其信息增益和信息增益比，平方误差和基尼系数的在CART的生成树算法中是这样运用的：<br><strong>1.1 最小二乘回归树算法</strong><br>选择最优切分特征j和最优切分点，根据以下公式：<br>$$min_{j,s}[min_{c1}\sum_{x_i∈R_1(j,s)}(y_i-c_1)^2+min_{c2}\sum_{x_i∈R_2(j,s)}(y_i-c_2)^2]$$<br>（<strong>$c_1,c_2$是切分点左右部分的y的均值</strong>）<br>其含义是遍历每个特征j，在j确定的条件下，遍历切分点s，这样就找到了$minL(j,s)$,<strong>比较所有的局部最优平方误差，找到最优的特征及其切分点作为当前的特征和划分依据</strong>。<br>然后对当前的数据集进行划分：<br>$$R_1(j,s)={x|x^{(j)}≤s},R_2(j,s)={x|x^{(j)}≥s}$$<br>然后<strong>每个单元的输出值为当前单元的子数据集的label的平均值</strong><br>$$C_m = \frac{1}{N_m}\sum_{x_i∈R_m(j,s)}y_i,x∈R_m,m=1,2$$<br>重复上述步骤直到达到停止条件，最后划分树的叶节点个数为M，在最终的回归树模型为：<br>$$f(x)=\sum_{m=1}^Mc_mI(x∈R_m)$$<br><strong>解释：</strong>这里的累加并不是真正意义上的累加，因为后面跟了一个<strong>Indicator函数</strong>，当输入落在哪个小区域(叶节点)上的时候，其<strong>对应的值为改区域的子数据集的label均值$c_m$</strong>。</p>
 <p><strong>1.2 分类树的生成</strong><br>首先引入<strong>基尼指数</strong>的概念：<br>假设有K个类，样本点属于第k类的概率为$p_k$,则该数据集的基尼指数为：<br>$$Gini(p)=\sum_{k=1}^Kp_k(1-p_k)=1-\sum_{k=1}^K(\frac{|D_k|}{|D|})^2$$<br><strong>即：1-(各类别占比平方和累加)</strong></p>
-<p><strong>基尼指数的意义：</strong>基尼指数表示数据集的不确定性，基尼指数越大，数据集的不确定性越大，和熵类似。下图是在二分类中基尼指数和熵，分类误差率的关系：<br><img src="/2088/03/09/决策树/11.png" alt=""></p>
+<p><strong>基尼指数的意义：</strong>基尼指数表示数据集的不确定性，基尼指数越大，数据集的不确定性越大，和熵类似。下图是在二分类中基尼指数和熵，分类误差率的关系：<br><img src="/2088/03/09/决策树/14.png" alt=""></p>
 <p><strong>CART分类树生成算法</strong><br>与回归树类似，也是递归的进行特征选择，然后分左右节点，因为都是二叉树嘛。下面着重讲讲不同的地方。<br>第一个点当然是特征选择的依据不同，回归树在进行特征选择的时候是嵌套循环遍历每一个特征和每一个特征中可能的切分点。对于分类算法来说同样适用，不同点在于<strong>选取切分点的判断依据不同</strong>。<br>在分类树算法中，遍历到的每一个特征中的每一个值，都按照该值将数据集分为取该值$D_1$和不取该值$D_2$,然后根据$D_1$和$D_2$计算<strong>在特征A的条件下，集合D的基尼指数</strong>：<br>$$Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$$<br>循环遍历每个特征的每个切分点以后，就可以找到最优的特征和最优的切分点(使得上式最小)，递归的进行上述过程直到<strong>满足停止条件</strong>(没有特征，子数据集特征的取值只有一个，没有特征和切分点满足GIni阈值),最终生成的CART分类树：<br>$$f(x)=\sum_{m=1}^MV_mI(x∈R_m)$$<br>其中$V_m$是投票函数。</p>
 <h1 id="CART剪枝算法"><a href="#CART剪枝算法" class="headerlink" title="CART剪枝算法"></a>CART剪枝算法</h1><p>之前在说CART数生成的时候，谈到要生成的树尽量完全，这样剪枝的时候就有比较大空间。CART剪枝主要分为两步：</p>
 <ol>
@@ -529,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2088/01/20/2017JDD/" rel="next" title="2017-JDD京东金融算法大赛15th解决方案">
-                <i class="fa fa-chevron-left"></i> 2017-JDD京东金融算法大赛15th解决方案
+              <a href="/2088/01/20/2017CCF/" rel="next" title="2017 CCF 大数据竞赛top4%">
+                <i class="fa fa-chevron-left"></i> 2017 CCF 大数据竞赛top4%
               </a>
             
           </div>
