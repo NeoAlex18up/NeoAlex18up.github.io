@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="比赛," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -81,21 +81,20 @@
 
 
 
-<meta name="description" content="比赛记录和思路">
-<meta name="keywords" content="比赛">
+<meta name="description" content="自动生成“树生成过程”的运算">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017-JDD京东金融算法大赛15th解决方案">
-<meta property="og:url" content="http://yoursite.com/2088/01/20/2017JDD/index.html">
+<meta property="og:title" content="DTree">
+<meta property="og:url" content="http://yoursite.com/2018/03/09/DTree/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="比赛记录和思路">
+<meta property="og:description" content="自动生成“树生成过程”的运算">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i2.bvimg.com/620746/68825dc4d75e71fcs.png">
-<meta property="og:image" content="http://i2.bvimg.com/620746/1b1eaf565bb477cas.png">
-<meta property="og:updated_time" content="2018-02-03T09:25:40.351Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/09/DTree/13.png">
+<meta property="og:updated_time" content="2018-03-11T13:41:35.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017-JDD京东金融算法大赛15th解决方案">
-<meta name="twitter:description" content="比赛记录和思路">
-<meta name="twitter:image" content="http://i2.bvimg.com/620746/68825dc4d75e71fcs.png">
+<meta name="twitter:title" content="DTree">
+<meta name="twitter:description" content="自动生成“树生成过程”的运算">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/09/DTree/13.png">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2088/01/20/2017JDD/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/09/DTree/"/>
 
 
 
 
 
-  <title>2017-JDD京东金融算法大赛15th解决方案 | 杨一瓶</title>
+  <title>DTree | 杨一瓶</title>
   
 
 
@@ -302,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2088/01/20/2017JDD/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/09/DTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -319,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2017-JDD京东金融算法大赛15th解决方案</h1>
+          <h1 class="post-title" itemprop="name headline">DTree</h1>
         
 
         <div class="post-meta">
@@ -331,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2088-01-20T00:00:00+08:00">
-                2088-01-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T21:19:36+08:00">
+                2018-03-09
               </time>
             
 
@@ -372,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2088/01/20/2017JDD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2088/01/20/2017JDD/" itemprop="commentCount"></span>
+                <a href="/2018/03/09/DTree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/09/DTree/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +380,7 @@
 
           
           
-             <span id="/2088/01/20/2017JDD/" class="leancloud_visitors" data-flag-title="2017-JDD京东金融算法大赛15th解决方案">
+             <span id="/2018/03/09/DTree/" class="leancloud_visitors" data-flag-title="DTree">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -399,7 +398,7 @@
 
           
               <div class="post-description">
-                  <center>比赛记录和思路</center>
+                  <center>自动生成“树生成过程”的运算</center>
               </div>
           
 
@@ -416,87 +415,10 @@
       
 
       
-        <h1 id="JDD-2017"><a href="#JDD-2017" class="headerlink" title="JDD-2017"></a>JDD-2017</h1><p><strong>JDD-2017 京东金融大数据竞赛-销量预测-15th解决方案</strong><br><img src="http://i2.bvimg.com/620746/68825dc4d75e71fcs.png" alt="Markdown"></p>
-<h2 id="比赛说明"><a href="#比赛说明" class="headerlink" title="比赛说明"></a>比赛说明</h2><p>通过竞赛数据中店铺过往的销售记录，商品信息，商品评价，以及广告费用等信息来建立预测模型，预测店铺未来90天内的销售额。<br>训练数据包含2017-04-30日之前270天之内若干店铺的每日订单量、销售额、顾客数、评价数、广告费用等数据，下架时间在2017-04-30之后或者未下架的商品数据，以及这些店铺2016年6月-2017年1月每月末后90天内的销售额。</p>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>特殊的数据主要包含以下几部分</p>
-<ul>
-<li><strong>活动促销</strong>：比如双11和618</li>
-<li><strong>特殊月份</strong>：比如过年前后</li>
-<li><strong>店铺刷单</strong>：有些店铺平时销量很低，会有几天莫名其妙的很高</li>
-<li><strong>下降商品</strong>：某些店铺会在短时间内下架大量的商品</li>
-</ul>
-<h2 id="数据集划分"><a href="#数据集划分" class="headerlink" title="数据集划分"></a>数据集划分</h2><p>我们试过非常多的方案，最终选择了使用一个月作为训练区间，该月的前三个月作为特征提取区间</p>
-<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><h3 id="商品特征"><a href="#商品特征" class="headerlink" title="商品特征"></a>商品特征</h3><ul>
-<li>在售总商品数</li>
-<li>平均每个商品的订单量</li>
-<li>平均每个商品的实际销量</li>
-<li>平均每个商品的退货订单数</li>
-<li>未售商品占总商品的比例</li>
-</ul>
-<h3 id="订单特征"><a href="#订单特征" class="headerlink" title="订单特征"></a>订单特征</h3><ul>
-<li>总销售金额</li>
-<li>平均每个订单销售金额</li>
-<li>总优惠金额</li>
-<li>平均每笔订单优惠金额</li>
-<li>总优惠金额占总销售金额比</li>
-<li>总订单量</li>
-<li>总退货订单量</li>
-<li>总实际订单量</li>
-<li>总退货订单金额</li>
-<li>退货金额占总销售额金额的比</li>
-<li>总实际销售金额</li>
-<li>平均每笔订单实际销售金额</li>
-<li>总顾客数</li>
-<li>平均每个顾客的订单量</li>
-<li>平均每个顾客的购买金额</li>
-<li>平均每个顾客的退货订单数</li>
-<li>平均每个顾客的退货金额</li>
-<li>总优惠笔数</li>
-<li>总优惠金额占总退货金额比例</li>
-<li>平均每笔订单总优惠金额占总退货金额比例</li>
-<li>平均每笔优惠金额</li>
-<li>平均销售金额增长率（每个月和前一个月算增长率，所有增长率取平均）</li>
-<li>平均订单量增长率</li>
-<li>平均退货订单增长率</li>
-<li>平均退货金额增长率</li>
-</ul>
-<h3 id="评价特征（取平均的时候是按照有效评论日期取平均）"><a href="#评价特征（取平均的时候是按照有效评论日期取平均）" class="headerlink" title="评价特征（取平均的时候是按照有效评论日期取平均）"></a>评价特征（取平均的时候是按照有效评论日期取平均）</h3><ul>
-<li>总好评数</li>
-<li>总中评数</li>
-<li>总差评数</li>
-<li>总评论数</li>
-<li>平均好评数</li>
-<li>平均中评数</li>
-<li>平均差评数</li>
-<li>好评率</li>
-<li>差评率</li>
-<li>中评率</li>
-<li>平均好评率增长率</li>
-</ul>
-<h3 id="交叉特征"><a href="#交叉特征" class="headerlink" title="交叉特征"></a>交叉特征</h3><ul>
-<li>平均每个月的充值广告费用占总销售金额比</li>
-<li>平均每个月的充值广告费用占实际销售金额比</li>
-<li>平均每个订单的好评率</li>
-<li>平均每个订单的差评率</li>
-<li>平均每个订单的好评数</li>
-<li>平均每个订单的差评数</li>
-</ul>
-<h3 id="销售额和下架特征"><a href="#销售额和下架特征" class="headerlink" title="销售额和下架特征"></a>销售额和下架特征</h3><ul>
-<li>总销售额</li>
-<li>当月销售额</li>
-<li>前一个月总销售金额</li>
-<li>前两个月总销售金额</li>
-<li>前三个月总销售金额</li>
-<li>前一个周总销售金额</li>
-<li>前两个周总销售金额</li>
-<li>前三个周总销售金额</li>
-<li>前一个月下架商品数</li>
-<li>前两个月下架商品数</li>
-<li>前三个月下架商品数</li>
-<li>最近一周下架商品数</li>
-</ul>
-<p>一开始加的特征比较多，因为效果还不错吧，所以也没有根据线上去判断一下哪些特征是否有用，而且这个比赛想构建一个比较稳定的线下验证是非常困难的，因为销量波动还是比较大的，所以更多的时候是以线上来验证我的一些想法。根据特征的重要性来看，跟销售金额有关的特征比较强一些，某些特征重要性非常低但是我也没删除。</p>
-<h2 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h2><p>因为某些店铺的销量波动实在是太大了，所以除了预测销量的模型之外，我还尝试构建了一个二分类模型，主要来区别销量比较平稳和销量波动很大的商铺，所以最终的模型为：<br><img src="http://i2.bvimg.com/620746/1b1eaf565bb477cas.png" alt="Markdown"></p>
+        <p>习题为课程作业:<br><img src="/2018/03/09/DTree/13.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">D = pd.DataFrame()</span><br><span class="line">D[<span class="string">'A'</span>] = [<span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, ]</span><br><span class="line">D[<span class="string">'B'</span>] = [<span class="string">'X'</span>, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Y'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'X'</span>, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>]</span><br><span class="line">D[<span class="string">'C'</span>] = [<span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>]</span><br><span class="line">D[<span class="string">'class'</span>] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEntropy</span><span class="params">(Dataset, fea, cate)</span>:</span></span><br><span class="line">    print(<span class="string">'$$ ----------------------------$$'</span>)</span><br><span class="line">    print(<span class="string">'Father Node:'</span>, fea, <span class="string">'，| category of FatherNode：'</span>, cate,<span class="string">'|'</span>)</span><br><span class="line">    nowFeature = &#123;&#125;</span><br><span class="line">    label_list = Dataset[<span class="string">'class'</span>].tolist()</span><br><span class="line">    label = set(label_list)</span><br><span class="line">    entropy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> label:</span><br><span class="line">        label_count = label_list.count(v)</span><br><span class="line">        label_len = len(label_list)</span><br><span class="line">        entropy += -(label_count / label_len) * np.log2((label_count / label_len))</span><br><span class="line">    print(<span class="string">'H(D):'</span>, entropy)</span><br><span class="line">    <span class="keyword">if</span> entropy == <span class="number">0.0</span>:</span><br><span class="line">        print(<span class="string">'End,the label is'</span>, np.unique(Dataset[<span class="string">'class'</span>])[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="comment"># 计算每个特征的信息增益</span></span><br><span class="line">    feature_list = Dataset.columns.tolist()</span><br><span class="line">    feature_list.remove(<span class="string">'class'</span>)</span><br><span class="line">    <span class="keyword">if</span> feature_list:</span><br><span class="line">        <span class="keyword">for</span> feature <span class="keyword">in</span> feature_list:</span><br><span class="line">            <span class="comment"># 条件熵</span></span><br><span class="line">            conEntropy = <span class="number">0</span></span><br><span class="line">            tempList = Dataset[feature].tolist()</span><br><span class="line">            feature_cat = set(tempList)</span><br><span class="line">            <span class="comment"># 保存计算条件熵的字符串</span></span><br><span class="line">            mathCon = <span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> cat <span class="keyword">in</span> feature_cat:</span><br><span class="line">                conEntropy += (tempList.count(cat) / len(tempList)) * Entropy(Dataset[Dataset[feature] == cat])[<span class="number">0</span>]</span><br><span class="line">                mathCon += <span class="string">'-'</span> + <span class="string">'\\frac&#123;'</span>+str(tempList.count(cat))+<span class="string">'&#125;&#123;'</span>+str(len(tempList))+<span class="string">'&#125;'</span> +<span class="string">'*'</span>+Entropy(Dataset[Dataset[feature] == cat])[<span class="number">1</span>]</span><br><span class="line">            conEntropy = conEntropy</span><br><span class="line">            increaseInfor = entropy - conEntropy</span><br><span class="line">            mathCon = <span class="string">'$$'</span>+str(increaseInfor) + mathCon+<span class="string">'='</span>+ str(increaseInfor)+<span class="string">'$$'</span></span><br><span class="line">            print(<span class="string">'Feature'</span>, feature, <span class="string">'Information gain：'</span>)</span><br><span class="line">            print(mathCon)</span><br><span class="line">            <span class="keyword">if</span> float(increaseInfor) &gt;= <span class="number">0.3</span>:</span><br><span class="line">                nowFeature[feature] = increaseInfor</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nowFeature:</span><br><span class="line">            print(<span class="string">'There is no feature g(D,A)&gt;0.3'</span>)</span><br><span class="line">            <span class="keyword">if</span> Dataset[<span class="string">'class'</span>].tolist().count(<span class="number">0</span>) &gt;= Dataset[<span class="string">'class'</span>].tolist().count(<span class="number">1</span>):</span><br><span class="line">                print(<span class="string">'Label：0'</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'Label:1'</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        sorted(nowFeature.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</span><br><span class="line">        biggest_feature = <span class="string">''</span></span><br><span class="line">        biggest_gain = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> f, v <span class="keyword">in</span> nowFeature.items():</span><br><span class="line">            <span class="keyword">if</span> v &gt; biggest_gain:</span><br><span class="line">                biggest_feature = f</span><br><span class="line">                biggest_gain = v</span><br><span class="line">        print(<span class="string">'Feature has biggest information Gain:'</span>, biggest_feature)</span><br><span class="line">        feature_list.remove(biggest_feature)</span><br><span class="line">        <span class="keyword">if</span> feature_list:</span><br><span class="line">            feature_list.append(<span class="string">'class'</span>)</span><br><span class="line">            biggest_cat = set(Dataset[biggest_feature].tolist())</span><br><span class="line">            <span class="keyword">for</span> cat <span class="keyword">in</span> biggest_cat:</span><br><span class="line">                getEntropy(Dataset[feature_list][Dataset[biggest_feature] == cat], biggest_feature, cat)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Entropy</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    label_list = Dataset[<span class="string">'class'</span>].tolist()</span><br><span class="line">    label = set(label_list)</span><br><span class="line">    entropy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> label:</span><br><span class="line">        label_count = label_list.count(v)</span><br><span class="line">        label_len = len(label_list)</span><br><span class="line">        entropy += -(label_count / label_len) * np.log2((label_count / label_len))</span><br><span class="line">        mathJax = <span class="string">'-\\frac&#123;'</span>+str(label_count)+<span class="string">'&#125;&#123;'</span>+str(label_len)+<span class="string">'&#125;'</span> +<span class="string">'*log2\\frac&#123;'</span>+str(label_count)+<span class="string">'&#125;&#123;'</span>+str(label_len)+<span class="string">'&#125;'</span></span><br><span class="line">    <span class="keyword">return</span> [entropy,mathJax]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getEntropy(D, <span class="string">'no'</span>, <span class="string">'no'</span>)</span><br></pre></td></tr></table></figure>
+<p>运行代码以后可以得到如下结果:<br><code>`</code> python<br>$$ —————————-$$<br>Father Node: no ，| category of FatherNode： no |<br>H(D): 0.940285958671<br>Feature A Information gain：<br>$$0.00133974240444-\frac{6}{14}<em>-\frac{2}{6}</em>log2\frac{2}{6}-\frac{8}{14}<em>-\frac{3}{8}</em>log2\frac{3}{8}=0.00133974240444$$<br>Feature B Information gain：<br>$$0.314936851373-\frac{4}{14}<em>-\frac{1}{4}</em>log2\frac{1}{4}-\frac{6}{14}<em>-\frac{4}{6}</em>log2\frac{4}{6}-\frac{4}{14}<em>-\frac{4}{4}</em>log2\frac{4}{4}=0.314936851373$$<br>Feature C Information gain：<br>$$0.0902763493928-\frac{8}{14}<em>-\frac{4}{8}</em>log2\frac{4}{8}-\frac{6}{14}<em>-\frac{1}{6}</em>log2\frac{1}{6}=0.0902763493928$$<br>Feature has biggest information Gain: B<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： Y |<br>H(D): 0.811278124459<br>Feature A Information gain：<br>$$0.122556248918-\frac{1}{4}<em>-\frac{1}{1}</em>log2\frac{1}{1}-\frac{3}{4}<em>-\frac{1}{3}</em>log2\frac{1}{3}=0.122556248918$$<br>Feature C Information gain：<br>$$0.122556248918-\frac{3}{4}<em>-\frac{1}{3}</em>log2\frac{1}{3}-\frac{1}{4}<em>-\frac{1}{1}</em>log2\frac{1}{1}=0.122556248918$$<br>There is no feature g(D,A)&gt;0.3<br>Label：0<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： Z |<br>H(D): 0.918295834054<br>Feature A Information gain：<br>$$0.0-\frac{3}{6}<em>-\frac{2}{3}</em>log2\frac{2}{3}-\frac{3}{6}<em>-\frac{2}{3}</em>log2\frac{2}{3}=0.0$$<br>Feature C Information gain：<br>$$0.459147917027-\frac{3}{6}<em>-\frac{3}{3}</em>log2\frac{3}{3}-\frac{3}{6}<em>-\frac{1}{3}</em>log2\frac{1}{3}=0.459147917027$$<br>Feature has biggest information Gain: C<br>$$ —————————-$$<br>Father Node: C ，| category of FatherNode： F |<br>H(D): 0.0<br>End,the label is 1<br>$$ —————————-$$<br>Father Node: C ，| category of FatherNode： T |<br>H(D): 0.918295834054<br>Feature A Information gain：<br>$$0.251629167388-\frac{1}{3}<em>-\frac{1}{1}</em>log2\frac{1}{1}-\frac{2}{3}<em>-\frac{1}{2}</em>log2\frac{1}{2}=0.251629167388$$<br>There is no feature g(D,A)&gt;0.3<br>Label：0<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： X |<br>H(D): 0.0<br>End,the label is 0</p>
+<p>使用markdown编辑器或者mathjax编辑器可以看到效果。</p>
 
       
     </div>
@@ -543,7 +465,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/比赛/" rel="tag"># 比赛</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -556,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2088/01/20/Tensorflow/" rel="next" title="Tensorflow">
-                <i class="fa fa-chevron-left"></i> Tensorflow
+              <a href="/2018/02/08/2017CCF/" rel="next" title="2017 CCF 大数据竞赛top4%">
+                <i class="fa fa-chevron-left"></i> 2017 CCF 大数据竞赛top4%
               </a>
             
           </div>
@@ -566,8 +488,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2088/01/20/2017CCF/" rel="prev" title="2017 CCF 大数据竞赛top4%">
-                2017 CCF 大数据竞赛top4% <i class="fa fa-chevron-right"></i>
+              <a href="/2088/03/09/决策树/" rel="prev" title="<center>决策树原理</center>">
+                <center>决策树原理</center> <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -649,17 +571,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -788,22 +701,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDD-2017"><span class="nav-number">1.</span> <span class="nav-text">JDD-2017</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比赛说明"><span class="nav-number">1.1.</span> <span class="nav-text">比赛说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">1.2.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集划分"><span class="nav-number">1.3.</span> <span class="nav-text">数据集划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征"><span class="nav-number">1.4.</span> <span class="nav-text">特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#商品特征"><span class="nav-number">1.4.1.</span> <span class="nav-text">商品特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订单特征"><span class="nav-number">1.4.2.</span> <span class="nav-text">订单特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评价特征（取平均的时候是按照有效评论日期取平均）"><span class="nav-number">1.4.3.</span> <span class="nav-text">评价特征（取平均的时候是按照有效评论日期取平均）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉特征"><span class="nav-number">1.4.4.</span> <span class="nav-text">交叉特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销售额和下架特征"><span class="nav-number">1.4.5.</span> <span class="nav-text">销售额和下架特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后处理"><span class="nav-number">1.5.</span> <span class="nav-text">后处理</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
