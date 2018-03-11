@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -81,20 +81,21 @@
 
 
 
-<meta name="description" content="自动生成“树生成过程”的运算">
-<meta name="keywords" content="算法">
+<meta name="description" content="生成模型与判别模型的区别和各自的应用场景">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DTree">
-<meta property="og:url" content="http://yoursite.com/2018/02/01/DTree/index.html">
+<meta property="og:title" content="对生成模型与判别模型的理解">
+<meta property="og:url" content="http://yoursite.com/2018/03/11/生成判别模型/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="自动生成“树生成过程”的运算">
+<meta property="og:description" content="生成模型与判别模型的区别和各自的应用场景">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/02/01/DTree/13.png">
-<meta property="og:updated_time" content="2018-03-11T13:46:37.931Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/11/生成判别模型/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/11/生成判别模型/1.png">
+<meta property="og:updated_time" content="2018-03-11T17:29:30.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DTree">
-<meta name="twitter:description" content="自动生成“树生成过程”的运算">
-<meta name="twitter:image" content="http://yoursite.com/2018/02/01/DTree/13.png">
+<meta name="twitter:title" content="对生成模型与判别模型的理解">
+<meta name="twitter:description" content="生成模型与判别模型的区别和各自的应用场景">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/11/生成判别模型/2.png">
 
 
 
@@ -124,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/01/DTree/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/11/生成判别模型/"/>
 
 
 
 
 
-  <title>DTree | 杨一瓶</title>
+  <title>对生成模型与判别模型的理解 | 杨一瓶</title>
   
 
 
@@ -301,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/DTree/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/生成判别模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -318,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DTree</h1>
+          <h1 class="post-title" itemprop="name headline">对生成模型与判别模型的理解</h1>
         
 
         <div class="post-meta">
@@ -330,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T00:00:00+08:00">
-                2018-02-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T23:18:21+08:00">
+                2018-03-11
               </time>
             
 
@@ -341,28 +342,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -371,8 +350,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/01/DTree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/01/DTree/" itemprop="commentCount"></span>
+                <a href="/2018/03/11/生成判别模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/11/生成判别模型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,7 +359,7 @@
 
           
           
-             <span id="/2018/02/01/DTree/" class="leancloud_visitors" data-flag-title="DTree">
+             <span id="/2018/03/11/生成判别模型/" class="leancloud_visitors" data-flag-title="对生成模型与判别模型的理解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -398,7 +377,7 @@
 
           
               <div class="post-description">
-                  <center>自动生成“树生成过程”的运算</center>
+                  <center>生成模型与判别模型的区别和各自的应用场景</center>
               </div>
           
 
@@ -415,10 +394,63 @@
       
 
       
-        <p>习题为课程作业:<br><img src="/2018/02/01/DTree/13.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">D = pd.DataFrame()</span><br><span class="line">D[<span class="string">'A'</span>] = [<span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'H'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, <span class="string">'L'</span>, ]</span><br><span class="line">D[<span class="string">'B'</span>] = [<span class="string">'X'</span>, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Y'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'X'</span>, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>, <span class="string">'Z'</span>]</span><br><span class="line">D[<span class="string">'C'</span>] = [<span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>, <span class="string">'T'</span>, <span class="string">'F'</span>, <span class="string">'F'</span>]</span><br><span class="line">D[<span class="string">'class'</span>] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEntropy</span><span class="params">(Dataset, fea, cate)</span>:</span></span><br><span class="line">    print(<span class="string">'$$ ----------------------------$$'</span>)</span><br><span class="line">    print(<span class="string">'Father Node:'</span>, fea, <span class="string">'，| category of FatherNode：'</span>, cate,<span class="string">'|'</span>)</span><br><span class="line">    nowFeature = &#123;&#125;</span><br><span class="line">    label_list = Dataset[<span class="string">'class'</span>].tolist()</span><br><span class="line">    label = set(label_list)</span><br><span class="line">    entropy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> label:</span><br><span class="line">        label_count = label_list.count(v)</span><br><span class="line">        label_len = len(label_list)</span><br><span class="line">        entropy += -(label_count / label_len) * np.log2((label_count / label_len))</span><br><span class="line">    print(<span class="string">'H(D):'</span>, entropy)</span><br><span class="line">    <span class="keyword">if</span> entropy == <span class="number">0.0</span>:</span><br><span class="line">        print(<span class="string">'End,the label is'</span>, np.unique(Dataset[<span class="string">'class'</span>])[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="comment"># 计算每个特征的信息增益</span></span><br><span class="line">    feature_list = Dataset.columns.tolist()</span><br><span class="line">    feature_list.remove(<span class="string">'class'</span>)</span><br><span class="line">    <span class="keyword">if</span> feature_list:</span><br><span class="line">        <span class="keyword">for</span> feature <span class="keyword">in</span> feature_list:</span><br><span class="line">            <span class="comment"># 条件熵</span></span><br><span class="line">            conEntropy = <span class="number">0</span></span><br><span class="line">            tempList = Dataset[feature].tolist()</span><br><span class="line">            feature_cat = set(tempList)</span><br><span class="line">            <span class="comment"># 保存计算条件熵的字符串</span></span><br><span class="line">            mathCon = <span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> cat <span class="keyword">in</span> feature_cat:</span><br><span class="line">                conEntropy += (tempList.count(cat) / len(tempList)) * Entropy(Dataset[Dataset[feature] == cat])[<span class="number">0</span>]</span><br><span class="line">                mathCon += <span class="string">'-'</span> + <span class="string">'\\frac&#123;'</span>+str(tempList.count(cat))+<span class="string">'&#125;&#123;'</span>+str(len(tempList))+<span class="string">'&#125;'</span> +<span class="string">'*'</span>+Entropy(Dataset[Dataset[feature] == cat])[<span class="number">1</span>]</span><br><span class="line">            conEntropy = conEntropy</span><br><span class="line">            increaseInfor = entropy - conEntropy</span><br><span class="line">            mathCon = <span class="string">'$$'</span>+str(increaseInfor) + mathCon+<span class="string">'='</span>+ str(increaseInfor)+<span class="string">'$$'</span></span><br><span class="line">            print(<span class="string">'Feature'</span>, feature, <span class="string">'Information gain：'</span>)</span><br><span class="line">            print(mathCon)</span><br><span class="line">            <span class="keyword">if</span> float(increaseInfor) &gt;= <span class="number">0.3</span>:</span><br><span class="line">                nowFeature[feature] = increaseInfor</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nowFeature:</span><br><span class="line">            print(<span class="string">'There is no feature g(D,A)&gt;0.3'</span>)</span><br><span class="line">            <span class="keyword">if</span> Dataset[<span class="string">'class'</span>].tolist().count(<span class="number">0</span>) &gt;= Dataset[<span class="string">'class'</span>].tolist().count(<span class="number">1</span>):</span><br><span class="line">                print(<span class="string">'Label：0'</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'Label:1'</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        sorted(nowFeature.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</span><br><span class="line">        biggest_feature = <span class="string">''</span></span><br><span class="line">        biggest_gain = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> f, v <span class="keyword">in</span> nowFeature.items():</span><br><span class="line">            <span class="keyword">if</span> v &gt; biggest_gain:</span><br><span class="line">                biggest_feature = f</span><br><span class="line">                biggest_gain = v</span><br><span class="line">        print(<span class="string">'Feature has biggest information Gain:'</span>, biggest_feature)</span><br><span class="line">        feature_list.remove(biggest_feature)</span><br><span class="line">        <span class="keyword">if</span> feature_list:</span><br><span class="line">            feature_list.append(<span class="string">'class'</span>)</span><br><span class="line">            biggest_cat = set(Dataset[biggest_feature].tolist())</span><br><span class="line">            <span class="keyword">for</span> cat <span class="keyword">in</span> biggest_cat:</span><br><span class="line">                getEntropy(Dataset[feature_list][Dataset[biggest_feature] == cat], biggest_feature, cat)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Entropy</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    label_list = Dataset[<span class="string">'class'</span>].tolist()</span><br><span class="line">    label = set(label_list)</span><br><span class="line">    entropy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> label:</span><br><span class="line">        label_count = label_list.count(v)</span><br><span class="line">        label_len = len(label_list)</span><br><span class="line">        entropy += -(label_count / label_len) * np.log2((label_count / label_len))</span><br><span class="line">        mathJax = <span class="string">'-\\frac&#123;'</span>+str(label_count)+<span class="string">'&#125;&#123;'</span>+str(label_len)+<span class="string">'&#125;'</span> +<span class="string">'*log2\\frac&#123;'</span>+str(label_count)+<span class="string">'&#125;&#123;'</span>+str(label_len)+<span class="string">'&#125;'</span></span><br><span class="line">    <span class="keyword">return</span> [entropy,mathJax]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getEntropy(D, <span class="string">'no'</span>, <span class="string">'no'</span>)</span><br></pre></td></tr></table></figure>
-<p>运行代码以后可以得到如下结果:<br><code>`</code> python<br>$$ —————————-$$<br>Father Node: no ，| category of FatherNode： no |<br>H(D): 0.940285958671<br>Feature A Information gain：<br>$$0.00133974240444-\frac{6}{14}<em>-\frac{2}{6}</em>log2\frac{2}{6}-\frac{8}{14}<em>-\frac{3}{8}</em>log2\frac{3}{8}=0.00133974240444$$<br>Feature B Information gain：<br>$$0.314936851373-\frac{4}{14}<em>-\frac{1}{4}</em>log2\frac{1}{4}-\frac{6}{14}<em>-\frac{4}{6}</em>log2\frac{4}{6}-\frac{4}{14}<em>-\frac{4}{4}</em>log2\frac{4}{4}=0.314936851373$$<br>Feature C Information gain：<br>$$0.0902763493928-\frac{8}{14}<em>-\frac{4}{8}</em>log2\frac{4}{8}-\frac{6}{14}<em>-\frac{1}{6}</em>log2\frac{1}{6}=0.0902763493928$$<br>Feature has biggest information Gain: B<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： Y |<br>H(D): 0.811278124459<br>Feature A Information gain：<br>$$0.122556248918-\frac{1}{4}<em>-\frac{1}{1}</em>log2\frac{1}{1}-\frac{3}{4}<em>-\frac{1}{3}</em>log2\frac{1}{3}=0.122556248918$$<br>Feature C Information gain：<br>$$0.122556248918-\frac{3}{4}<em>-\frac{1}{3}</em>log2\frac{1}{3}-\frac{1}{4}<em>-\frac{1}{1}</em>log2\frac{1}{1}=0.122556248918$$<br>There is no feature g(D,A)&gt;0.3<br>Label：0<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： Z |<br>H(D): 0.918295834054<br>Feature A Information gain：<br>$$0.0-\frac{3}{6}<em>-\frac{2}{3}</em>log2\frac{2}{3}-\frac{3}{6}<em>-\frac{2}{3}</em>log2\frac{2}{3}=0.0$$<br>Feature C Information gain：<br>$$0.459147917027-\frac{3}{6}<em>-\frac{3}{3}</em>log2\frac{3}{3}-\frac{3}{6}<em>-\frac{1}{3}</em>log2\frac{1}{3}=0.459147917027$$<br>Feature has biggest information Gain: C<br>$$ —————————-$$<br>Father Node: C ，| category of FatherNode： F |<br>H(D): 0.0<br>End,the label is 1<br>$$ —————————-$$<br>Father Node: C ，| category of FatherNode： T |<br>H(D): 0.918295834054<br>Feature A Information gain：<br>$$0.251629167388-\frac{1}{3}<em>-\frac{1}{1}</em>log2\frac{1}{1}-\frac{2}{3}<em>-\frac{1}{2}</em>log2\frac{1}{2}=0.251629167388$$<br>There is no feature g(D,A)&gt;0.3<br>Label：0<br>$$ —————————-$$<br>Father Node: B ，| category of FatherNode： X |<br>H(D): 0.0<br>End,the label is 0</p>
-<p>使用markdown编辑器或者mathjax编辑器可以看到效果。</p>
+        <blockquote>
+<p>[该博客为本网站作者: “yangyiqing”原创，转载请注明出处]</p>
+</blockquote>
+<h1 id="书中介绍"><a href="#书中介绍" class="headerlink" title="书中介绍"></a>书中介绍</h1><p>在《统计学习方法》中，对生成模型和判别模型的介绍篇幅比较少：</p>
+<blockquote>
+<p><strong>1.生成方法</strong><br>监督学习方法可以分为生成方法和判别方法，生成的模型分别对应为<strong>生成模型</strong>和<strong>判别模型</strong><br><strong>生成方法</strong>由<strong>数据联合概率分布$P(X,Y)$,</strong>然后求出<strong>条件概率分布$P(Y|X)$</strong>作为预测的模型，即生成模型：<br>$$P(Y|X)=\frac{P(X,Y)}{P(X)}$$<br><strong>称之为生成方法的原因是：模型表示了给定输入X产生输Y的生成关系</strong>。典型的生成方法有：</p>
+<ul>
+<li>朴素贝叶斯</li>
+<li>隐马尔科夫模型</li>
+</ul>
+<hr>
+<p> <strong>2.判别方法</strong><br> 判别方法由数据直接学习决策函数$f(x)$或者条件概率分布$P(Y|X)$作为预测的模型，即判别模型。<strong>判别模型关心的是对于给定的输入X，应该预测什么样的Y</strong>。典型的判别模型有：</p>
+<ul>
+<li>k近邻(knn)</li>
+<li>感知机</li>
+<li>决策树</li>
+<li>逻辑斯蒂回归</li>
+<li>最大熵模型</li>
+<li>支持向量机</li>
+<li>提升方法</li>
+<li>条件随机场</li>
+</ul>
+<hr>
+<p> <strong>生成方法和判别方法的区别：</strong><br> 1.生成方法可以还原出<strong>联合概率分布</strong>，而判别方法不可以<br> 2.通常情况下，<strong>生成方法</strong>的学习<strong>收敛速度快</strong>，而<strong>判别方法的准确率更高</strong><br> 3.当存在隐变量的时候，仍然可以用生成方法，但是不能用判别方法<br> 4.由于直接学习$P(Y|X)$或$f(X)$，可以对数据进行各种程度上的抽象，定义特征并使用特征，因此可以简化学习问题。</p>
+</blockquote>
+<h1 id="个人补充"><a href="#个人补充" class="headerlink" title="个人补充"></a>个人补充</h1><h2 id="决策函数和条件概率函数"><a href="#决策函数和条件概率函数" class="headerlink" title="决策函数和条件概率函数"></a>决策函数和条件概率函数</h2><p>先说说<strong>决策函数$f(x)$和条件概率分布$P(Y|X)$:</strong><br>举个例子来说，有一个分类问题，要求判断给定特征下判断是篮球，足球，还是乒乓球。<br>1.在<strong>决策函数</strong>中：<br>对于每一个特征有一个阈值(分类边界)，对于输入的特征每个去判断属于边界的哪一边，最后<strong>直接得到一个对应的输出$Y$就是对应的分类结果</strong>。<br>2.在<strong>条件概率分布</strong>中：<br>会去计算在对应特征条件下是每个类的概率，也就是依次计算：$$P(篮球|X),P(足球|X),P(乒乓球|X)$$<br>然后<strong>从中选择输出概率最大的那个最为对应的分类结果。</strong><br>再说的详细一点儿，每个条件概率分布式是怎么求出来的呢：<br>$$P(Y|X)=\frac{P(X,Y)}{P(X)}=\frac{P(X|Y)P(Y)}{P(X)}$$<br>从以上的例子应该可以看出决策函数和条件概率分布的不同，一个是给定X直接产生一个对应输出Y，而另一个是首先计算其可能为每个Y的概率，然后再输出一个概率最大的Y。</p>
+<p><strong>那决策函数$f(x)$和条件概率分布$P(Y|X)$有什么联系呢？</strong></p>
+<blockquote>
+<p>实际上<strong>通过条件概率分布P(Y|X)进行预测也是隐含着表达成决策函数Y=f(X)的形式</strong>的。例如也是两类w1和w2，那么我们求得了P(w1|X)和P(w2|X)，那么实际上判别函数就可以表示为Y= P(w1|X)/P(w2|X)，如果Y大于1或者某个阈值，那么X就属于类w1，如果小于阈值就属于类w2。<u><strong>而同样，很神奇的一件事是，实际上决策函数Y=f(X)也是隐含着使用P(Y|X)的</strong></u>。因为一般决策函数Y=f(X)是通过学习算法使你的预测和训练数据之间的误差平方最小化，而贝叶斯告诉我们，虽然它没有显式的运用贝叶斯或者以某种形式计算概率，但它实际上也是在隐含的输出极大似然假设（MAP假设）。也就是说学习器的任务是在所有假设模型有相等的先验概率条件下，输出极大似然假设。</p>
+</blockquote>
+<h2 id="简化学习问题"><a href="#简化学习问题" class="headerlink" title="简化学习问题"></a>简化学习问题</h2><p><strong>如何理解判别模型可以简化学习问题？</strong></p>
+<blockquote>
+<p>分类器的设计就是在给定训练数据的基础上估计其概率模型P(Y|X)。如果可以估计出来，那么就可以分类了。<u><strong>但是一般来说，概率模型是比较难估计的。给一堆数给你，特别是数不多的时候，你一般很难找到这些数满足什么规律吧。</strong></u>那能否不依赖概率模型直接设计分类器呢？事实上，分类器就是一个决策函数（或决策面），<u><strong>如果能够从要解决的问题和训练样本出发直接求出判别函数，就不用估计概率模型了</strong></u>，这就是决策函数Y=f(X)的伟大使命了。<u><strong>例如支持向量机，我已经知道它的决策函数（分类面）是线性的了，也就是可以表示成Y=f(X)=WX+b的形式，那么我们通过训练样本来学习得到W和b的值就可以得到Y=f(X)了</strong></u>。还有一种<strong>更直接的分类方法</strong>，它不用事先设计分类器，而是只确定分类原则，根据已知样本（训练样本）直接对未知样本进行分类。包括<u><strong>近邻法，它不会在进行具体的预测之前求出概率模型P(Y|X)或者决策函数Y=f(X)</strong></u>，而是在真正预测的时候，将X与训练数据的各类的Xi比较，和哪些比较相似，就判断它X也属于Xi对应的类。</p>
+</blockquote>
+<p>所以判别模型的可以简化学习问题的优势就在于，我不一定硬要去找数据中的规律或计算条件概率，我只要找到一种判别规则就可以了，而且由于<strong>不需要计算类别的条件概率，可以对数据进行降维等抽象操作</strong>。</p>
+<h2 id="其它联系"><a href="#其它联系" class="headerlink" title="其它联系"></a>其它联系</h2><p><strong>生成模型和判别模型还有什么联系？</strong><br>由生成模型可以得到判别模型，但由判别模型得不到生成模型。生成模型可以反应数据本身的特性，而判别模型不可以。<br>来源于同一个原因：</p>
+<blockquote>
+<p><u><strong>生成模型可以求出数据的联合概率分布，而判别模型不可以。</strong></u></p>
+</blockquote>
+<h2 id="区别和优缺点"><a href="#区别和优缺点" class="headerlink" title="区别和优缺点"></a>区别和优缺点</h2><p><strong>再通俗的解释一下两者的区别？</strong></p>
+<p>生成算法尝试去找到底这个数据是怎么生成的（产生的），然后再对一个信号进行分类。<u>基于你的生成假设，那么那个类别最有可能产生这个信号，这个信号就属于那个类别</u>。判别模型不关心数据是怎么生成的，<u>它只关心信号之间的差别</u>，然后用差别来简单对给定的一个信号进行分类。</p>
+<p><strong>生成模型的优点和缺点？</strong><br><strong>优点：</strong><br>1.可以还原联合概率分布$P(X,Y)$，得到数据集更多的特性。<br>2.生成模型收敛速度比较快，即当样本数量较多时，生成模型能更快地收敛于真实模型。<br>3.生成模型能够应付存在隐变量的情况<br>4.研究单类问题比判别模型灵活性强<br><strong>缺点：</strong><br>1.准确率一般没有判别模型高</p>
+<p><strong>判别模型的优点和缺点？</strong><br><strong>优点：</strong><br>1.需要的样本数量少，计算量小<br>2.直接面对预测，准确率高<br>3.直接学习$P(Y|X)$，不需要求解条件概率，所以允许我们对输入进行抽象（比如降维、构造等），从而能够简化学习问题。<br><strong>缺点：</strong><br>1.无法反映数据集的特性，无法求解联合概率分布</p>
+<h2 id="过拟合？"><a href="#过拟合？" class="headerlink" title="过拟合？"></a>过拟合？</h2><p><strong>过拟合问题</strong><br>直接摘自<a href="http://helloyuan.com/2018/03/09/%E8%AF%B4%E8%AF%B4%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B/" target="_blank" rel="noopener">大鼻子的博客</a></p>
+<h3 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a><strong>生成模型</strong></h3><p>‘‘没有考虑正则化很简单，因为他们很少过拟合’’。生成模型学习$X,Y$的联合概率分布$P(X,Y)$，直接学习的就是数据的分布，从整个数据的整体着手，很少会出现过拟合。<br>基本上属于高偏差/低方差分类器，当样本数量小于特征数量或样本数量不足时，应选用这种模型</p>
+<h3 id="判别模型"><a href="#判别模型" class="headerlink" title="判别模型"></a><strong>判别模型</strong></h3><p>判别模型应当有正则化过程，因为是直接生成$f(x)$或者$p(y|x)$，所以很容易比较$y$跟$f(x)$的关系，按照现有数据照葫芦画瓢来判别，容易过拟合，所以正则化便有存在的意义。<br>基本上属于低偏差/高方差分类器，容易过拟合，需要正则项。数据量充足时选用判别模型</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h3><p>随着训练集的增大，低偏差/高方差分类器（判别模型）相对于高偏差/低方差分类器（生成模型）准确率高，因为随着数据量的增大，现有训练集数据的分布更接近于真实分布，此时生成模型优势变小，同时生成模型不能提高足够的准确率，此时，判别模型优势更大。</p>
+<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a><strong>举个例子：</strong></h3><p>当一份分类数据的特征维度大于样本数量时。如果采用判别模型，极端情况下每条样本都有唯一的特征（或特征组合），此时如果正则化不够给力，那么该判别模型将极大限度拟合当前数据，训练集AUC可能将近1，那么就可能得到训练数据上准确率100%，测试数据准确率不如XJB猜的模型。</p>
+<hr>
+<p><strong>一张图总结生成模型与判别模型</strong><br><img src="/2018/03/11/生成判别模型/2.png" width="600" height="500" alt="图片名称" align="center"></p>
+<hr>
+<p><strong>仍有以下问题没有完全搞懂：</strong></p>
+<ol>
+<li>关于隐变量的问题<br>贴一张知乎的图作为初步理解。<br><img src="/2018/03/11/生成判别模型/1.png" width="639" height="985" alt="图片名称" align="center"><br>2.”而贝叶斯告诉我们，虽然它没有显式的运用贝叶斯或者以某种形式计算概率，但它实际上也是在隐含的输出极大似然假设（MAP假设）”</li>
+</ol>
+<hr>
+<p>参考链接:<br>1.<a href="http://blog.csdn.net/zouxy09/article/details/8195017" target="_blank" rel="noopener">CSDN</a><br>2.<a href="https://www.zhihu.com/search?type=content&amp;q=%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">知乎1</a><br>3.<a href="https://zhuanlan.zhihu.com/p/30941701" target="_blank" rel="noopener">知乎2</a></p>
 
       
     </div>
@@ -465,7 +497,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -478,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/07/剑指offer-1/" rel="next" title="剑指offer">
-                <i class="fa fa-chevron-left"></i> 剑指offer
+              <a href="/2018/02/08/2017CCF/" rel="next" title="2017 CCF 大数据竞赛top4%">
+                <i class="fa fa-chevron-left"></i> 2017 CCF 大数据竞赛top4%
               </a>
             
           </div>
@@ -488,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/08/2017CCF/" rel="prev" title="2017 CCF 大数据竞赛top4%">
-                2017 CCF 大数据竞赛top4% <i class="fa fa-chevron-right"></i>
+              <a href="/2088/03/09/决策树/" rel="prev" title="<center>决策树原理</center>">
+                <center>决策树原理</center> <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -571,8 +603,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -701,6 +742,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#书中介绍"><span class="nav-number">1.</span> <span class="nav-text">书中介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个人补充"><span class="nav-number">2.</span> <span class="nav-text">个人补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策函数和条件概率函数"><span class="nav-number">2.1.</span> <span class="nav-text">决策函数和条件概率函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简化学习问题"><span class="nav-number">2.2.</span> <span class="nav-text">简化学习问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它联系"><span class="nav-number">2.3.</span> <span class="nav-text">其它联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别和优缺点"><span class="nav-number">2.4.</span> <span class="nav-text">区别和优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合？"><span class="nav-number">2.5.</span> <span class="nav-text">过拟合？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成模型"><span class="nav-number">2.5.1.</span> <span class="nav-text">生成模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判别模型"><span class="nav-number">2.5.2.</span> <span class="nav-text">判别模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">2.5.3.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举个例子："><span class="nav-number">2.5.4.</span> <span class="nav-text">举个例子：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
