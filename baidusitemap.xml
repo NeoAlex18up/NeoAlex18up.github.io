@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/02/01/DTree/</loc>
+    <lastmod>2018-03-11T13:46:37.931Z</lastmod>
+    <data>
+        <display>
+        <title>DTree</title>
+        <pubTime>2018-01-31T16:00:00.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/10/Tensorflow/</loc>
     <lastmod>2018-03-11T13:42:43.751Z</lastmod>
     <data>
@@ -52,26 +72,6 @@
         <pubTime>2017-12-29T16:00:00.000Z</pubTime>
         
         <tag>比赛</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/09/DTree/</loc>
-    <lastmod>2018-03-11T13:41:35.176Z</lastmod>
-    <data>
-        <display>
-        <title>DTree</title>
-        <pubTime>2018-03-09T13:19:36.173Z</pubTime>
-        
-        <tag>算法</tag>
          
          
            
