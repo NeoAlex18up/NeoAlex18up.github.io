@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/03/11/%E7%94%9F%E6%88%90%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2018-03-11T17:29:30.175Z</lastmod>
+    <lastmod>2018-03-11T17:36:59.685Z</lastmod>
     <data>
         <display>
         <title>对生成模型与判别模型的理解</title>
@@ -15,6 +15,26 @@
          
          
            
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
+    <lastmod>2018-03-11T17:34:30.069Z</lastmod>
+    <data>
+        <display>
+        <title><center>决策树原理</center></title>
+        <pubTime>2018-03-09T08:10:10.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="理论" url="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/"/>
+          
         </display>
     </data>
     </url>
@@ -134,26 +154,6 @@
            
              
               <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2088/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
-    <lastmod>2018-03-11T13:27:55.064Z</lastmod>
-    <data>
-        <display>
-        <title><center>决策树原理</center></title>
-        <pubTime>2088-03-09T08:10:10.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="理论" url="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/"/>
           
         </display>
     </data>
