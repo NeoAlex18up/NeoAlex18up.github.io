@@ -5,11 +5,28 @@
     
   <url>
     <loc>http://yoursite.com/2018/03/15/adaboost/</loc>
-    <lastmod>2018-03-15T12:50:36.315Z</lastmod>
+    <lastmod>2018-03-15T13:02:53.723Z</lastmod>
     <data>
         <display>
         <title>浅谈boosting与Adaboost</title>
         <pubTime>2018-03-15T10:16:44.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/15/gbdt/</loc>
+    <lastmod>2018-03-15T13:02:29.017Z</lastmod>
+    <data>
+        <display>
+        <title>gbdt</title>
+        <pubTime>2018-03-15T13:00:17.000Z</pubTime>
         
         <tag>机器学习</tag>
          
