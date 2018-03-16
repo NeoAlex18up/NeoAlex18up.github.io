@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[广义线性模型]]></title>
+    <url>%2F2018%2F03%2F16%2F%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[什么是广义线性模型？ 广义线性模型是线性模型的扩展，其特点是不强行改变数据的自然度量，数据可以具有非线性和非恒定方差结构，主要是通过联结函数g()(link function)，建立响应变量Y的数学期望值与线性组合的预测变量P之间的关系。 指数分布族指数分布族具有以下形式:$$p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))$$其中的参数意义为: $\eta$ 是自然参数 $T(y)$是充分统计量(一般$T(y)=y$) $a(\eta)$是log partition function($e^{-a(\eta)}$充当正规化常量的角色，保证$\sum_{p(y;\eta)}=1$)所以，T,a,b确定了一种分布，而$\eta$是该分布的参数 符合指数族分布的模型我们都可以用把它当成广义线性模型来求解: 广义线性模型的三个假设GLM(Generalized Linear Models)的三个假设是推导普通模型的基础:1.$y | x ; \theta ~ ExponentialFamily(\eta)$固定参数$\theta$,在给定x的情况下，$y$服从指数分布族中以$\eta$为参数的某个分布2.给定一个x，我们需要的目标函数为$h_\theta(x)=E[T(y)|x;\theta]$,后者为该分布的期望3.令$\eta=\theta^Tx$ GLM和线性回归与LR的联系GLM和线性回归其中，线性回归是在选择合适的T,a,b使其为高斯分布的时候推导出来的:看起是否满足三点假设:假设1:能否将高斯分布写成指数分布族的形式 $p(y;\mu)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(y-\mu)^2}{2\sigma^2})$$=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2}y^2)\cdot \exp(\mu y-\frac{1}{2}\mu ^2)$ 假设2：假设函数是否等于高斯分布的期望 $h_\theta(x)=E[T(y)\mid x;\theta]$$=E\left[y\mid x;\theta\right]$$=\mu$假设3：自然参数$\eta$和x是否是线性关系$$h_\theta(x)=\mu=\eta=\theta^Tx$$满足三个以上假设，而假设三满足的线性关系正是线性回归。广义线性模型与LR同理，当把伯努利分布放在广义线性模型中推导的时候，可以得到逻辑斯蒂回归的$h_\theta(x)$$h_\theta(x)=E\left[T(y)\mid x;\theta\right]$$=E\left[y\mid x;\theta\right]$$=\phi$$=\frac{1}{1+e^{-\eta}}$$=\frac{1}{1+e^{-\theta^Tx}}$ 结论除了高斯分布与伯努利分布，大多数的概率分布都能表示成指数分布族的形式，如多项式分布（Multinomial），对有K个离散结果的事件建模；泊松分布（Poisson），对计数过程进行建模，如网站访问量的计数问题；指数分布（Exponential），对有间隔的证书进行建模，如预测公交车的到站时间的问题；等等，然后通过进一步的推导，就能得到各自的线性模型，这大大扩展了线性模型可解决问题的范围。 参考链接1.晓雷2.NJiaHe]]></content>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[GBDT调参]]></title>
     <url>%2F2018%2F03%2F16%2Fgdbt%E8%B0%83%E5%8F%82%2F</url>
     <content type="text"></content>
