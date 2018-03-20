@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-20T12:37:09.351Z</updated>
+  <updated>2018-03-20T13:23:30.454Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云ECS-2:Xen</title>
+    <link href="http://yoursite.com/2018/03/20/%E9%98%BF%E9%87%8C%E4%BA%912/"/>
+    <id>http://yoursite.com/2018/03/20/阿里云2/</id>
+    <published>2018-03-20T12:43:01.000Z</published>
+    <updated>2018-03-20T13:23:30.454Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是Xen？"><a href="#什么是Xen？" class="headerlink" title="什么是Xen？"></a>什么是Xen？</h1><p>百度百科：</p><blockquote><p>Xen 是一个开放源代码虚拟机监视器，由剑桥大学开发。它打算在单个计算机上运行多达100个满特征的操作系统。操作系统必须进行显式地修改（“移植”）以在Xen上运行（但是提供对用户应用的兼容性）。这使得Xen无需特殊硬件支持，就能达到高性能的虚拟化。</p></blockquote><p>简单来说，就是可以在一台计算机硬件上高效的运行很多个操作系统，并且可以将硬件接口虚拟化。</p><h1 id="工作原理？"><a href="#工作原理？" class="headerlink" title="工作原理？"></a>工作原理？</h1><p>在Xen环境中，主要有两个组成部分。</p><ul><li>一个是虚拟机监控器（VMM），也叫hypervisor。<strong>Hypervisor层在硬件与虚拟机之间，是必须最先载入到硬件的第一层</strong>。Hypervisor载入后，就可以部署虚拟机了。在Xen中，虚拟机叫做“domain”。</li><li>在这些虚拟机中，其中一个扮演着很重要的角色，<strong>就是domain0，具有很高的特权</strong>。通常，在任何虚拟机之前安装的操作系统才有这种特权。Domain0要负责一些专门的工作。由于hypervisor中不包含任何与硬件对话的驱动，也没有与管理员对话的接口，<strong>这些驱动就由domain0来提供了</strong>。通过domain0，管理员可以利用一些Xen工具来创建其它虚拟机（Xen术语叫domainU）。这些domainU也叫无特权domain。这是因为在基于i386的CPU架构中，它们绝不会享有最高优先级，只有domain0才可以。<br>下图可以看到Xen在虚拟机和计算机硬件之间的关系：<br><img src="/2018/03/20/阿里云2/1.png" alt=""><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Xen-hypervisor-64-bit"><a href="#Xen-hypervisor-64-bit" class="headerlink" title="Xen-hypervisor(64-bit)"></a>Xen-hypervisor(64-bit)</h2></li><li>sudo apt-get install xen-hypervisor-amd64<br>一些要安装的依赖包和我的版本<br><img src="/2018/03/20/阿里云2/2.png" alt=""></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Xen原理,安装与配置(待续)&lt;/center&gt;
+    
+    </summary>
+    
+    
+      <category term="分布式计算" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里云ECS-1:环境初始化</title>

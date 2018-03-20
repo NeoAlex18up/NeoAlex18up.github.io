@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习," />
+  <meta name="keywords" content="分布式计算," />
 
 
 
@@ -81,18 +81,21 @@
 
 
 
-<meta name="description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
-<meta name="keywords" content="机器学习">
+<meta name="description" content="Xen原理,安装与配置(待续)">
+<meta name="keywords" content="分布式计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈boosting与Adaboost">
-<meta property="og:url" content="http://yoursite.com/2018/03/15/adaboost/index.html">
+<meta property="og:title" content="阿里云ECS-2:Xen">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/阿里云2/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
+<meta property="og:description" content="Xen原理,安装与配置(待续)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T13:02:53.723Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云2/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云2/2.png">
+<meta property="og:updated_time" content="2018-03-20T13:23:30.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈boosting与Adaboost">
-<meta name="twitter:description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
+<meta name="twitter:title" content="阿里云ECS-2:Xen">
+<meta name="twitter:description" content="Xen原理,安装与配置(待续)">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/20/阿里云2/1.png">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/15/adaboost/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/阿里云2/"/>
 
 
 
 
 
-  <title>浅谈boosting与Adaboost | 杨一瓶</title>
+  <title>阿里云ECS-2:Xen | 杨一瓶</title>
   
 
 
@@ -299,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/adaboost/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/阿里云2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -316,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈boosting与Adaboost</h1>
+          <h1 class="post-title" itemprop="name headline">阿里云ECS-2:Xen</h1>
         
 
         <div class="post-meta">
@@ -328,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T18:16:44+08:00">
-                2018-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T20:43:01+08:00">
+                2018-03-20
               </time>
             
 
@@ -347,8 +350,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/15/adaboost/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/15/adaboost/" itemprop="commentCount"></span>
+                <a href="/2018/03/20/阿里云2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/20/阿里云2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +359,7 @@
 
           
           
-             <span id="/2018/03/15/adaboost/" class="leancloud_visitors" data-flag-title="浅谈boosting与Adaboost">
+             <span id="/2018/03/20/阿里云2/" class="leancloud_visitors" data-flag-title="阿里云ECS-2:Xen">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +377,7 @@
 
           
               <div class="post-description">
-                  <center>Adaboost原理与算法，前向分步加法模型</center>>
+                  <center>Xen原理,安装与配置(待续)</center>
               </div>
           
 
@@ -391,24 +394,17 @@
       
 
       
-        <h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><p>Boosting算法是一种<strong>将多个弱学习器组合为强学习器</strong>的方法，<strong>这种算法的思想</strong>是：首先训练一个基学习器，然后根据基学习器的表现对<strong>样本的分布进行调整</strong>，使得先前学习错的样本在后面占更大的比重，然后基于调整后的样本分布来进行下一个基学习器的学习，最后将所有的学习器<strong>加权结合</strong>得到一个强学习器。</p>
-<h1 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Adaboost算法是boosting算法中比较有代表性的，它是一个**前向分步加法模型。</p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>1.<strong>在Adaboost中，对样本分布进行调整是调整</strong>样本分布的权重<strong>，对于分错的样本提高其权重，对于分对的样本降低其权重。<br>2.对于</strong>每个弱分类器的权值<strong>，根据其的</strong>分类误差率**来分配，对于分类误差率比较小的，给予一个高权值让它起更大的作用，反之给一个低权值。</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><strong>基学习器以二分类模型为例：</strong></p>
-<ol>
-<li>初始化训练集样本的权值,最开始权值相等，和为1：<br>$$D1 = (w_{11},w_{1i},….,w_{1n}),w_{1i}=\frac{1}{N}$$</li>
-<li>对$m=1,2,3,4….(第m轮)$，使用带有权值分布的训练数据集$D_m$得到二分类器$G_m(x)$,<strong>其中$G_m(x)$的生成策略是找到一个决策函数使得当前分类误差率最小，所以其实得到$G_m(x)$的同时就已经得到了分类误差率。</strong><br>$$min(e_m)$$</li>
-<li>使用$G_m(x)$在训练集上计算分类误差率<br>$$e_m = P(G(x_i)≠y_i) = \sum_{i=1}^Nw_{mi}I(G(x_i)≠y_i)$$<br>就是说如果预测错了的话，则该样本的分类分类误差率为: $w_{mi}$x1,所以<strong>数据集整体的分类误差率其实就是分类错误的样本对应的样本权值之和</strong>(函数$I$中分类正确的样本为$I(x_i)=0$)</li>
-<li>计算当前弱学习器的的系数(对数是自然对数),由下式可以看出，当分类误差率$e_m$&gt;$\frac{1}{2}$的时候，其<strong>分类器对应的系数为$0$</strong>(说明效果太差了)<br>$$\alpha_m = \frac{1}{2}log\frac{1-e_m}{e_m}$$</li>
-<li>根据计算得到的$\alpha_m$和当前的弱分类器，计算<strong>下一轮的数据集样本权重</strong>,其中第$m$轮的第$i$个样本的权重为：<br>$$w_{mi}=\frac{w_{mi}}{Z_m}exp(-\alpha_my_iG_m(x_i))$$<br>其中，<strong>$Z_m$是规范化因子</strong>，它是D_{m+1}称为一个概率分布,其实就是上式分子$i$从$1$到$N$的一个<strong>累加和</strong>。<br>$$Z_m=\sum_{i=1}^Nw_{mi}exp(-\alpha_my_iG_m(x_i))$$</li>
-<li>循环算法步骤$(3)-(5)$之后，可以得到<strong>m个弱分类器的加权线性组合函数(</strong>一共$m$轮):<br>$$f(x)=\sum_{m=1}^M\alpha_mG_m(x)$$<br>即最后得到的强分类器:<br>$$G(x)=sign(f(x))$$</li>
-</ol>
-<h1 id="算法关键点"><a href="#算法关键点" class="headerlink" title="算法关键点"></a>算法关键点</h1><ul>
-<li>注意算法每一轮计算的步骤，首先是学习这一轮的基本分类器，然后是计算分类误差率，然后是计算当前分类器的最终系数$\alpha_m$,最终计算下一轮的样本权重$w_{m+1,i}$,更新样本权重可以写为:<br>$$\begin{cases}<br>\frac{w_{mi}}{Z_{m}}e^{-\alpha_m} \ , \ G_m(x_i)=y_i\<br>\<br>\frac{w_{mi}}{Z_{m}}e^{\alpha_m} \ , \ G_m(x_i) ≠y_i<br>\end{cases}<br>$$</li>
-<li>从分类误差率的计算可以看出，当前分类误差率依赖于上一轮的样本权重，<strong>由于上一轮对于分错的样本给予了比较大权重，如果这一轮分类继续出错，那么这一轮的分类误差率肯定也会比较大，为了降低分类误差率，模型会朝着使得这些权重大的样本分类正确的方向拟合</strong>，从而达到了我们”提高分类错误的样本，使得其被后面的分类器更加关注”的目的。</li>
+        <h1 id="什么是Xen？"><a href="#什么是Xen？" class="headerlink" title="什么是Xen？"></a>什么是Xen？</h1><p>百度百科：</p>
+<blockquote>
+<p>Xen 是一个开放源代码虚拟机监视器，由剑桥大学开发。它打算在单个计算机上运行多达100个满特征的操作系统。操作系统必须进行显式地修改（“移植”）以在Xen上运行（但是提供对用户应用的兼容性）。这使得Xen无需特殊硬件支持，就能达到高性能的虚拟化。</p>
+</blockquote>
+<p>简单来说，就是可以在一台计算机硬件上高效的运行很多个操作系统，并且可以将硬件接口虚拟化。</p>
+<h1 id="工作原理？"><a href="#工作原理？" class="headerlink" title="工作原理？"></a>工作原理？</h1><p>在Xen环境中，主要有两个组成部分。</p>
+<ul>
+<li>一个是虚拟机监控器（VMM），也叫hypervisor。<strong>Hypervisor层在硬件与虚拟机之间，是必须最先载入到硬件的第一层</strong>。Hypervisor载入后，就可以部署虚拟机了。在Xen中，虚拟机叫做“domain”。</li>
+<li>在这些虚拟机中，其中一个扮演着很重要的角色，<strong>就是domain0，具有很高的特权</strong>。通常，在任何虚拟机之前安装的操作系统才有这种特权。Domain0要负责一些专门的工作。由于hypervisor中不包含任何与硬件对话的驱动，也没有与管理员对话的接口，<strong>这些驱动就由domain0来提供了</strong>。通过domain0，管理员可以利用一些Xen工具来创建其它虚拟机（Xen术语叫domainU）。这些domainU也叫无特权domain。这是因为在基于i386的CPU架构中，它们绝不会享有最高优先级，只有domain0才可以。<br>下图可以看到Xen在虚拟机和计算机硬件之间的关系：<br><img src="/2018/03/20/阿里云2/1.png" alt=""><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Xen-hypervisor-64-bit"><a href="#Xen-hypervisor-64-bit" class="headerlink" title="Xen-hypervisor(64-bit)"></a>Xen-hypervisor(64-bit)</h2></li>
+<li>sudo apt-get install xen-hypervisor-amd64<br>一些要安装的依赖包和我的版本<br><img src="/2018/03/20/阿里云2/2.png" alt=""></li>
 </ul>
-<h1 id="前向分步模型"><a href="#前向分步模型" class="headerlink" title="前向分步模型"></a>前向分步模型</h1><p>那既然说Adaboost是一个前向分步加法模型，那什么是前向分步模型呢，为什么叫这个名字？<br>在加法模型中:<br>$$G(x)=\sum_{m=1}^M\alpha_mG_m(x)$$<br>在给定数据集D和损失函数L的情况下，学习策略变成了使损失函数最小的最优化问题:<br>$$Min\sum_{i=1}^NLoss(y_i,G(x_i))$$<br>如果<strong>把这个损失函数当成一个整体来求最优化是个很复杂的问题</strong>，为了简化这种问题，将其<strong>分解为从前往后，每一步只学习一个分类器和其系数的问题</strong>。所以，每一次只需要优化如下的损失函数:<br>$$Min(Loss(y_i,\alpha_mG_m(x)))$$<br>而前向分布的算法步骤正如Adaboost一样，这里不再写一遍了。</p>
-<h1 id="前向分步与Adaboost关系"><a href="#前向分步与Adaboost关系" class="headerlink" title="前向分步与Adaboost关系"></a>前向分步与Adaboost关系</h1><p>AdaBoost算法是前向分步加法算法的特例，这时，模型是由<strong>基本分类器</strong>组成的加法模型，损失函数是<strong>指数函数</strong>。</p>
 
       
     </div>
@@ -455,7 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/分布式计算/" rel="tag"># 分布式计算</a>
           
         </div>
       
@@ -468,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/14/逻辑斯蒂回归/" rel="next" title="逻辑斯蒂回归">
-                <i class="fa fa-chevron-left"></i> 逻辑斯蒂回归
+              <a href="/2018/03/20/阿里云1/" rel="next" title="阿里云ECS-1:环境初始化">
+                <i class="fa fa-chevron-left"></i> 阿里云ECS-1:环境初始化
               </a>
             
           </div>
@@ -477,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/15/gbdt/" rel="prev" title="梯度提升树GBDT">
-                梯度提升树GBDT <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -710,7 +702,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Boosting"><span class="nav-number">1.</span> <span class="nav-text">Boosting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adaboost"><span class="nav-number">2.</span> <span class="nav-text">Adaboost</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">2.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法关键点"><span class="nav-number">3.</span> <span class="nav-text">算法关键点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向分步模型"><span class="nav-number">4.</span> <span class="nav-text">前向分步模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向分步与Adaboost关系"><span class="nav-number">5.</span> <span class="nav-text">前向分步与Adaboost关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Xen？"><span class="nav-number">1.</span> <span class="nav-text">什么是Xen？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作原理？"><span class="nav-number">2.</span> <span class="nav-text">工作原理？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xen-hypervisor-64-bit"><span class="nav-number">3.1.</span> <span class="nav-text">Xen-hypervisor(64-bit)</span></a></li></ol></li></ol></div>
             
 
           </div>
