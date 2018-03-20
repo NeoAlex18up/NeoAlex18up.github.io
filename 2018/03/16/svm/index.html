@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
+<meta name="description" content="感知机，线性可分，非线性内核">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈boosting与Adaboost">
-<meta property="og:url" content="http://yoursite.com/2018/03/15/adaboost/index.html">
+<meta property="og:title" content="svm">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/svm/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
+<meta property="og:description" content="感知机，线性可分，非线性内核">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T13:02:53.723Z">
+<meta property="og:updated_time" content="2018-03-16T15:31:48.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈boosting与Adaboost">
-<meta name="twitter:description" content="Adaboost原理与算法，前向分步加法模型&amp;gt;">
+<meta name="twitter:title" content="svm">
+<meta name="twitter:description" content="感知机，线性可分，非线性内核">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/15/adaboost/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/svm/"/>
 
 
 
 
 
-  <title>浅谈boosting与Adaboost | 杨一瓶</title>
+  <title>svm | 杨一瓶</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/adaboost/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/svm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈boosting与Adaboost</h1>
+          <h1 class="post-title" itemprop="name headline">svm</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T18:16:44+08:00">
-                2018-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T19:36:46+08:00">
+                2018-03-16
               </time>
             
 
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/15/adaboost/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/15/adaboost/" itemprop="commentCount"></span>
+                <a href="/2018/03/16/svm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/16/svm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/2018/03/15/adaboost/" class="leancloud_visitors" data-flag-title="浅谈boosting与Adaboost">
+             <span id="/2018/03/16/svm/" class="leancloud_visitors" data-flag-title="svm">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +374,7 @@
 
           
               <div class="post-description">
-                  <center>Adaboost原理与算法，前向分步加法模型</center>>
+                  感知机，线性可分，非线性内核
               </div>
           
 
@@ -391,24 +391,23 @@
       
 
       
-        <h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><p>Boosting算法是一种<strong>将多个弱学习器组合为强学习器</strong>的方法，<strong>这种算法的思想</strong>是：首先训练一个基学习器，然后根据基学习器的表现对<strong>样本的分布进行调整</strong>，使得先前学习错的样本在后面占更大的比重，然后基于调整后的样本分布来进行下一个基学习器的学习，最后将所有的学习器<strong>加权结合</strong>得到一个强学习器。</p>
-<h1 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Adaboost算法是boosting算法中比较有代表性的，它是一个**前向分步加法模型。</p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>1.<strong>在Adaboost中，对样本分布进行调整是调整</strong>样本分布的权重<strong>，对于分错的样本提高其权重，对于分对的样本降低其权重。<br>2.对于</strong>每个弱分类器的权值<strong>，根据其的</strong>分类误差率**来分配，对于分类误差率比较小的，给予一个高权值让它起更大的作用，反之给一个低权值。</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><strong>基学习器以二分类模型为例：</strong></p>
+        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>感知机是SVM和神经网络的基础，所以在介绍SVM之前，先谈谈感知机。</p>
+<p><strong>感知机是一个二分类的线性分类模型。</strong>其表示从输入空间到输出空间的如下函数，输出为-1,1:<br>$$f(x)=sign(w·x+b)$$</p>
+<p>其中，w是权值向量，b为偏置bias,sign是符号函数</p>
+<h2 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h2><p><strong>其几何意义为:</strong><br>$$w·x+b=0$$<br>对应于特征空间中的一个<strong>分离超平面</strong>，其中<strong>w表示超平面的法向量</strong>，而<strong>b对应超平面的截距</strong>。</p>
+<h2 id="感知机-线性可分"><a href="#感知机-线性可分" class="headerlink" title="感知机-线性可分"></a>感知机-线性可分</h2><p><strong>线性可分</strong>的意思是存在一个超平面可以将正负样本点完全分开。</p>
+<blockquote>
+<p>在线性可分的情况下，感知机的<strong>学习策略</strong>是：<br>“<strong>使得误分类点到超平面的总距离最小</strong>”</p>
+</blockquote>
+<p>所有误分类点到超平面S的总距离为:<br>$$-\frac{1}{||w||}\sum_{x_i∈M}y_i(w·x_i+b)$$<br>所以可以得到其损失函数，它是关于w,b的连续可导函数:<br>$$L(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$</p>
+<h2 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h2><p>感知机的学习算法即上式(损失函数)的最优化问题，其方法为<strong>随机梯度下降法</strong>。<br>$$minL(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$<br>随机梯度下降一次只选取一个误分类点使其梯度下降,其梯度计算为:<br>$$L_w(w,b)=-\sum_{x_i∈M}y_ix_i$$<br>$$L_b(w,b)=-\sum_{x_i∈M}y_i$$</p>
+<p>所以下面给出感知机学习算法步骤(原始形式):<br>给定训练集和学习率$\eta$<br>(1) 选取初始值$w_0,b_0$<br>(2) 随机选取一个误分类点$y_i(w·w_i+b)≤0$更新w,b:<br>$$w←w+\eta y_ix_i$$<br>$$b←b+\eta y_i$$<br>(3)重复(2)直到没有误分类点</p>
+<h2 id="感知机学习算法几何解释"><a href="#感知机学习算法几何解释" class="headerlink" title="感知机学习算法几何解释"></a>感知机学习算法几何解释</h2><p>当一个样本点被误分到分离超平面的另一端时，调整w,b的值，使分离超平面向该误分类点的一侧移动，以减少该误分类点与超平面间的距离，如此循环直到该误分类点被正确分类。由于<strong>其结束的条件是所有样本点被正确分类，所以，在线性可分数据集中，感知机有无数个解。</strong></p>
+<h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>SVM(support vector machines,SVM)是一种二分类模型。其核心是<strong>核技巧</strong>，可以用来解决非线性问题，当<strong>使用非线性核</strong>的时候，SVM是非线性模型，其相当于把<strong>隐式地在高维的特征空间中学习线性支持向量机</strong>。</p>
+<h2 id="SVM与感知机的区别"><a href="#SVM与感知机的区别" class="headerlink" title="SVM与感知机的区别"></a>SVM与感知机的区别</h2><p>1.学习策略不同，感知机的学习策略为使得误分类点的距离最小，而SVM的学习策略是间隔最大化，这样使得在同样解决线性可分的问题时，感知机可以有无数个解，而svm只有一个最优解。</p>
 <ol>
-<li>初始化训练集样本的权值,最开始权值相等，和为1：<br>$$D1 = (w_{11},w_{1i},….,w_{1n}),w_{1i}=\frac{1}{N}$$</li>
-<li>对$m=1,2,3,4….(第m轮)$，使用带有权值分布的训练数据集$D_m$得到二分类器$G_m(x)$,<strong>其中$G_m(x)$的生成策略是找到一个决策函数使得当前分类误差率最小，所以其实得到$G_m(x)$的同时就已经得到了分类误差率。</strong><br>$$min(e_m)$$</li>
-<li>使用$G_m(x)$在训练集上计算分类误差率<br>$$e_m = P(G(x_i)≠y_i) = \sum_{i=1}^Nw_{mi}I(G(x_i)≠y_i)$$<br>就是说如果预测错了的话，则该样本的分类分类误差率为: $w_{mi}$x1,所以<strong>数据集整体的分类误差率其实就是分类错误的样本对应的样本权值之和</strong>(函数$I$中分类正确的样本为$I(x_i)=0$)</li>
-<li>计算当前弱学习器的的系数(对数是自然对数),由下式可以看出，当分类误差率$e_m$&gt;$\frac{1}{2}$的时候，其<strong>分类器对应的系数为$0$</strong>(说明效果太差了)<br>$$\alpha_m = \frac{1}{2}log\frac{1-e_m}{e_m}$$</li>
-<li>根据计算得到的$\alpha_m$和当前的弱分类器，计算<strong>下一轮的数据集样本权重</strong>,其中第$m$轮的第$i$个样本的权重为：<br>$$w_{mi}=\frac{w_{mi}}{Z_m}exp(-\alpha_my_iG_m(x_i))$$<br>其中，<strong>$Z_m$是规范化因子</strong>，它是D_{m+1}称为一个概率分布,其实就是上式分子$i$从$1$到$N$的一个<strong>累加和</strong>。<br>$$Z_m=\sum_{i=1}^Nw_{mi}exp(-\alpha_my_iG_m(x_i))$$</li>
-<li>循环算法步骤$(3)-(5)$之后，可以得到<strong>m个弱分类器的加权线性组合函数(</strong>一共$m$轮):<br>$$f(x)=\sum_{m=1}^M\alpha_mG_m(x)$$<br>即最后得到的强分类器:<br>$$G(x)=sign(f(x))$$</li>
+<li>感知机拥有核技巧，可以解决非线性问题<h2 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h2>我们知道SVM和感知机的最大区别之一就是SVM采用的是<strong>间隔最大化</strong>的策略，使得其存在<strong>唯一最优解</strong>下面介绍函数间隔和几何间隔：<br><strong>(1) 函数间隔</strong><br>$|w·x+b|$表示一个点离超平面的远近，而加上$y_i$可以判断其是否被正确分类，所以<strong>函数间隔就是组合两者：表示一个样本点被分类的正确性和确信度(离得越远越确定):</strong><br>$$\gamma_i = y_i(w·x_i+b)$$<br>整个函数集的函数间隔就是<strong>所有样本点函数间隔最小值</strong>。<br><strong>(2) 几何间隔</strong><br>使用函数间隔会有缺点：<br><strong>成倍缩放w和b，超平面位置不变</strong>，但是函数间隔为会改变。<br>所以引入了几何间隔的概念(做了一个L2归一化)使得超平面确定了，其间隔也确定，几何间隔为:<br>$$\gamma = -(\frac{w}{||w||}·x_i+\frac{b}{||w||})$$</li>
 </ol>
-<h1 id="算法关键点"><a href="#算法关键点" class="headerlink" title="算法关键点"></a>算法关键点</h1><ul>
-<li>注意算法每一轮计算的步骤，首先是学习这一轮的基本分类器，然后是计算分类误差率，然后是计算当前分类器的最终系数$\alpha_m$,最终计算下一轮的样本权重$w_{m+1,i}$,更新样本权重可以写为:<br>$$\begin{cases}<br>\frac{w_{mi}}{Z_{m}}e^{-\alpha_m} \ , \ G_m(x_i)=y_i\<br>\<br>\frac{w_{mi}}{Z_{m}}e^{\alpha_m} \ , \ G_m(x_i) ≠y_i<br>\end{cases}<br>$$</li>
-<li>从分类误差率的计算可以看出，当前分类误差率依赖于上一轮的样本权重，<strong>由于上一轮对于分错的样本给予了比较大权重，如果这一轮分类继续出错，那么这一轮的分类误差率肯定也会比较大，为了降低分类误差率，模型会朝着使得这些权重大的样本分类正确的方向拟合</strong>，从而达到了我们”提高分类错误的样本，使得其被后面的分类器更加关注”的目的。</li>
-</ul>
-<h1 id="前向分步模型"><a href="#前向分步模型" class="headerlink" title="前向分步模型"></a>前向分步模型</h1><p>那既然说Adaboost是一个前向分步加法模型，那什么是前向分步模型呢，为什么叫这个名字？<br>在加法模型中:<br>$$G(x)=\sum_{m=1}^M\alpha_mG_m(x)$$<br>在给定数据集D和损失函数L的情况下，学习策略变成了使损失函数最小的最优化问题:<br>$$Min\sum_{i=1}^NLoss(y_i,G(x_i))$$<br>如果<strong>把这个损失函数当成一个整体来求最优化是个很复杂的问题</strong>，为了简化这种问题，将其<strong>分解为从前往后，每一步只学习一个分类器和其系数的问题</strong>。所以，每一次只需要优化如下的损失函数:<br>$$Min(Loss(y_i,\alpha_mG_m(x)))$$<br>而前向分布的算法步骤正如Adaboost一样，这里不再写一遍了。</p>
-<h1 id="前向分步与Adaboost关系"><a href="#前向分步与Adaboost关系" class="headerlink" title="前向分步与Adaboost关系"></a>前向分步与Adaboost关系</h1><p>AdaBoost算法是前向分步加法算法的特例，这时，模型是由<strong>基本分类器</strong>组成的加法模型，损失函数是<strong>指数函数</strong>。</p>
 
       
     </div>
@@ -468,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/14/逻辑斯蒂回归/" rel="next" title="逻辑斯蒂回归">
-                <i class="fa fa-chevron-left"></i> 逻辑斯蒂回归
+              <a href="/2018/03/16/广义线性模型/" rel="next" title="广义线性模型">
+                <i class="fa fa-chevron-left"></i> 广义线性模型
               </a>
             
           </div>
@@ -478,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/15/gbdt/" rel="prev" title="梯度提升树GBDT">
-                梯度提升树GBDT <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/20/阿里云1/" rel="prev" title="阿里云ECS-1:环境初始化">
+                阿里云ECS-1:环境初始化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -710,7 +709,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Boosting"><span class="nav-number">1.</span> <span class="nav-text">Boosting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adaboost"><span class="nav-number">2.</span> <span class="nav-text">Adaboost</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">2.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法关键点"><span class="nav-number">3.</span> <span class="nav-text">算法关键点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向分步模型"><span class="nav-number">4.</span> <span class="nav-text">前向分步模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前向分步与Adaboost关系"><span class="nav-number">5.</span> <span class="nav-text">前向分步与Adaboost关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机"><span class="nav-number">1.</span> <span class="nav-text">感知机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何意义"><span class="nav-number">1.2.</span> <span class="nav-text">几何意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机-线性可分"><span class="nav-number">1.3.</span> <span class="nav-text">感知机-线性可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法"><span class="nav-number">1.4.</span> <span class="nav-text">感知机学习算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法几何解释"><span class="nav-number">1.5.</span> <span class="nav-text">感知机学习算法几何解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">2.</span> <span class="nav-text">线性支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM与感知机的区别"><span class="nav-number">2.1.</span> <span class="nav-text">SVM与感知机的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔最大化"><span class="nav-number">2.2.</span> <span class="nav-text">间隔最大化</span></a></li></ol></li></ol></div>
             
 
           </div>
