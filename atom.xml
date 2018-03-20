@@ -37,17 +37,17 @@
   </entry>
   
   <entry>
-    <title>svm</title>
+    <title>浅谈SVM与感知机</title>
     <link href="http://yoursite.com/2018/03/16/svm/"/>
     <id>http://yoursite.com/2018/03/16/svm/</id>
     <published>2018-03-16T11:36:46.000Z</published>
-    <updated>2018-03-16T15:31:48.592Z</updated>
+    <updated>2018-03-20T12:39:23.646Z</updated>
     
     <content type="html"><![CDATA[<h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>感知机是SVM和神经网络的基础，所以在介绍SVM之前，先谈谈感知机。</p><p><strong>感知机是一个二分类的线性分类模型。</strong>其表示从输入空间到输出空间的如下函数，输出为-1,1:<br>$$f(x)=sign(w·x+b)$$</p><p>其中，w是权值向量，b为偏置bias,sign是符号函数</p><h2 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h2><p><strong>其几何意义为:</strong><br>$$w·x+b=0$$<br>对应于特征空间中的一个<strong>分离超平面</strong>，其中<strong>w表示超平面的法向量</strong>，而<strong>b对应超平面的截距</strong>。</p><h2 id="感知机-线性可分"><a href="#感知机-线性可分" class="headerlink" title="感知机-线性可分"></a>感知机-线性可分</h2><p><strong>线性可分</strong>的意思是存在一个超平面可以将正负样本点完全分开。</p><blockquote><p>在线性可分的情况下，感知机的<strong>学习策略</strong>是：<br>“<strong>使得误分类点到超平面的总距离最小</strong>”</p></blockquote><p>所有误分类点到超平面S的总距离为:<br>$$-\frac{1}{||w||}\sum_{x_i∈M}y_i(w·x_i+b)$$<br>所以可以得到其损失函数，它是关于w,b的连续可导函数:<br>$$L(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$</p><h2 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h2><p>感知机的学习算法即上式(损失函数)的最优化问题，其方法为<strong>随机梯度下降法</strong>。<br>$$minL(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$<br>随机梯度下降一次只选取一个误分类点使其梯度下降,其梯度计算为:<br>$$L_w(w,b)=-\sum_{x_i∈M}y_ix_i$$<br>$$L_b(w,b)=-\sum_{x_i∈M}y_i$$</p><p>所以下面给出感知机学习算法步骤(原始形式):<br>给定训练集和学习率$\eta$<br>(1) 选取初始值$w_0,b_0$<br>(2) 随机选取一个误分类点$y_i(w·w_i+b)≤0$更新w,b:<br>$$w←w+\eta y_ix_i$$<br>$$b←b+\eta y_i$$<br>(3)重复(2)直到没有误分类点</p><h2 id="感知机学习算法几何解释"><a href="#感知机学习算法几何解释" class="headerlink" title="感知机学习算法几何解释"></a>感知机学习算法几何解释</h2><p>当一个样本点被误分到分离超平面的另一端时，调整w,b的值，使分离超平面向该误分类点的一侧移动，以减少该误分类点与超平面间的距离，如此循环直到该误分类点被正确分类。由于<strong>其结束的条件是所有样本点被正确分类，所以，在线性可分数据集中，感知机有无数个解。</strong></p><h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>SVM(support vector machines,SVM)是一种二分类模型。其核心是<strong>核技巧</strong>，可以用来解决非线性问题，当<strong>使用非线性核</strong>的时候，SVM是非线性模型，其相当于把<strong>隐式地在高维的特征空间中学习线性支持向量机</strong>。</p><h2 id="SVM与感知机的区别"><a href="#SVM与感知机的区别" class="headerlink" title="SVM与感知机的区别"></a>SVM与感知机的区别</h2><p>1.学习策略不同，感知机的学习策略为使得误分类点的距离最小，而SVM的学习策略是间隔最大化，这样使得在同样解决线性可分的问题时，感知机可以有无数个解，而svm只有一个最优解。</p><ol><li>感知机拥有核技巧，可以解决非线性问题<h2 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h2>我们知道SVM和感知机的最大区别之一就是SVM采用的是<strong>间隔最大化</strong>的策略，使得其存在<strong>唯一最优解</strong>下面介绍函数间隔和几何间隔：<br><strong>(1) 函数间隔</strong><br>$|w·x+b|$表示一个点离超平面的远近，而加上$y_i$可以判断其是否被正确分类，所以<strong>函数间隔就是组合两者：表示一个样本点被分类的正确性和确信度(离得越远越确定):</strong><br>$$\gamma_i = y_i(w·x_i+b)$$<br>整个函数集的函数间隔就是<strong>所有样本点函数间隔最小值</strong>。<br><strong>(2) 几何间隔</strong><br>使用函数间隔会有缺点：<br><strong>成倍缩放w和b，超平面位置不变</strong>，但是函数间隔为会改变。<br>所以引入了几何间隔的概念(做了一个L2归一化)使得超平面确定了，其间隔也确定，几何间隔为:<br>$$\gamma = -(\frac{w}{||w||}·x_i+\frac{b}{||w||})$$</li></ol>]]></content>
     
     <summary type="html">
     
-      感知机，线性可分，非线性内核
+      &lt;center&gt;感知机，线性可分，非线性内核(未写完待续)&lt;/center&gt;&gt;
     
     </summary>
     
@@ -68,24 +68,6 @@
     <summary type="html">
     
       &lt;center&gt;LR、线性回归和广义线性模型的联系&lt;/center&gt;
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GBDT调参</title>
-    <link href="http://yoursite.com/2018/03/16/gdbt%E8%B0%83%E5%8F%82/"/>
-    <id>http://yoursite.com/2018/03/16/gdbt调参/</id>
-    <published>2018-03-15T18:02:52.000Z</published>
-    <updated>2018-03-16T12:17:15.387Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;占个坑&lt;/center&gt;
     
     </summary>
     
