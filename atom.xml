@@ -37,46 +37,6 @@
   </entry>
   
   <entry>
-    <title>阿里云ECS-2:Xen</title>
-    <link href="http://yoursite.com/2018/03/20/%E9%98%BF%E9%87%8C%E4%BA%912/"/>
-    <id>http://yoursite.com/2018/03/20/阿里云2/</id>
-    <published>2018-03-20T12:43:01.000Z</published>
-    <updated>2018-03-20T13:23:30.454Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是Xen？"><a href="#什么是Xen？" class="headerlink" title="什么是Xen？"></a>什么是Xen？</h1><p>百度百科：</p><blockquote><p>Xen 是一个开放源代码虚拟机监视器，由剑桥大学开发。它打算在单个计算机上运行多达100个满特征的操作系统。操作系统必须进行显式地修改（“移植”）以在Xen上运行（但是提供对用户应用的兼容性）。这使得Xen无需特殊硬件支持，就能达到高性能的虚拟化。</p></blockquote><p>简单来说，就是可以在一台计算机硬件上高效的运行很多个操作系统，并且可以将硬件接口虚拟化。</p><h1 id="工作原理？"><a href="#工作原理？" class="headerlink" title="工作原理？"></a>工作原理？</h1><p>在Xen环境中，主要有两个组成部分。</p><ul><li>一个是虚拟机监控器（VMM），也叫hypervisor。<strong>Hypervisor层在硬件与虚拟机之间，是必须最先载入到硬件的第一层</strong>。Hypervisor载入后，就可以部署虚拟机了。在Xen中，虚拟机叫做“domain”。</li><li>在这些虚拟机中，其中一个扮演着很重要的角色，<strong>就是domain0，具有很高的特权</strong>。通常，在任何虚拟机之前安装的操作系统才有这种特权。Domain0要负责一些专门的工作。由于hypervisor中不包含任何与硬件对话的驱动，也没有与管理员对话的接口，<strong>这些驱动就由domain0来提供了</strong>。通过domain0，管理员可以利用一些Xen工具来创建其它虚拟机（Xen术语叫domainU）。这些domainU也叫无特权domain。这是因为在基于i386的CPU架构中，它们绝不会享有最高优先级，只有domain0才可以。<br>下图可以看到Xen在虚拟机和计算机硬件之间的关系：<br><img src="/2018/03/20/阿里云2/1.png" alt=""><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Xen-hypervisor-64-bit"><a href="#Xen-hypervisor-64-bit" class="headerlink" title="Xen-hypervisor(64-bit)"></a>Xen-hypervisor(64-bit)</h2></li><li>sudo apt-get install xen-hypervisor-amd64<br>一些要安装的依赖包和我的版本<br><img src="/2018/03/20/阿里云2/2.png" alt=""></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Xen原理,安装与配置(待续)&lt;/center&gt;
-    
-    </summary>
-    
-    
-      <category term="分布式计算" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里云ECS-1:环境初始化</title>
-    <link href="http://yoursite.com/2018/03/20/%E9%98%BF%E9%87%8C%E4%BA%911/"/>
-    <id>http://yoursite.com/2018/03/20/阿里云1/</id>
-    <published>2018-03-20T12:27:38.000Z</published>
-    <updated>2018-03-21T01:43:00.739Z</updated>
-    
-    <content type="html"><![CDATA[<p>我购买的是阿里云ECS云服务器半年套餐，约800+，配置下面会提到<br>拿到手以后，在动手装环境之前，先做好如下的准备工作</p><h1 id="明确配置信息"><a href="#明确配置信息" class="headerlink" title="明确配置信息"></a>明确配置信息</h1><ul><li>sudo lshw -short 查看主机配置 (我的是E5-2682 v4, 4G内存)，可以看到我的network,storage都是Virtio(虚拟化)的，说明本虚拟机也是架在类似Xen之类的框架上。</li><li>cat /proc/cpuinfo可以查看cpu是几核.</li><li>cat /proc/meminfo查看硬盘信息，我是40G。<br><img src="/2018/03/20/阿里云1/1.png" alt=""><br><img src="/2018/03/20/阿里云1/2.png" alt=""><h1 id="添加root用户"><a href="#添加root用户" class="headerlink" title="添加root用户"></a>添加root用户</h1></li><li>adduser xxx</li><li>sudo vim /etc/sudoers 找到root(root ALL…..)在下面类似的添加自己刚刚建立的用户，赋予root权限<br>使用刚刚的用户远程连接服务器<br>ssh xxx@公网ip<br><img src="/2018/03/20/阿里云1/3.png" alt=""></li></ul><h1 id="配置安全组"><a href="#配置安全组" class="headerlink" title="配置安全组"></a>配置安全组</h1><p>Inbound<br><img src="/2018/03/20/阿里云1/4.png" alt=""></p><h1 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h1><p>扁鹊二连</p><ul><li>sudo apt-get update</li><li>Sudo apt-get upgrade<br>安装vim</li><li>sudo apt-get install vim</li></ul><p>准备工作非常简单，下面就可以开始Xen的安装了。</p><h1 id="使用SSH密钥对登陆"><a href="#使用SSH密钥对登陆" class="headerlink" title="使用SSH密钥对登陆"></a>使用SSH密钥对登陆</h1><p>1.首先需要新建一个密钥对 云服务器ECS -&gt; 密钥对 -&gt; 新建密钥对 -&gt; 下载<br>2.找到刚才下载的 xx.pem文件，修改文件的属性，chmod 400 xxx.pem<br>3.使用密钥登陆 ssh -i xx.pem xxx@公网ip</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;center&gt;阿里云ECS和初始环境&lt;/center&gt;
-    
-    </summary>
-    
-    
-      <category term="分布式计算" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>浅谈boosting与Adaboost</title>
     <link href="http://yoursite.com/2018/03/19/adaboost/"/>
     <id>http://yoursite.com/2018/03/19/adaboost/</id>
