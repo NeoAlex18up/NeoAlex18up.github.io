@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/02/08/2017CCF/</loc>
+    <lastmod>2018-03-21T13:20:42.918Z</lastmod>
+    <data>
+        <display>
+        <title>2017 CCF 大数据竞赛top4%</title>
+        <pubTime>2018-02-07T16:00:00.000Z</pubTime>
+        
+        <tag>比赛</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/03/19/adaboost/</loc>
     <lastmod>2018-03-21T12:49:29.663Z</lastmod>
     <data>
@@ -66,26 +86,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/02/08/2017CCF/</loc>
-    <lastmod>2018-03-15T09:38:00.257Z</lastmod>
-    <data>
-        <display>
-        <title>2017 CCF 大数据竞赛top4%</title>
-        <pubTime>2018-02-07T16:00:00.000Z</pubTime>
-        
-        <tag>比赛</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
-          
         </display>
     </data>
     </url>
