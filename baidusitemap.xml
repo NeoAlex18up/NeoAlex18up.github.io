@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/03/19/adaboost/</loc>
+    <lastmod>2018-03-21T12:49:29.663Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈boosting与Adaboost</title>
+        <pubTime>2018-03-19T10:16:44.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/03/20/gbdt/</loc>
+    <lastmod>2018-03-21T12:49:13.333Z</lastmod>
+    <data>
+        <display>
+        <title>梯度提升树GBDT</title>
+        <pubTime>2018-03-20T13:00:17.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/03/20/%E9%98%BF%E9%87%8C%E4%BA%911/</loc>
     <lastmod>2018-03-21T01:43:00.739Z</lastmod>
     <data>
@@ -61,40 +95,6 @@
         <display>
         <title>广义线性模型</title>
         <pubTime>2018-03-16T06:54:22.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/15/gbdt/</loc>
-    <lastmod>2018-03-15T18:02:28.140Z</lastmod>
-    <data>
-        <display>
-        <title>梯度提升树GBDT</title>
-        <pubTime>2018-03-15T13:00:17.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/03/15/adaboost/</loc>
-    <lastmod>2018-03-15T13:02:53.723Z</lastmod>
-    <data>
-        <display>
-        <title>浅谈boosting与Adaboost</title>
-        <pubTime>2018-03-15T10:16:44.000Z</pubTime>
         
         <tag>机器学习</tag>
          

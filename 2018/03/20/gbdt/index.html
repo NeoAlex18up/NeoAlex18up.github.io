@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta name="description" content="提升树算法，GBDT原理，损失函数，与LR比较">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈SVM与感知机">
-<meta property="og:url" content="http://yoursite.com/2018/03/16/svm/index.html">
+<meta property="og:title" content="梯度提升树GBDT">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/gbdt/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta property="og:description" content="提升树算法，GBDT原理，损失函数，与LR比较">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T12:39:23.646Z">
+<meta property="og:updated_time" content="2018-03-21T12:49:13.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈SVM与感知机">
-<meta name="twitter:description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta name="twitter:title" content="梯度提升树GBDT">
+<meta name="twitter:description" content="提升树算法，GBDT原理，损失函数，与LR比较">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/16/svm/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/gbdt/"/>
 
 
 
 
 
-  <title>浅谈SVM与感知机 | 杨一瓶</title>
+  <title>梯度提升树GBDT | 杨一瓶</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/svm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/gbdt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈SVM与感知机</h1>
+          <h1 class="post-title" itemprop="name headline">梯度提升树GBDT</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T19:36:46+08:00">
-                2018-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T21:00:17+08:00">
+                2018-03-20
               </time>
             
 
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/16/svm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/16/svm/" itemprop="commentCount"></span>
+                <a href="/2018/03/20/gbdt/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/20/gbdt/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/2018/03/16/svm/" class="leancloud_visitors" data-flag-title="浅谈SVM与感知机">
+             <span id="/2018/03/20/gbdt/" class="leancloud_visitors" data-flag-title="梯度提升树GBDT">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +374,7 @@
 
           
               <div class="post-description">
-                  <center>感知机，线性可分，非线性内核(未写完待续)</center>>
+                  <center>提升树算法，GBDT原理，损失函数，与LR比较</center>
               </div>
           
 
@@ -391,23 +391,41 @@
       
 
       
-        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>感知机是SVM和神经网络的基础，所以在介绍SVM之前，先谈谈感知机。</p>
-<p><strong>感知机是一个二分类的线性分类模型。</strong>其表示从输入空间到输出空间的如下函数，输出为-1,1:<br>$$f(x)=sign(w·x+b)$$</p>
-<p>其中，w是权值向量，b为偏置bias,sign是符号函数</p>
-<h2 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h2><p><strong>其几何意义为:</strong><br>$$w·x+b=0$$<br>对应于特征空间中的一个<strong>分离超平面</strong>，其中<strong>w表示超平面的法向量</strong>，而<strong>b对应超平面的截距</strong>。</p>
-<h2 id="感知机-线性可分"><a href="#感知机-线性可分" class="headerlink" title="感知机-线性可分"></a>感知机-线性可分</h2><p><strong>线性可分</strong>的意思是存在一个超平面可以将正负样本点完全分开。</p>
+        <h1 id="提升树"><a href="#提升树" class="headerlink" title="提升树"></a>提升树</h1><p>提升树正是一种前向分步的加法模型，但是其基分类器是树模型(二叉树)，分为二叉分类树和二叉回归树，提升树往往在实践中表现非常好。提升树的模型如下:<br>$$f_M(x)=\sum_{m=1}^MT(x;\Theta)$$<br>$M$为树的个数，$\Theta$表示数的参数(在加法模型中的重要性)</p>
+<h1 id="提升树算法"><a href="#提升树算法" class="headerlink" title="提升树算法"></a>提升树算法</h1><p>由于提升树是一种前向分步的加法模型，所以其算法步骤就是前向分布加法模型的算—<br>title: 梯度提升树GBDT<br>date: 2018-03-15 21:00:17<br>tags: 机器学习</p>
+<h2 id="description-提升树算法，GBDT原理，损失函数"><a href="#description-提升树算法，GBDT原理，损失函数" class="headerlink" title="description: 提升树算法，GBDT原理，损失函数"></a>description: <center>提升树算法，GBDT原理，损失函数</center></h2><h1 id="提升树-1"><a href="#提升树-1" class="headerlink" title="提升树"></a>提升树</h1><p>提升树正是一种前向分步的加法模型，但是其基分类器是树模型(二叉树)，分为二叉分类树和二叉回归树，提升树往往在实践中表现非常好。提升树的模型如下:<br>$$f_M(x)=\sum_{m=1}^MT(x;\Theta)$$<br>$M$为树的个数，$\Theta$表示数的参数(在加法模型中的重要性)</p>
+<h1 id="提升树算法-1"><a href="#提升树算法-1" class="headerlink" title="提升树算法"></a>提升树算法</h1><p>由于提升树是一种前向分步的加法模型，所以其算法步骤就是前向分布加法模型的算法步骤。<br>解决分类问题的时候，其基学习器为二叉分类树，其损失函数为指数函数，<strong>这个时候就相当于Adaboost将基分类器替换为二叉分类树。</strong><br>解决回归问题的时候，其基学习器为二叉回归树，其损失函数为平方损失函数，下面介绍一下<strong>回归提升树的算法。</strong><br>第m颗树的模型可以表示为：<br>$$f_m(x)=f_{m-1}(x)+T(x; \theta_m)$$<br>其中，$\Theta_m$是这颗树的参数，它是通过上一颗树 $f_{m-1}(x)$计算出来的<br>$$\theta_{m+1} = arg\min_{\theta_m}\sum_{i=1}^N L(y_i, f_{m-1}(x_i)+T(x_i; \theta_m)$$<br>不难发现，这里就是前向分步算法中求当前学习器的参数的过程，<strong>使得当前的损失函数最小，也就是经验风险最小化策略</strong>。<br>其中，二叉回归树模型为,就是(每个小区域的平均值*$Indicator函数$)，可以点击<a href="http://yangyiqing.cn/2018/03/09/%E5%86%B3%E7%AD%96%E6%A0%91/" target="_blank" rel="noopener">这里</a>查看关于二叉树的生成过程:<br>$$T(x; \theta)=\sum_{j=1}^J C_j I(x \in R_j)$$<br>于是,第m颗树的平方损失函数可以表示为：</p>
+<p><center>$Loss(y,f_m(x)) = (y-f_m(x))^2$</center></p>
+<p><center>$=(y-f_{m-1}(x)-T(x;\Theta_m))^2$</center></p>
+<p><center>$=((y-f_{m-1}(x))-T(x;\Theta_m))^2$</center><br>不难发现，式中前两项就是当前模型拟合数据的残差，所以，对于回归提升树来说，只需要拟合当前残差即可。<strong>当前模型的残差公式:</strong><br>$$r_m = y - f_{m-1}(x)$$<br>不理解为什么$Min((y-f_{m-1}(x))-T(x;\Theta_m))^2$相当于拟合残差的可以自己去看一下《统计学习方法》中提升树相关例题。<br>所以其实这也是一种<strong>前向分步加法模型</strong>，其基分类器为<strong>二叉回归树</strong>，其损失函数为<strong>平方损失函数</strong>，求参数的过程采用了使<strong>平方损失函数最小化</strong>的策略，相当于<strong>拟合当前模型的残差</strong>。<br><strong>提升树与Adaboost的区别:</strong></p>
 <blockquote>
-<p>在线性可分的情况下，感知机的<strong>学习策略</strong>是：<br>“<strong>使得误分类点到超平面的总距离最小</strong>”</p>
+<p>Adaboost的策略是在每一轮迭代的过程中根据误差率最小化策略来更新样本的权重，使得权重更大的样本在再次被错分的时候损失代价更大。而提升树的策略是为了减少当前模型的”残差”，<u>这里说的残差值得是当前得到的加法模型对训练集的预测和其真正label之间的差异大小</u></p>
 </blockquote>
-<p>所有误分类点到超平面S的总距离为:<br>$$-\frac{1}{||w||}\sum_{x_i∈M}y_i(w·x_i+b)$$<br>所以可以得到其损失函数，它是关于w,b的连续可导函数:<br>$$L(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$</p>
-<h2 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h2><p>感知机的学习算法即上式(损失函数)的最优化问题，其方法为<strong>随机梯度下降法</strong>。<br>$$minL(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$<br>随机梯度下降一次只选取一个误分类点使其梯度下降,其梯度计算为:<br>$$L_w(w,b)=-\sum_{x_i∈M}y_ix_i$$<br>$$L_b(w,b)=-\sum_{x_i∈M}y_i$$</p>
-<p>所以下面给出感知机学习算法步骤(原始形式):<br>给定训练集和学习率$\eta$<br>(1) 选取初始值$w_0,b_0$<br>(2) 随机选取一个误分类点$y_i(w·w_i+b)≤0$更新w,b:<br>$$w←w+\eta y_ix_i$$<br>$$b←b+\eta y_i$$<br>(3)重复(2)直到没有误分类点</p>
-<h2 id="感知机学习算法几何解释"><a href="#感知机学习算法几何解释" class="headerlink" title="感知机学习算法几何解释"></a>感知机学习算法几何解释</h2><p>当一个样本点被误分到分离超平面的另一端时，调整w,b的值，使分离超平面向该误分类点的一侧移动，以减少该误分类点与超平面间的距离，如此循环直到该误分类点被正确分类。由于<strong>其结束的条件是所有样本点被正确分类，所以，在线性可分数据集中，感知机有无数个解。</strong></p>
-<h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>SVM(support vector machines,SVM)是一种二分类模型。其核心是<strong>核技巧</strong>，可以用来解决非线性问题，当<strong>使用非线性核</strong>的时候，SVM是非线性模型，其相当于把<strong>隐式地在高维的特征空间中学习线性支持向量机</strong>。</p>
-<h2 id="SVM与感知机的区别"><a href="#SVM与感知机的区别" class="headerlink" title="SVM与感知机的区别"></a>SVM与感知机的区别</h2><p>1.学习策略不同，感知机的学习策略为使得误分类点的距离最小，而SVM的学习策略是间隔最大化，这样使得在同样解决线性可分的问题时，感知机可以有无数个解，而svm只有一个最优解。</p>
-<ol>
-<li>感知机拥有核技巧，可以解决非线性问题<h2 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h2>我们知道SVM和感知机的最大区别之一就是SVM采用的是<strong>间隔最大化</strong>的策略，使得其存在<strong>唯一最优解</strong>下面介绍函数间隔和几何间隔：<br><strong>(1) 函数间隔</strong><br>$|w·x+b|$表示一个点离超平面的远近，而加上$y_i$可以判断其是否被正确分类，所以<strong>函数间隔就是组合两者：表示一个样本点被分类的正确性和确信度(离得越远越确定):</strong><br>$$\gamma_i = y_i(w·x_i+b)$$<br>整个函数集的函数间隔就是<strong>所有样本点函数间隔最小值</strong>。<br><strong>(2) 几何间隔</strong><br>使用函数间隔会有缺点：<br><strong>成倍缩放w和b，超平面位置不变</strong>，但是函数间隔为会改变。<br>所以引入了几何间隔的概念(做了一个L2归一化)使得超平面确定了，其间隔也确定，几何间隔为:<br>$$\gamma = -(\frac{w}{||w||}·x_i+\frac{b}{||w||})$$</li>
-</ol>
+<h1 id="GBDT-梯度提升树"><a href="#GBDT-梯度提升树" class="headerlink" title="GBDT(梯度提升树)"></a>GBDT(梯度提升树)</h1><p>梯度提升树(Gradient Boosting Decison Tree)，GBDT的基分类器是CART树(简单回顾：二叉树，分类损失函数为基尼系数，回归损失函数为平方损失)。</p>
+<p><strong>为什么要引入梯度这个概念？</strong><br>因为之前我们用到的损失函数是指数损失函数或者是平方损失函数，这个时候，对于每一轮的弱学习器来说，其损失函数最小化的策略是比较简单的。但是如果损失函数是一般函数呢？其优化策略可能非常复杂，所以引入了梯度提升算法，其利用损失函数的负梯度在当前模型的值作为”残差”的近似值:</p>
+<p><strong>第m轮第i个样本的损失函数的负梯度(每个样本可以计算一个梯度):</strong><br>$$r_{mi} = -\bigg[\frac{\partial L(y_i, f(x_i)))}{\partial f(x_i)}\bigg]<em>{f(x) = f</em>{m-1}\;\; (x)}$$<br>然后将负梯度作为残差的近似值，利用和提升树相同的方法，可以拟合得到一颗CART树(当前轮的弱学习器)，拟合的策略也是使当前模型残差最小，在此不再赘述。</p>
+<p><strong>最终得到本轮的弱学习器为(就回归树而言):</strong><br>$$T(x; \theta)=\sum_{j=1}^J C_j I(x \in R_j)$$<br><strong>当前模型(强分类器)为：</strong><br>$$f(x) = f_{m-1}(x)+\sum_{j=1}^J C_j I(x \in R_j)$$<br><strong>所以，</strong>引入负梯度让我们对损失函数的处理变得统一化，算法只需要基于由负梯度得来的残差进行展开，而这个<strong>残差的具体由来，就看具体的损失函数是什么了</strong>。</p>
+<h1 id="GBDT与LR比较"><a href="#GBDT与LR比较" class="headerlink" title="GBDT与LR比较"></a>GBDT与LR比较</h1><blockquote>
+<p>1.由于GBDT是迭代的学习方法，且下一模型的学习是在前一模型的基础上，因而只能在训练样本的层面上进行并行化处理。关于并行化相关内容等结合Xgboost学习再详细了解。<br>2.GBDT几乎可用于所有回归问题（线性/非线性），相对logistic regression仅能用于线性回归，GBDT的适用面非常广。亦可用于二分类问题（设定阈值，大于阈值为正例，反之为负例。<br>3.GBDT 是一个加性回归模型，通过 boosting 迭代的构造一组弱学习器，相对LR的优势如不需要做特征的归一化，自动进行特征选择，模型可解释性较好，可以适应多种损失函数如 SquareLoss，LogLoss 等等。但作为非线性模型，其相对线性模型的缺点也是显然的：boosting 是个串行的过程，不能并行化，计算复杂度较高，同时其不太适合高维稀疏特征，通常采用稠密的数值特征如点击率预估中的 COEC。—引自xgboost导读与实战</p>
+</blockquote>
+<h1 id="GBDT损失函数"><a href="#GBDT损失函数" class="headerlink" title="GBDT损失函数"></a>GBDT损失函数</h1><p>上面我们讨论了提升树和梯度提升树，了解了引入负梯度的概念是为了解决一般损失函数最优化难的问题。还给出了为什么当损失函数是平方损失函数的时候提升树的损失函数最小化策略相当于拟合模型的当前残差。</p>
+<p><strong>那么当损失函数是指数函数的时候，其最小化损失函数的策略是什么呢？</strong><br>其实，当Adaboost的基分类器是二叉分类树的时候，其等价于二叉提升分类树。也就是指数损失函数最小化策略和Adaboost的分类误差率最小化策略是等价的，具体推导请参见<a href="http://blog.csdn.net/google19890102/article/details/50522945" target="_blank" rel="noopener">这篇博客</a></p>
+<h2 id="GBDT分类常用损失函数"><a href="#GBDT分类常用损失函数" class="headerlink" title="GBDT分类常用损失函数"></a>GBDT分类常用损失函数</h2><p><strong>(1) 指数损失函数</strong><br>$$L(y, f(x)) = exp(-yf(x))$$<br>其等价于Adaboost<br><strong>(2)对数损失函数</strong><br>对数损失函数在进行二分类和多分类的时候又有区别，下面会讲</p>
+<h2 id="GBDT回归常用损失函数"><a href="#GBDT回归常用损失函数" class="headerlink" title="GBDT回归常用损失函数"></a>GBDT回归常用损失函数</h2><p><strong>(1) 均方误差</strong><br>$$L(y, f(x)) =(y-f(x))^2$$<br>最为常见的回归损失函数了<br><strong>(2) 绝对损失函数</strong><br>$$L(y, f(x)) =|y-f(x)|$$<br><strong>(3) 分位损失函数 (4) Huber损失函数</strong> 较为少见，这里不予解释。</p>
+<h1 id="GBDT二分类"><a href="#GBDT二分类" class="headerlink" title="GBDT二分类"></a>GBDT二分类</h1><p>其损失函数类似于逻辑斯蒂回归的对数似然函数：<br>$$L(y, f(x)) = log(1+ exp(-yf(x)))$$<br>其中$y∈{1,-1},此时的残差计算公式为:<br>（我惊了！这里的公式就是显示不出来）?</p>
+<p>$$r_{ti} = -\bigg[\frac{\partial L(y, f(x_i)))}{\partial f(x_i)}\bigg]<em>{f(x) = f</em>{t-1}\;\; (x)} = y_i/(1+exp(y_if(x_i)))$$<br>各个叶子节点的最佳残差拟合值:<br>$$c_{tj} = \underbrace{arg\; min}<em>{c}\sum\limits</em>{x_i \in R_{tj}} log(1+exp(-y_i(f_{t-1}(x_i) +c)))$$<br>简化为:<br>$$c_{tj} = \sum\limits_{x_i \in R_{tj}}r_{ti}\bigg /  \sum\limits_{x_i \in R_{tj}}|r_{ti}|(1-|r_{ti}|)$$</p>
+<h1 id="GBDT多分类"><a href="#GBDT多分类" class="headerlink" title="GBDT多分类"></a>GBDT多分类</h1><p>其中，<strong>多分类的对数似然损失函数为:</strong><br>$$L(y, f(x)) = -  \sum\limits_{k=1}^{K}y_klog\;p_k(x)$$<br><strong>其在第m轮的第i个样本的负梯度为：</strong><br>$$r_{til} = -\bigg[\frac{\partial L(y_i, f(x_i)))}{\partial f(x_i)}\bigg]_{f_k(x) = f_{l, t-1}\;\; (x)} = y_{il} - p_{l, t-1}(x_i)$$<br><strong>观察上式可以看出，其实这里的误差就是样本$i$对应类别l的真实概率和$t−1$轮预测概率的差值。</strong>(如果你理解不了的话可以记住这句话)<br>各个叶子节点的最佳残差拟合值:<br>$$c_{tjl} = \underbrace{arg\; min}_{c_{jl}}\sum\limits_{i=0}^{m}\sum\limits_{k=1}^{K} L(y_k, f_{t-1, l}(x) + \sum\limits_{j=0}^{J}c_{jl} I(x_i \in R_{tj}))$$<br>简化为:<br>$$c_{tjl} =  \frac{K-1}{K} \; \frac{\sum\limits_{x_i \in R_{tjl}}r_{til}}{\sum\limits_{x_i \in R_{til}}|r_{til}|(1-|r_{til}|)}$$</p>
+<p>其实gbdt回归与分类损失函数最小化策略跟CART树利用平方损失和基尼系数找最优切分点的道理是一样的，毕竟boosting的前一颗树只是起到了提供残差的作用，每一轮的迭代其实就只有一颗CART树，这里可以回去翻看CART树的生成策略。</p>
+<h1 id="GBDT的正则化"><a href="#GBDT的正则化" class="headerlink" title="GBDT的正则化"></a>GBDT的正则化</h1><p>为了防止过拟合，我们有三种正则化的策略。<br><strong>(1)</strong>第一种是和Adaboost类似的正则化项，即<strong>步长(learning rate)</strong>。定义为ν,对于前面的弱学习器的迭代：<br>$$f_{k}(x) = f_{k-1}(x) + h_k(x)$$<br>如果我们加上了正则化项，则有:<br>$$f_{k}(x) = f_{k-1}(x) + \nu h_k(x)$$<br>$ν$的取值范围为$0&lt;ν≤1$。对于同样的训练集学习效果，<strong>较小的ν意味着我们需要更多的弱学习器的迭代次数。通常我们用步长和迭代最大次数一起来决定算法的拟合效果。</strong><br><strong>(2)</strong>第二种正则化的方式是通过<strong>子采样比例（subsample）</strong>。取值为(0,1]。注意这里的子采样和随机森林不一样，随<strong>机森林使用的是放回抽样，而这里是不放回抽样</strong>。如果取值为1，则全部样本都使用，等于没有使用子采样。<strong>如果取值小于1，则只有一部分样本会去做GBDT的决策树拟合。选择小于1的比例可以减少方差，即防止过拟合，但是会增加样本拟合的偏差，因此取值不能太低。推荐在[0.5, 0.8]之间</strong>。<br>使用了子采样的GBDT有时也称作随机梯度提升树(Stochastic Gradient Boosting Tree, SGBT)。由于使用了子采样，程序可以通过采样分发到不同的任务去做boosting的迭代过程，最后形成新树，从而减少弱学习器难以并行学习的弱点。<br><strong>(3)</strong>第三种是对于弱学习器<strong>即CART回归树进行正则化剪枝</strong>。</p>
+<h1 id="GBDT的优缺点"><a href="#GBDT的优缺点" class="headerlink" title="GBDT的优缺点"></a>GBDT的优缺点</h1><p><strong>优点:</strong></p>
+<ul>
+<li>可以<strong>灵活处理各种类型的数据</strong>，包括连续值和离散值。</li>
+<li>在相对少的调参时间情况下，预测的<strong>准确率也可以比较高</strong>。这个是相对SVM来说的。</li>
+<li><strong>使用一些健壮的损失函数，对异常值的鲁棒性非常强</strong>。比如 Huber损失函数和Quantile损失函数。<br><strong>缺点：</strong></li>
+<li>由于弱学习器之间存在依赖关系，难以并行训练数据。不过可以通过自采样的SGBT来达到部分并行。</li>
+</ul>
+<hr>
+<p><strong>本博客内容引用了以下链接内容:</strong><br>1.<a href="https://www.cnblogs.com/pinard/p/6140514.html" target="_blank" rel="noopener">刘建平</a><br>2.<a href="http://blog.csdn.net/google19890102/article/details/50522945" target="_blank" rel="noopener">zhiyong_will</a><br>3<a href="http://blog.csdn.net/sb19931201/article/details/52506157" target="_blank" rel="noopener">我曾被山河大海跨过</a></p>
 
       
     </div>
@@ -467,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/16/广义线性模型/" rel="next" title="广义线性模型">
-                <i class="fa fa-chevron-left"></i> 广义线性模型
+              <a href="/2018/03/20/阿里云2/" rel="next" title="阿里云ECS-2:Xen">
+                <i class="fa fa-chevron-left"></i> 阿里云ECS-2:Xen
               </a>
             
           </div>
@@ -476,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/19/adaboost/" rel="prev" title="浅谈boosting与Adaboost">
-                浅谈boosting与Adaboost <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -709,7 +723,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机"><span class="nav-number">1.</span> <span class="nav-text">感知机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何意义"><span class="nav-number">1.2.</span> <span class="nav-text">几何意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机-线性可分"><span class="nav-number">1.3.</span> <span class="nav-text">感知机-线性可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法"><span class="nav-number">1.4.</span> <span class="nav-text">感知机学习算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法几何解释"><span class="nav-number">1.5.</span> <span class="nav-text">感知机学习算法几何解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">2.</span> <span class="nav-text">线性支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM与感知机的区别"><span class="nav-number">2.1.</span> <span class="nav-text">SVM与感知机的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔最大化"><span class="nav-number">2.2.</span> <span class="nav-text">间隔最大化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树"><span class="nav-number">1.</span> <span class="nav-text">提升树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树算法"><span class="nav-number">2.</span> <span class="nav-text">提升树算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#description-提升树算法，GBDT原理，损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">description: 提升树算法，GBDT原理，损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树-1"><span class="nav-number">3.</span> <span class="nav-text">提升树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树算法-1"><span class="nav-number">4.</span> <span class="nav-text">提升树算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT-梯度提升树"><span class="nav-number">5.</span> <span class="nav-text">GBDT(梯度提升树)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT与LR比较"><span class="nav-number">6.</span> <span class="nav-text">GBDT与LR比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT损失函数"><span class="nav-number">7.</span> <span class="nav-text">GBDT损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GBDT分类常用损失函数"><span class="nav-number">7.1.</span> <span class="nav-text">GBDT分类常用损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GBDT回归常用损失函数"><span class="nav-number">7.2.</span> <span class="nav-text">GBDT回归常用损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT二分类"><span class="nav-number">8.</span> <span class="nav-text">GBDT二分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT多分类"><span class="nav-number">9.</span> <span class="nav-text">GBDT多分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT的正则化"><span class="nav-number">10.</span> <span class="nav-text">GBDT的正则化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBDT的优缺点"><span class="nav-number">11.</span> <span class="nav-text">GBDT的优缺点</span></a></li></ol></div>
             
 
           </div>
