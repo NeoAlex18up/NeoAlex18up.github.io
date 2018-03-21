@@ -92,7 +92,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云1/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云1/2.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云1/3.png">
-<meta property="og:updated_time" content="2018-03-20T12:37:09.351Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/20/阿里云1/4.png">
+<meta property="og:updated_time" content="2018-03-21T01:43:00.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS-1:环境初始化">
 <meta name="twitter:description" content="阿里云ECS和初始环境">
@@ -401,8 +402,9 @@
 <li>cat /proc/cpuinfo可以查看cpu是几核.</li>
 <li>cat /proc/meminfo查看硬盘信息，我是40G。<br><img src="/2018/03/20/阿里云1/1.png" alt=""><br><img src="/2018/03/20/阿里云1/2.png" alt=""><h1 id="添加root用户"><a href="#添加root用户" class="headerlink" title="添加root用户"></a>添加root用户</h1></li>
 <li>adduser xxx</li>
-<li>sudo vim /etc/sudoers 找到root(root ALL…..)在下面类似的添加自己刚刚建立的用户，赋予root权限<br><img src="/2018/03/20/阿里云1/3.png" alt=""></li>
+<li>sudo vim /etc/sudoers 找到root(root ALL…..)在下面类似的添加自己刚刚建立的用户，赋予root权限<br>使用刚刚的用户远程连接服务器<br>ssh xxx@公网ip<br><img src="/2018/03/20/阿里云1/3.png" alt=""></li>
 </ul>
+<h1 id="配置安全组"><a href="#配置安全组" class="headerlink" title="配置安全组"></a>配置安全组</h1><p>Inbound<br><img src="/2018/03/20/阿里云1/4.png" alt=""></p>
 <h1 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h1><p>扁鹊二连</p>
 <ul>
 <li>sudo apt-get update</li>
@@ -410,6 +412,7 @@
 <li>sudo apt-get install vim</li>
 </ul>
 <p>准备工作非常简单，下面就可以开始Xen的安装了。</p>
+<h1 id="使用SSH密钥对登陆"><a href="#使用SSH密钥对登陆" class="headerlink" title="使用SSH密钥对登陆"></a>使用SSH密钥对登陆</h1><p>1.首先需要新建一个密钥对 云服务器ECS -&gt; 密钥对 -&gt; 新建密钥对 -&gt; 下载<br>2.找到刚才下载的 xx.pem文件，修改文件的属性，chmod 400 xxx.pem<br>3.使用密钥登陆 ssh -i xx.pem xxx@公网ip</p>
 
       
     </div>
@@ -711,7 +714,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明确配置信息"><span class="nav-number">1.</span> <span class="nav-text">明确配置信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加root用户"><span class="nav-number">2.</span> <span class="nav-text">添加root用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新包"><span class="nav-number">3.</span> <span class="nav-text">更新包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#明确配置信息"><span class="nav-number">1.</span> <span class="nav-text">明确配置信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加root用户"><span class="nav-number">2.</span> <span class="nav-text">添加root用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置安全组"><span class="nav-number">3.</span> <span class="nav-text">配置安全组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新包"><span class="nav-number">4.</span> <span class="nav-text">更新包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用SSH密钥对登陆"><span class="nav-number">5.</span> <span class="nav-text">使用SSH密钥对登陆</span></a></li></ol></div>
             
 
           </div>
