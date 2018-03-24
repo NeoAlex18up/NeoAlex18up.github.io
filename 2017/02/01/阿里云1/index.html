@@ -93,9 +93,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/3.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/4.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/2.png">
-<meta property="og:updated_time" content="2018-03-24T15:27:04.877Z">
+<meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/01/阿里云1/6.png">
+<meta property="og:updated_time" content="2018-03-24T15:33:52.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS">
 <meta name="twitter:description" content="阿里云ECS配置">
@@ -423,8 +423,8 @@
 <h1 id="工作原理？"><a href="#工作原理？" class="headerlink" title="工作原理？"></a>工作原理？</h1><p>在Xen环境中，主要有两个组成部分。</p>
 <ul>
 <li>一个是虚拟机监控器（VMM），也叫hypervisor。<strong>Hypervisor层在硬件与虚拟机之间，是必须最先载入到硬件的第一层</strong>。Hypervisor载入后，就可以部署虚拟机了。在Xen中，虚拟机叫做“domain”。</li>
-<li>在这些虚拟机中，其中一个扮演着很重要的角色，<strong>就是domain0，具有很高的特权</strong>。通常，在任何虚拟机之前安装的操作系统才有这种特权。Domain0要负责一些专门的工作。由于hypervisor中不包含任何与硬件对话的驱动，也没有与管理员对话的接口，<strong>这些驱动就由domain0来提供了</strong>。通过domain0，管理员可以利用一些Xen工具来创建其它虚拟机（Xen术语叫domainU）。这些domainU也叫无特权domain。这是因为在基于i386的CPU架构中，它们绝不会享有最高优先级，只有domain0才可以。<br>下图可以看到Xen在虚拟机和计算机硬件之间的关系：<br><img src="/2017/02/01/阿里云1/1.png" alt=""><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Xen-hypervisor-64-bit"><a href="#Xen-hypervisor-64-bit" class="headerlink" title="Xen-hypervisor(64-bit)"></a>Xen-hypervisor(64-bit)</h2></li>
-<li>sudo apt-get install xen-hypervisor-amd64<br>一些要安装的依赖包和我的版本<br><img src="/2017/02/01/阿里云1/2.png" alt=""></li>
+<li>在这些虚拟机中，其中一个扮演着很重要的角色，<strong>就是domain0，具有很高的特权</strong>。通常，在任何虚拟机之前安装的操作系统才有这种特权。Domain0要负责一些专门的工作。由于hypervisor中不包含任何与硬件对话的驱动，也没有与管理员对话的接口，<strong>这些驱动就由domain0来提供了</strong>。通过domain0，管理员可以利用一些Xen工具来创建其它虚拟机（Xen术语叫domainU）。这些domainU也叫无特权domain。这是因为在基于i386的CPU架构中，它们绝不会享有最高优先级，只有domain0才可以。<br>下图可以看到Xen在虚拟机和计算机硬件之间的关系：<br><img src="/2017/02/01/阿里云1/5.png" alt=""><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Xen-hypervisor-64-bit"><a href="#Xen-hypervisor-64-bit" class="headerlink" title="Xen-hypervisor(64-bit)"></a>Xen-hypervisor(64-bit)</h2></li>
+<li>sudo apt-get install xen-hypervisor-amd64<br>一些要安装的依赖包和我的版本<br><img src="/2017/02/01/阿里云1/6.png" alt=""></li>
 </ul>
 
       
