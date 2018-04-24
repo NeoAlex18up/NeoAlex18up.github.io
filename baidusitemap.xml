@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/24/cookbook/</loc>
-    <lastmod>2018-04-24T03:49:07.678Z</lastmod>
+    <loc>http://yoursite.com/2018/04/24/navigation/</loc>
+    <lastmod>2018-04-24T07:06:20.670Z</lastmod>
     <data>
         <display>
-        <title>Tensorflow</title>
-        <pubTime>2018-04-24T03:20:37.000Z</pubTime>
+        <title>目录导航</title>
+        <pubTime>2018-04-24T03:21:51.000Z</pubTime>
         
-        <tag>tensorflow</tag>
+        <tag>导航</tag>
          
          
            
@@ -21,14 +21,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/24/navigation/</loc>
-    <lastmod>2018-04-24T03:44:55.585Z</lastmod>
+    <loc>http://yoursite.com/2018/04/24/cookbook/</loc>
+    <lastmod>2018-04-24T07:02:57.330Z</lastmod>
     <data>
         <display>
-        <title>目录导航</title>
-        <pubTime>2018-04-24T03:21:51.000Z</pubTime>
+        <title>TF_CookBook-Chapter1</title>
+        <pubTime>2018-04-24T03:20:37.000Z</pubTime>
         
-        <tag>导航</tag>
+        <tag>tensorflow</tag>
          
          
            
