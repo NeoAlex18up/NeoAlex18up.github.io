@@ -2,10 +2,18 @@
 <search>
   <entry>
     <title><![CDATA[目录导航]]></title>
-    <url>%2F2018%2F04%2F24%2Fnavigation%2F</url>
-    <content type="text"><![CDATA[机器学习理论 [1.梯度提升树GBDT] [ 2.浅谈boosting与Adaboost] [ 3.浅谈SVM与感知机] [ 4.广义线性模型] [ 5.逻辑斯蒂回归] [ 6.对生成模型与判别模型的理解] [ 7.决策树原理] [ 8.决策树生成代码] 数据挖掘比赛 [1.2017 CCF 大数据竞赛top4%] [1.2017-JDD京东金融算法大赛15th解决方案] 算法题 [1.剑指offer] [2.Leetcode] Tensorflow [1.Tensorflow基础] [2.Tensorflow可视化]]]></content>
+    <url>%2F2028%2F04%2F24%2Fnavigation%2F</url>
+    <content type="text"><![CDATA[机器学习理论 [1.梯度提升树GBDT] [ 2.浅谈boosting与Adaboost] [ 3.浅谈SVM与感知机] [ 4.广义线性模型] [ 5.逻辑斯蒂回归] [ 6.对生成模型与判别模型的理解] [ 7.决策树原理] [ 8.决策树生成代码] 数据挖掘比赛 [1.2017 CCF 大数据竞赛top4%] [1.2017-JDD京东金融算法大赛15th解决方案] 算法题 [1.剑指offer] [2.Leetcode] Tensorflow [1.Tensorflow基础] [2.Tensorflow可视化] [3.Tensorflow回归]]]></content>
       <tags>
         <tag>导航</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tensorflow-regression]]></title>
+    <url>%2F2018%2F04%2F24%2Ftensorflow-regression%2F</url>
+    <content type="text"><![CDATA[这里使用天池糖尿病比赛的数据,数据量为6633条数据,90维。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849import numpy as npimport pandas as pdimport tensorflow as tffrom sklearn.preprocessing import MinMaxScaler# 导入数据train = pd.read_csv('trainSet.csv')y = train['血糖']train = train.drop('血糖',axis=1)# 填补空值train = train.fillna(method = 'bfill')train = train.fillna(method = 'pad')# 归一化scaler = MinMaxScaler()train = scaler.fit_transform(train)# 定义占位符trainSet = tf.placeholder(tf.float32,shape=[None,90])train_y = tf.placeholder(tf.float32,shape=[None])# 定义线性回归的变量 W and bW = tf.Variable(tf.random_normal(shape=[90,1]))b = tf.Variable(tf.random_normal(shape=[1]))# 定义相关参数learning_rate = 0.05batch_size = 50iterations = 200# 定义目标函数f = tf.add(tf.matmul(trainSet,W),b)# 声明损失函数，这里用平均方差作为损失函数loss = tf.reduce_mean(tf.square(train_y-f))# 声明优化函数,梯度下降opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)train_step = opt.minimize(loss)# 开始迭代训练with tf.Session() as sess: sess.run(tf.global_variables_initializer()) # 可视化 writer = tf.summary.FileWriter("", sess.graph) for i in range(iterations): sess.run(train_step,feed_dict=&#123;train_y:y,trainSet:train&#125;) # 打印当前的损失 temp_loss = sess.run(loss,feed_dict=&#123;train_y:y,trainSet:train&#125;) print(temp_loss)writer.close() 输出1234567891011121314151617181920217.053576.784936.573176.378996.191796.011435.837285.671365.514425.36657....2.137922.136942.135952.134952.134022.133032.13209 Tensorboard 计算图 (github挂了看不了文档，未完待续)]]></content>
+      <tags>
+        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>

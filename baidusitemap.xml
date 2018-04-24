@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/24/tensorboard/</loc>
-    <lastmod>2018-04-24T07:50:03.507Z</lastmod>
+    <loc>http://yoursite.com/2018/04/24/tensorflow-regression/</loc>
+    <lastmod>2018-04-24T09:36:50.722Z</lastmod>
     <data>
         <display>
-        <title>Tensorflow-可视化</title>
-        <pubTime>2018-04-24T03:20:37.000Z</pubTime>
+        <title>tensorflow-regression</title>
+        <pubTime>2018-04-24T08:10:34.000Z</pubTime>
         
         <tag>tensorflow</tag>
          
@@ -21,14 +21,31 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/04/24/navigation/</loc>
-    <lastmod>2018-04-24T07:49:07.605Z</lastmod>
+    <loc>http://yoursite.com/2028/04/24/navigation/</loc>
+    <lastmod>2018-04-24T09:35:19.746Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
-        <pubTime>2018-04-24T03:21:51.000Z</pubTime>
+        <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/24/tensorboard/</loc>
+    <lastmod>2018-04-24T07:50:03.507Z</lastmod>
+    <data>
+        <display>
+        <title>Tensorflow-可视化</title>
+        <pubTime>2018-04-24T03:20:37.000Z</pubTime>
+        
+        <tag>tensorflow</tag>
          
          
            
