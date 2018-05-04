@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨一瓶" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="稀疏矩阵科学计算意义，适用场景，scipy库的使用">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="稀疏矩阵-使用scipy">
+<meta property="og:url" content="http://yoursite.com/2018/05/01/sparseMatrix/index.html">
+<meta property="og:site_name" content="杨一瓶">
+<meta property="og:description" content="稀疏矩阵科学计算意义，适用场景，scipy库的使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/01/sparseMatrix/10.png">
+<meta property="og:updated_time" content="2018-05-04T14:09:55.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="稀疏矩阵-使用scipy">
+<meta name="twitter:description" content="稀疏矩阵科学计算意义，适用场景，scipy库的使用">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/01/sparseMatrix/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/01/sparseMatrix/"/>
+
+
+
+
+
+  <title>稀疏矩阵-使用scipy | 杨一瓶</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨一瓶</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">非常に広い肩</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            站内搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/01/sparseMatrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangyiqing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515518958292&di=cbaba0939238e439af8713e60c58555b&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F15%2F26%2F35%2F72s58PIC528_1024.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨一瓶">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">稀疏矩阵-使用scipy</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T23:08:52+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/01/sparseMatrix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/01/sparseMatrix/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/01/sparseMatrix/" class="leancloud_visitors" data-flag-title="稀疏矩阵-使用scipy">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  <center>稀疏矩阵科学计算意义，适用场景，scipy库的使用</center>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="什么是稀疏矩阵"><a href="#什么是稀疏矩阵" class="headerlink" title="什么是稀疏矩阵"></a>什么是稀疏矩阵</h1><p>对于那些零元素的数目<strong>远远多于非零元素</strong>，并且非零元素的<strong>分布没有规律</strong>的矩阵称为稀疏矩阵(sparse Matrix)，相反的，如果大部分是非0元素，那么为稠密矩阵。</p>
+<h1 id="稀疏矩阵的存储格式"><a href="#稀疏矩阵的存储格式" class="headerlink" title="稀疏矩阵的存储格式"></a>稀疏矩阵的存储格式</h1><p>由于稀疏矩阵中非零元素较少，零元素较多，因此可以采用只存储非零元素的方式来进行压缩存储，采用的一般方法就是三元组，分别来保存非0元素的行号，列号和对应的非0值，常用的存储格式有以下几种：</p>
+<h2 id="COO-Coordinate-Format-坐标格式"><a href="#COO-Coordinate-Format-坐标格式" class="headerlink" title="COO(Coordinate Format)-坐标格式"></a>COO(Coordinate Format)-坐标格式</h2><p>COO采用三个数组row、col和data来保存非零元素的信息，这三个数组的长度相同。</p>
+<p><strong>优点：</strong></p>
+<p>灵活，简单，仅存储坐标和值。</p>
+<p><strong>缺点：</strong></p>
+<p>不支持增删改，一旦创建之后转换为其他格式的矩阵才能做更多的操作。</p>
+<p><strong>图示：</strong></p>
+<p><img src="/2018/05/01/sparseMatrix/1.jpg" width="500" height="200" alt="none" align="center"></p>
+<p>上图示例：row=0,column=1,values=7,则对应于稀疏矩阵中0行1列的位置值为7，所以稀疏矩阵有多少个非0值，三元组的长度就有多长。</p>
+<h2 id="CSR-Compressed-Sparse-Row-Format-压缩稀疏行格式"><a href="#CSR-Compressed-Sparse-Row-Format-压缩稀疏行格式" class="headerlink" title="CSR(Compressed Sparse Row Format)-压缩稀疏行格式"></a>CSR(Compressed Sparse Row Format)-压缩稀疏行格式</h2><p>这种格式是把<strong>行的信息压缩存储</strong>了，CSR由三个数组决定:<strong>values,columns,row_ptr</strong></p>
+<p><strong>数组values</strong>：保存非0实数，按行优先保存(即从0行到最后一行，每一行从左到右的顺序)</p>
+<p><strong>Columns:</strong> 和values长度相同，给出每个非0值所在的列标</p>
+<p>Row_ptr: 长度为稀疏矩阵的行数，保存稀疏矩阵的每行第一个非零元素在values的索引。</p>
+<p><strong>图示：</strong></p>
+<p><img src="/2018/05/01/sparseMatrix/2.png" width="400" height="300" alt="none" align="center"></p>
+<p><img src="/2018/05/01/sparseMatrix/3.png" width="400" height="300" alt="none" align="center"></p>
+<p>如上图所示，val和col_ind很好理解，row_ptr第一个值1代表第一行的第一个非0元素在val中的位置为1，<strong>或者说是截止到这一行的第一个非0元素，一共出现了n个非0元素</strong>，以此类推，第二行的3出现时，一共有3个非零元素，<strong>这样就知道每一行有多少个元素了，根据列号可以还原出稀疏矩阵来，以此来压缩行信息</strong>。</p>
+<h2 id="BSR-Block-Compressed-Sparse-Row-Format-分块压缩"><a href="#BSR-Block-Compressed-Sparse-Row-Format-分块压缩" class="headerlink" title="BSR(Block Compressed Sparse Row Format)-分块压缩"></a>BSR(Block Compressed Sparse Row Format)-分块压缩</h2><p>分块压缩其实是基于CSR的，可以分块压缩的稀疏矩阵要求能分解成小的矩阵块，然后再按照CSR的原理进行压缩</p>
+<p><strong>图示：</strong></p>
+<p><img src="/2018/05/01/sparseMatrix/4.png" width="400" height="300" alt="none" align="center"><br><img src="/2018/05/01/sparseMatrix/5.png" width="400" height="300" alt="none" align="center"></p>
+<p>上面的稀疏矩阵的BSR格式为：<br>values  =  (1 0 2 1 6 7 8 2 1 4 5 1 4 3 0 0 7 2 0 0)<br>columns  = (0   1   1   1   2)<br>pointerB = (0   2   3)<br>pointerE = (2   3   5)</p>
+<h2 id="其他格式"><a href="#其他格式" class="headerlink" title="其他格式"></a>其他格式</h2><p>DIA(Diagonal Storage Format)-对角线格式<br>ELLPACK (ELL)<br>Hybrid (HYB)<br>dok_matrix<br>lil_matrix</p>
+<h1 id="不同压缩存储格式的优缺点"><a href="#不同压缩存储格式的优缺点" class="headerlink" title="不同压缩存储格式的优缺点"></a>不同压缩存储格式的优缺点</h1><p><strong>1.BSR-分块压缩矩阵</strong><br>BSR更适合于有密集子矩阵的稀疏矩阵，分块矩阵通常出现在向量值有限的离散元中，在这种情景下，比CSR和CSC算术操作更有效。</p>
+<p><strong>2.CSC-列压缩格式</strong><br>高效的CSC +CSC,CSC*CSC算术运算；高效的列切片操作。但是矩阵内积操作没有CSR,BSR快；行切片操作慢（相比CSR）；稀疏结构的变化代价高（相比LIL 或者 DOK）。</p>
+<p><strong>3.CSR-行压缩格式</strong><br>高效的CSR + CSR, CSR *CSR算术运算；高效的行切片操作；高效的矩阵内积内积操作。但是列切片操作慢（相比CSC）；稀疏结构的变化代价高（相比LIL 或者 DOK）。CSR格式在存储稀疏矩阵时非零元素平均使用的字节数(Bytes per Nonzero Entry)最为稳定（float类型约为8.5，double类型约为12.5）。CSR格式常用于读入数据后进行稀疏矩阵计算。</p>
+<p><strong>4.COO-坐标压缩</strong><br>便利快捷的在不同稀疏格式间转换；允许重复录入，允许重复的元素；从CSR\CSC格式转换非常快速，COO格式常用于从文件中进行稀疏矩阵的读写，如matrix market即采用COO格式。例如某个CSV文件中可能有这样三列：“用户ID，商品ID，评价值”。采用numpy.loadtxt或pandas.read_csv将数据读入之后，可以通过coo_matrix快速将其转换成稀疏矩阵：矩阵的每行对应一位用户，每列对应一件商品，而元素值为用户对商品的评价。但是coo_matrix不支持元素的存取和增删，一旦创建之后，除了将之转换成其它格式的矩阵，几乎无法对其做任何操作和矩阵运算。</p>
+<p><strong>5.DIA-对角压缩</strong><br>对角存储格式(DIA)和ELL格式在进行稀疏矩阵-矢量乘积(sparse matrix-vector products)时效率最高，所以它们是应用迭代法(如共轭梯度法)解稀疏线性系统最快的格式；DIA格式存储数据的非零元素平均使用的字节数与矩阵类型有较大关系，适合于StructuredMesh结构的稀疏矩阵（float类型约为4.05，double类型约为8.10）。对于Unstructured Mesh以及Random Matrix，DIA格式使用的字节数是CSR格式的十几倍。</p>
+<p><strong>综合来讲</strong><br>1.COO和CSR格式比起DIA和ELL来，更加灵活，易于操作；<br>2.ELL的优点是快速，而COO优点是灵活，二者结合后的HYB格式是一种不错的稀疏矩阵表示格式；<br>3.CSR格式在存储稀疏矩阵时非零元素平均使用的字节数(Bytes per Nonzero Entry)最为稳定（float类型约为8.5，double类型约为12.5），而DIA格式存储数据的非零元素平均使用的字节数与矩阵类型有较大关系，适合于StructuredMesh结构的稀疏矩阵（float类型约为4.05，double类型约为8.10，对于Unstructured Mesh以及Random Matrix,DIA格式使用的字节数是CSR格式的十几倍；<br>4.<strong>一些线性代数计算库：COO格式常用于从文件中进行稀疏矩阵的读写，如matrix market即采用COO格式，而CSR格式常用于读入数据后进行稀疏矩阵计算。</strong></p>
+<h1 id="Scipy实践"><a href="#Scipy实践" class="headerlink" title="Scipy实践"></a>Scipy实践</h1><p><a href="https://docs.scipy.org/doc/scipy/reference/sparse.html" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="稀疏矩阵类"><a href="#稀疏矩阵类" class="headerlink" title="稀疏矩阵类"></a>稀疏矩阵类</h2><p><img src="/2018/05/01/sparseMatrix/5.png" width="400" height="300" alt="none" align="center"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建一个稀疏矩阵</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> sparse</span><br><span class="line">sparse_array = np.array([</span><br><span class="line">    [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">11</span>],</span><br><span class="line">    [<span class="number">0</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">18</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">])</span><br><span class="line"><span class="comment"># 转换为coo存储格式</span></span><br><span class="line">sparse_coo = sparse.coo_matrix(sparse_array)</span><br><span class="line"><span class="comment"># 查看类型</span></span><br><span class="line">type(sparse_coo)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output:scipy.sparse.coo.coo_matrix</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scipy.sparse.spmatrix 是所有存储格式类的基类</span></span><br><span class="line"><span class="comment"># 它有两个属性，'nnz'非0元素的个数，'shape'矩阵的shape</span></span><br><span class="line">print(sparse_coo.nnz)</span><br><span class="line">print(sparse_coo.shape)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Output: <span class="number">9</span></span><br><span class="line">(<span class="number">4</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p>比较常用的method：tocoo(),tocsc(),tocsr()….</p>
+<h2 id="构建稀疏矩阵"><a href="#构建稀疏矩阵" class="headerlink" title="构建稀疏矩阵"></a>构建稀疏矩阵</h2><ol>
+<li>eye(m[, n, k, dtype, format]) - 构建一个对角线值1为1的矩阵</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sparse.eye(<span class="number">4</span>,<span class="number">4</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure>
+<p>2.identity(n[, dtype, format]) - 返回一个nxn的对角线矩阵，跟上面那个差不多<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sparse.identity(<span class="number">4</span>, dtype=<span class="string">'float32'</span>, format=<span class="string">'csc'</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>]], dtype=float32)</span><br></pre></td></tr></table></figure></p>
+<p>3.kron(A, B[, format]) - 计算稀疏矩阵A和B的克罗内克积<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># format指定返回的压缩格式</span></span><br><span class="line">sparse.kron(sparse_coo,sparse_coo,format=<span class="string">'csc'</span>).toarray()</span><br></pre></td></tr></table></figure></p>
+<p>4.kronsum(A, B[, format]) - 计算矩阵的克罗内克和</p>
+<p>5.diags(diagonals[, offsets, shape, format, dtype])    - 从对角线构建一个稀疏矩阵<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用起来比较灵活，有很多种定义的方法，但是都要使用diagnols和offset来定义（offset是离对角线的距离）</span></span><br><span class="line">offset = [<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">diagnols = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],[<span class="number">-2</span>,<span class="number">1</span>,<span class="number">-2</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>]]</span><br><span class="line">sparse.diags(diagnols,offset).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[<span class="number">-2.</span>,  <span class="number">2.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">3.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">2.</span>, <span class="number">-2.</span>,  <span class="number">3.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure></p>
+<p>6.spdiags(data, diags, m, n[, format]) - 利用原矩阵和offset构建对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># offset长度要和行数对应，把每一行放到了第i个offset的对角线上。</span></span><br><span class="line">sparse.spdiags(sparse_array,[<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">2</span>],<span class="number">6</span>,<span class="number">6</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">1</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>],</span><br><span class="line">       [ <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">0</span>,  <span class="number">0</span>],</span><br><span class="line">       [ <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>],</span><br><span class="line">       [ <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">4</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>],</span><br><span class="line">       [ <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">3</span>,  <span class="number">8</span>,  <span class="number">0</span>],</span><br><span class="line">       [ <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">1</span>, <span class="number">11</span>]])</span><br></pre></td></tr></table></figure>
+<p>7.scipy.sparse.block_diag - 根据提供的子矩阵构建块矩阵<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">A = coo_matrix([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">B = coo_matrix([[<span class="number">5</span>], [<span class="number">6</span>]])</span><br><span class="line">C = coo_matrix([[<span class="number">7</span>]])</span><br><span class="line">block_diag((A, B, C)).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">      [<span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">0</span>],</span><br><span class="line">      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">0</span>],</span><br><span class="line">      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>]])</span><br></pre></td></tr></table></figure></p>
+<p>8.scipy.sparse.tril - 得到距离中心对角线距离为k的对角线以下的矩阵<br>9.scipy.sparse.triu - 得到距离中心对角线距离为k的对角线以上的矩阵<br>10.scipy.sparse.bmat - 根据子矩阵建立稀疏块矩阵<br>11.scipy.sparse.hstack - 在水平方向连接两个稀疏矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">sparse_coo.toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ 1,  0,  0,  0,  8, 11],</span><br><span class="line">       [ 0,  0,  4,  3,  1,  0],</span><br><span class="line">       [ 3,  0,  0,  0,  0,  0],</span><br><span class="line">       [18,  0,  0,  1,  0,  0]])</span><br><span class="line"></span><br><span class="line">sparse_coo_2.toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[2, 2],</span><br><span class="line">       [0, 0],</span><br><span class="line">       [0, 1],</span><br><span class="line">       [1, 2]])</span><br><span class="line"></span><br><span class="line">sparse.hstack([sparse_coo,sparse_coo_2]).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"># 可以看到是水平方向上的拼接,所以两个稀疏矩阵的行数要相等</span><br><span class="line">array([[ 1,  0,  0,  0,  8, 11,  2,  2],</span><br><span class="line">       [ 0,  0,  4,  3,  1,  0,  0,  0],</span><br><span class="line">       [ 3,  0,  0,  0,  0,  0,  0,  1],</span><br><span class="line">       [18,  0,  0,  1,  0,  0,  1,  2]], dtype=int64)</span><br></pre></td></tr></table></figure></p>
+<p>11.scipy.sparse.vstack - 在竖直方向上拼接两个稀疏矩阵，与上面的同理，vstack要求两个矩阵的列数(特征数)相等。<br>12.scipy.sparse.rand - 生成具有均匀分布值的给定形状和密度的稀疏矩阵。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前两个参数是shape,density是密度，密度为0意味着没有非0项(全为0)，密度为1意味着全矩阵(没有0)。</span></span><br><span class="line">sparse.rand(<span class="number">3</span>,<span class="number">3</span>,<span class="number">0.3</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">0.</span>        ,  <span class="number">0.</span>        ,  <span class="number">0.03750317</span>],</span><br><span class="line">       [ <span class="number">0.</span>        ,  <span class="number">0.</span>        ,  <span class="number">0.16852654</span>],</span><br><span class="line">       [ <span class="number">0.</span>        ,  <span class="number">0.</span>        ,  <span class="number">0.</span>        ]])</span><br><span class="line"></span><br><span class="line">sparse.rand(<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">0.22234732</span>,  <span class="number">0.37775149</span>,  <span class="number">0.70501589</span>],</span><br><span class="line">       [ <span class="number">0.87329993</span>,  <span class="number">0.97699362</span>,  <span class="number">0.62989565</span>],</span><br><span class="line">       [ <span class="number">0.23061425</span>,  <span class="number">0.58412748</span>,  <span class="number">0.3593626</span> ]])</span><br><span class="line"></span><br><span class="line">sparse.rand(<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>).toarray()</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">array([[ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br></pre></td></tr></table></figure>
+<p>13.find() - 得到保存的存储数组(非0值和索引)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sparse.find(sparse_coo)</span><br><span class="line"></span><br><span class="line">Output：</span><br><span class="line">(array([<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], dtype=int32),</span><br><span class="line"> array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>], dtype=int32),</span><br><span class="line"> array([ <span class="number">1</span>,  <span class="number">3</span>, <span class="number">18</span>,  <span class="number">4</span>,  <span class="number">3</span>,  <span class="number">1</span>,  <span class="number">8</span>,  <span class="number">1</span>, <span class="number">11</span>]))</span><br></pre></td></tr></table></figure></p>
+<h1 id="稀疏矩阵的存储和加载"><a href="#稀疏矩阵的存储和加载" class="headerlink" title="稀疏矩阵的存储和加载"></a>稀疏矩阵的存储和加载</h1><p>1.scipy.sparse.save_npz - 将稀疏矩阵存储为.npz格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用起来很简单</span></span><br><span class="line">sparse.save_npz(<span class="string">'YourFileName.npz'</span>,YourSparseMatrix)</span><br></pre></td></tr></table></figure>
+<p>2.scipy.sparse.load_npz<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接load保存的.npz文件即可</span></span><br><span class="line">sparse.load_npz(<span class="string">'YourFileName.npz'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>在使用稀疏矩阵格式如coo,csc等格式的时候，根据官方建议，最好不要使用numpy库里的方法，而是使用sparse库自带的方法，如果要使用numpy的方法，先转换格式。</p>
+<h1 id="稀疏表达的意义"><a href="#稀疏表达的意义" class="headerlink" title="稀疏表达的意义"></a>稀疏表达的意义</h1><p>根据周志华《机器学习》中所说：<br>当样本数据是一个稀疏矩阵时，对学习任务来说会有不少的好处，例如很多问题变得线性可分，储存更为高效等。这便是稀疏表示与字典学习的基本出发点。稀疏矩阵即矩阵的每一行列中都包含了大量的零元素，且这些零元素没有出现在同一行/列，对于一个给定的稠密矩阵，若我们能通过某种方法找到其合适的稀疏表示，则可以使得学习任务更加简单高效，我们称之为稀疏编码（sparse coding）或字典学习（dictionary learning）。</p>
+<p><img src="/2018/05/01/sparseMatrix/9.png" width="600" height="200" alt="none" align="center"></p>
+<p><img src="/2018/05/01/sparseMatrix/10.png" width="700" height="400" alt="none" align="center"></p>
+<h1 id="稀疏矩阵的场景"><a href="#稀疏矩阵的场景" class="headerlink" title="稀疏矩阵的场景"></a>稀疏矩阵的场景</h1><p>1.例如CTR预估中会有大量的category特征和id特征，one-hot以后维度会非常高<br>2.例如对文本特征的提取过程<br>3.图像在小波变换，梯度算子下是（近似）稀疏的；<br>4.分类过程中需要输入在不同的基下面表达不同，这是稀疏性；<br>5.Deep Learning在不断地提出feature的过程也是稀疏性；<br>6.推荐系统背后是因为用户产品评价是一个低秩矩阵；</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a href="https://blog.csdn.net/sunhuaqiang1/article/details/51296803" target="_blank" rel="noopener">孙华强</a></p>
+<p><a href="https://blog.csdn.net/pipisorry/article/details/41762945" target="_blank" rel="noopener">某小皮</a></p>
+<p><a href="https://www.zhihu.com/question/26602796/answer/33431062" target="_blank" rel="noopener">知乎</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatQR.png" alt="Yangyiqing 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AlipayQR.png" alt="Yangyiqing 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/24/tensorflow-regression/" rel="next" title="tensorflow-regression">
+                <i class="fa fa-chevron-left"></i> tensorflow-regression
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2028/04/24/navigation/" rel="prev" title="目录导航">
+                目录导航 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"测试测试测试测试",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2150691" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515518958292&di=cbaba0939238e439af8713e60c58555b&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F15%2F26%2F35%2F72s58PIC528_1024.jpg"
+                alt="Yangyiqing" />
+            
+              <p class="site-author-name" itemprop="name">Yangyiqing</p>
+              <p class="site-description motion-element" itemprop="description">Easy come , Easy go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/NeoAlex18up" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/neo.yang.9674" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.instagram.com/qdneo/" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/5079778489/home?wvr=5" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/python/" title="python" target="_blank">python</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/机器学习/" title="机器学习" target="_blank">机器学习</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/数学原理/" title="数学原理" target="_blank">数学原理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/游戏/" title="游戏" target="_blank">游戏</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://malped.github.io/" title="大鼻子的博客" target="_blank">大鼻子的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是稀疏矩阵"><span class="nav-number">1.</span> <span class="nav-text">什么是稀疏矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稀疏矩阵的存储格式"><span class="nav-number">2.</span> <span class="nav-text">稀疏矩阵的存储格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#COO-Coordinate-Format-坐标格式"><span class="nav-number">2.1.</span> <span class="nav-text">COO(Coordinate Format)-坐标格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSR-Compressed-Sparse-Row-Format-压缩稀疏行格式"><span class="nav-number">2.2.</span> <span class="nav-text">CSR(Compressed Sparse Row Format)-压缩稀疏行格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BSR-Block-Compressed-Sparse-Row-Format-分块压缩"><span class="nav-number">2.3.</span> <span class="nav-text">BSR(Block Compressed Sparse Row Format)-分块压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他格式"><span class="nav-number">2.4.</span> <span class="nav-text">其他格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同压缩存储格式的优缺点"><span class="nav-number">3.</span> <span class="nav-text">不同压缩存储格式的优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scipy实践"><span class="nav-number">4.</span> <span class="nav-text">Scipy实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#稀疏矩阵类"><span class="nav-number">4.1.</span> <span class="nav-text">稀疏矩阵类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建稀疏矩阵"><span class="nav-number">4.2.</span> <span class="nav-text">构建稀疏矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稀疏矩阵的存储和加载"><span class="nav-number">5.</span> <span class="nav-text">稀疏矩阵的存储和加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稀疏表达的意义"><span class="nav-number">6.</span> <span class="nav-text">稀疏表达的意义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稀疏矩阵的场景"><span class="nav-number">7.</span> <span class="nav-text">稀疏矩阵的场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by-Yangyiqing</span>
+
+  
+</div>
+
+
+    
+
+
+
+  <span class="post-meta-divider">个人博客 | 转载请注明出处</span>
+
+
+
+  <div class="theme-info"></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8pBLe47wGmYot2Yf640c9r42-gzGzoHsz',
+        appKey: 'ELRrPBsu8dq1c895H7R2gsht',
+        placeholder: '发表你的评论',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("8pBLe47wGmYot2Yf640c9r42-gzGzoHsz", "ELRrPBsu8dq1c895H7R2gsht");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
