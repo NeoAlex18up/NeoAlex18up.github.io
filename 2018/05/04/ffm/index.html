@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨一瓶" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="FFM、FM模型原理、应用场景与实践">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFM与FM模型原理与实践">
+<meta property="og:url" content="http://yoursite.com/2018/05/04/ffm/index.html">
+<meta property="og:site_name" content="杨一瓶">
+<meta property="og:description" content="FFM、FM模型原理、应用场景与实践">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/04/ffm/5.png">
+<meta property="og:updated_time" content="2018-05-11T04:21:28.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFM与FM模型原理与实践">
+<meta name="twitter:description" content="FFM、FM模型原理、应用场景与实践">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/04/ffm/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/04/ffm/"/>
+
+
+
+
+
+  <title>FFM与FM模型原理与实践 | 杨一瓶</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨一瓶</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">非常に広い肩</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            站内搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/ffm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangyiqing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515518958292&di=cbaba0939238e439af8713e60c58555b&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F15%2F26%2F35%2F72s58PIC528_1024.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨一瓶">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FFM与FM模型原理与实践</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T22:31:54+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/04/ffm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/04/ffm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/04/ffm/" class="leancloud_visitors" data-flag-title="FFM与FM模型原理与实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  <center>FFM、FM模型原理、应用场景与实践</center>
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="什么是FM模型？"><a href="#什么是FM模型？" class="headerlink" title="什么是FM模型？"></a>什么是FM模型？</h1><p>因子分解机(Factorization Machine, FM)是由Steffen Rendle提出的一种基于矩阵分解的机器学习算法，其开源库为libFM，<strong>FM模型有以下优势：</strong><br>1.FM模型对稀疏矩阵有非常好的适应性，这点比SVM强很多。<br>2.FM拥有线性的复杂度<br>3.FM具有非常好的适应性<br>所以，其突出的特点就是<strong>对高维度稀疏矩阵</strong>效果比较好。</p>
+<h1 id="FM模型原理"><a href="#FM模型原理" class="headerlink" title="FM模型原理"></a>FM模型原理</h1><p>FM模型表示为：<br>$$y:=w_0+\sum_{i=1}^n{w_ix_i}+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}&lt;v_i,v_j&gt;x_ix_j$$<br><strong>前半部分</strong>为传统的线性模型，<strong>后半部分</strong>表示两个互异特征分量之间的关系,$&lt;v_i,v_j&gt;$的表达式如下：<br>$$&lt;v_i,v_j&gt;:=\sum_{f=1}^kv_{i,f}·v_{j,f}$$<br>表示长度为k的两个向量的点积。$v_i$表示的是系数矩阵$V$的第$i$维隐向量。<strong>k是定义factorization维度的超参数</strong>，是正整数因子分解机FM也可以推广到高阶的形式，即将更多互异特征分量之间的相互关系考虑进来。</p>
+<hr>
+<p><strong>先从多项式模型开始看起：</strong>$$y:=w_0+\sum_{i=1}^n{w_ix_i}+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}w_{ij}x_ix_j$$<br>从上述公式可以看出来，组合特征的参数一共有$\frac{n(n-1)}{2}$个，然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 $w_{ij}$ 的训练<strong>需要大量 $x_i$ 和 $x_j$ 都非零的样本</strong>；由于样本数据本来就比较稀疏，满足“$x_i$ 和 $x_j$ 都非零”的样本将会非常少。<strong>训练样本的不足</strong>，很容易导致参数 $w_{ij}$ 不准确，最终将严重影响模型的性能。</p>
+<p><strong>那么，如何解决二次项参数的训练问题呢？</strong><br>矩阵分解提供了一种解决思路。在model-based的协同过滤中，一个rating矩阵可以分解为user矩阵和item矩阵，每个user和item都可以采用一个隐向量表示。比如在下图中的例子中，我们把每个user表示成一个二维向量，同时把每个item表示成一个二维向量，两个向量的点积就是矩阵中user对item的打分。<br><img src="/2018/05/04/ffm/1.png" alt=""><br>类似地，所有二次项参数 $w_{ij}$ 可以组成一个对称阵 $W$（为了方便说明FM的由来，对角元素可以设置为正实数），那么这个矩阵就可以分解为 $W=V^TV$，<strong>$V$ 的第 $j$ 列便是第 $j$ 维特征的隐向量</strong>。换句话说，每个参数 $w_{ij}=⟨v_i,v_j⟩$，这就是FM模型的核心思想，因此可以得到FM的模型:<br>$$y:=w_0+\sum_{i=1}^n{w_ix_i}+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}&lt;v_i,v_j&gt;x_ix_j$$<br>其中，$v_i$ 是第 $i$ 维特征的隐向量，$⟨⋅,⋅⟩$ 代表向量点积。隐向量的长度为 k,包含 k 个描述特征的因子，根据上述公式，二次项的参数数量减少为 $kn$个，远少于多项式模型的参数数量。另外，参数因子化使得 $x_hx_i$ 的参数和 $x_ix_j$ 的参数不再是相互独立的，因此我们可以在样本稀疏的情况下相对合理地估计FM的二次项参数。具体来说，$x_hx_i$ 和 $x_ix_j$ 的系数分别为 $⟨v_h,v_i⟩$ 和 $⟨v_i,v_j⟩$，它们之间有共同项 $v_i$。也就是说，所有包含“$x_i$ 的非零组合特征”（存在某个 $j≠i$，使得 $x_ix_j≠0$）的样本都可以用来学习隐向量 vi，这很大程度上避免了数据稀疏性造成的影响。而在多项式模型中，$w_{hi}$ 和 $w_{ij}$ 是相互独立的。</p>
+<h1 id="FM复杂度分析"><a href="#FM复杂度分析" class="headerlink" title="FM复杂度分析"></a>FM复杂度分析</h1><p>直观上看，FM的复杂度是$ O(kn^2)$的，但是通过下式可以化简二次项:<br><img src="/2018/05/04/ffm/3.png" width="400" height="400" alt="none" align="center"><br><img src="/2018/05/04/ffm/2.png" width="380" height="80" alt="none" align="center"><br>可以将复杂度优化到$O(kn)$，所以FM可以在线性时间内对样本做出预测。</p>
+<p><strong>FM的训练复杂度：</strong>，使用SGD训练模型，各参数的梯度如下：<br><img src="/2018/05/04/ffm/4.png" width="380" alt="none" align="center"></p>
+<p>其中，<strong>$v_{j,f}$ 是隐向量 $v_j$ 的第 $f$ 个元素</strong>。由于 $\sum_{j=1}^n{v_{j,f}x_j}$ 只与 $f$ 有关，而与$ i $无关，在每次迭代过程中，<strong>只需计算一次所有$ f$ 的  $\sum_{j=1}^n{v_{j,f}x_j}$，就能够方便地得到所有 $v_{i,f}$ 的梯度。</strong>显然，计算所有 $f$ 的 $\sum_{j=1}^n{v_{j,f}x_j}$ 的复杂度是 $O(kn)$；已知 $\sum_{j=1}^n{v_{j,f}x_j}$时，计算每个参数梯度的复杂度是 $O(1)$；得到梯度后，更新每个参数的复杂度是 $O(1)$；模型参数一共有 $nk+n+1$ 个。因此，FM参数训练的复杂度也是 $O(kn)$。<strong>综上可知，FM可以在线性时间训练和预测，是一种非常高效的模型。</strong></p>
+<h1 id="FFM模型"><a href="#FFM模型" class="headerlink" title="FFM模型"></a>FFM模型</h1><p>FFM模型是FM模型的一种升级版，具体体现在引入了”域”field这个概念，相同性质的特征同属于一个field。简单来讲，<strong>同一个类别特征生成的one-hot特征都可以放在同一个field中</strong>，在FFM中，每一维特征 $x_i，$针对其它特征的每一种field $f_j$，都会学习一个隐向量 $v_i$,$f_j$。因此，<strong>隐向量不仅与特征相关，也与field相关</strong>。举个例子来说，用户ID One-hot以后产生了500个特征，那么其中“id00001”这个特征就会和Age，gender这两个field去产生不同的隐向量，这与“Age”，“gender”的内在差异相符，这也是FFM种“field-aware”的由来。</p>
+<p><strong>FM和FFM的联系：</strong><br><strong>假设样本的 $n $个特征属于 $f$ 个field，那么FFM的二次项有$ nf$个隐向量。而在FM模型中，每一维特征的隐向量只有一个。FM可以看作FFM的特例，是把所有特征都归属到一个field时的FFM模型</strong>，即通过引入field的概念，来对产生的隐向量进行细化，从而达到更好的挖掘交叉特征的目的。</p>
+<p>根据其field特性，可以得到FFM模型的公式：<br>$$y:=w_0+\sum_{i=1}^n{w_ix_i}+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}&lt;v_if_j,v_jf_i&gt;x_ix_j$$<br>其中，$f_j$ 是第$ j$ 个特征所属的field。如果隐向量的长度为 $k$，那么FFM的二次参数有 $nfk$ 个，远多于FM模型的 $nk$ 个。此外，<strong>由于隐向量与field相关，FFM二次项并不能够化简，其预测复杂度是 $O(kn^2)$。</strong></p>
+<hr>
+<p>下面举一个例子：<br><img src="/2018/05/04/ffm/6.png" width="300" alt="none" align="center"></p>
+<p>这条记录可以编码成5个特征，其中“Genre=Comedy”和“Genre=Drama”属于同一个field，“Price”是数值型，不用One-Hot编码转换。为了方便说明FFM的样本格式，我们将所有的特征和对应的field映射成整数编号。<br><img src="/2018/05/04/ffm/7.png" width="400" alt="none" align="center"><br>那么，FFM的组合特征有10项，如下图所示。<br><img src="/2018/05/04/ffm/8.png" width="600" alt="none" align="center"><br>其中，红色是field编号，蓝色是特征编号，绿色是此样本的特征取值。二次项的系数是通过与特征field相关的隐向量点积得到的，二次项共有 $\frac{n(n−1)}{2}$ 个。</p>
+<h1 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h1><p><strong>主要用于CTR/CVR预估。</strong>总体来讲可以分为这几类：<br><strong>(1) 回归问题</strong><br>损失函数为平方损失函数。<br><strong>(2) 分类问题</strong><br>使用logitloss作为优化标准，使用sigmoid函数<br><strong>(3) 排序</strong></p>
+<h1 id="FFM训练和参数"><a href="#FFM训练和参数" class="headerlink" title="FFM训练和参数"></a>FFM训练和参数</h1><p>同一个categorical特征经过One-Hot编码生成的数值特征都可以放到同一个field。所有的特征必须转换成“field_id:feat_id:value”格式，field_id代表特征所属field的编号，feat_id是特征编号，value是特征的值。<br>数值型的特征比较容易处理，只需分配单独的field编号，如用户评论得分、商品的历史CTR/CVR等。<strong>categorical特征需要经过One-Hot编码成数值型，编码产生的所有特征同属于一个field，</strong>而特征的值只能是0或1，如用户的性别、年龄段，商品的品类id等。除此之外，<strong>还有第三类特征</strong>，如用户浏览/购买品类，有多个品类id且用一个数值衡量用户浏览或购买每个品类商品的数量。这类特征按照categorical特征处理，不同的只是特征的值不是0或1，而是代表用户浏览或购买数量的数值。按前述方法得到field_id之后，再对转换后特征顺序编号，得到feat_id，特征的值也可以按照之前的方法获得。</p>
+<hr>
+<p><strong>在训练FFM的过程中，有许多小细节值得特别关注。</strong><br><strong>1.样本层面的数据是推荐进行归一化的。</strong><br><strong>2.特征归一化。</strong>尤其是数值型特征归一化。CTR/CVR模型采用了多种类型的源特征，包括数值型和categorical类型等。但是，categorical类编码后的特征取值只有0或1，较大的数值型特征会造成样本归一化后categorical类生成特征的值非常小，没有区分性。例如，一条用户-商品记录，用户为“男”性，商品的销量是5000个（假设其它特征的值为零），那么归一化后特征“sex=male”（性别为男）的值略小于0.0002，而“volume”（销量）的值近似为1。特征“sex=male”在这个样本中的作用几乎可以忽略不计，这是相当不合理的。因此，将源数值型特征的值归一化到 [0，1] 是非常必要的。<br><strong>3.省略零值特征。</strong>零值特征对模型完全没有贡献。包含零值特征的一次项和组合项均为零，对于训练模型参数或者目标值预估是没有作用的。因此，可以省去零值特征，提高FFM模型训练和预测的速度，这也是稀疏样本采用FFM的显著优势。</p>
+<hr>
+<p>FM模型，将参数$w_{ij}$对应的矩阵$W$，利用矩阵分解表示为$W=V^TV$, 矩阵$V∈R^{k×n}$, <strong>可以通过调节$k$来调节模型的泛化能力。</strong></p>
+<p><img src="/2018/05/04/ffm/5.png" width="500" alt="none" align="center"></p>
+<h1 id="FFM使用"><a href="#FFM使用" class="headerlink" title="FFM使用"></a>FFM使用</h1><p>这里使用了xlearn库：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlearn <span class="keyword">as</span> xl</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training task</span></span><br><span class="line">ffm_model = xl.create_ffm() <span class="comment"># Use field-aware factorization machine</span></span><br><span class="line">ffm_model.setTrain(<span class="string">"./small_train.txt"</span>)  <span class="comment"># Training data</span></span><br><span class="line">ffm_model.setValidate(<span class="string">"./small_test.txt"</span>)  <span class="comment"># Validation data</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># param:</span></span><br><span class="line"><span class="comment">#  0. binary classification</span></span><br><span class="line"><span class="comment">#  1. learning rate: 0.2</span></span><br><span class="line"><span class="comment">#  2. regular lambda: 0.002</span></span><br><span class="line"><span class="comment">#  3. evaluation metric: accuracy</span></span><br><span class="line">param = &#123;<span class="string">'task'</span>:<span class="string">'binary'</span>, <span class="string">'lr'</span>:<span class="number">0.2</span>, </span><br><span class="line">         <span class="string">'lambda'</span>:<span class="number">0.002</span>, <span class="string">'metric'</span>:<span class="string">'acc'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start to train</span></span><br><span class="line"><span class="comment"># The trained model will be stored in model.out</span></span><br><span class="line">ffm_model.fit(param, <span class="string">'./model.out'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prediction task</span></span><br><span class="line">ffm_model.setTest(<span class="string">"./small_test.txt"</span>)  <span class="comment"># Test data</span></span><br><span class="line">ffm_model.setSigmoid()  <span class="comment"># Convert output to 0-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Start to predict</span></span><br><span class="line"><span class="comment"># The output result will be stored in output.txt</span></span><br><span class="line">ffm_model.predict(<span class="string">"./model.out"</span>, <span class="string">"./output.txt"</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">Output:</span><br><span class="line">----------------------------------------------------------------------------------------------</span><br><span class="line">           _</span><br><span class="line">          | |</span><br><span class="line">     __  _| |     ___  __ _ _ __ _ __</span><br><span class="line">     \ \/ / |    / _ \/ _` | <span class="string">'__| '</span>_ \ </span><br><span class="line">      &gt;  &lt;| |___|  __/ (_| | |  | | | |</span><br><span class="line">     /_/\_\_____/\___|\__,_|_|  |_| |_|</span><br><span class="line"></span><br><span class="line">        xLearn   -- <span class="number">0.31</span> Version --</span><br><span class="line">----------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">[ ACTION     ] Read Problem ...</span><br><span class="line">[------------] First check <span class="keyword">if</span> the text file has been already converted to binary format.</span><br><span class="line">[------------] Binary file (./small_train.txt.bin) NOT found. Convert text file to binary file.</span><br><span class="line">[------------] First check <span class="keyword">if</span> the text file has been already converted to binary format.</span><br><span class="line">[------------] Binary file (./small_test.txt.bin) NOT found. Convert text file to binary file.</span><br><span class="line">[------------] Number of Feature: <span class="number">9991</span></span><br><span class="line">[------------] Number of Field: <span class="number">18</span></span><br><span class="line">[------------] Time cost <span class="keyword">for</span> reading problem: <span class="number">0.00</span> (sec)</span><br><span class="line">[ ACTION     ] Initialize model ...</span><br><span class="line">[------------] Model size: <span class="number">5.56</span> MB</span><br><span class="line">[------------] Time cost <span class="keyword">for</span> model initial: <span class="number">0.00</span> (sec)</span><br><span class="line">[ ACTION     ] Start to train ...</span><br><span class="line">[------------] Epoch      Train log_loss       Test log_loss       Test Accuarcy     Time cost (sec)</span><br><span class="line">[   <span class="number">10</span>%      ]     <span class="number">1</span>            <span class="number">0.594795</span>            <span class="number">0.535269</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">20</span>%      ]     <span class="number">2</span>            <span class="number">0.537182</span>            <span class="number">0.551915</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">30</span>%      ]     <span class="number">3</span>            <span class="number">0.519317</span>            <span class="number">0.532339</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">40</span>%      ]     <span class="number">4</span>            <span class="number">0.507896</span>            <span class="number">0.535436</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">50</span>%      ]     <span class="number">5</span>            <span class="number">0.493365</span>            <span class="number">0.534694</span>            <span class="number">0.775000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">60</span>%      ]     <span class="number">6</span>            <span class="number">0.481961</span>            <span class="number">0.534718</span>            <span class="number">0.775000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">70</span>%      ]     <span class="number">7</span>            <span class="number">0.470308</span>            <span class="number">0.528452</span>            <span class="number">0.775000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">80</span>%      ]     <span class="number">8</span>            <span class="number">0.464966</span>            <span class="number">0.534071</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[   <span class="number">90</span>%      ]     <span class="number">9</span>            <span class="number">0.456130</span>            <span class="number">0.534956</span>            <span class="number">0.770000</span>                <span class="number">0.00</span></span><br><span class="line">[ ACTION     ] Early-stopping at epoch <span class="number">7</span></span><br><span class="line">[ ACTION     ] Start to save model ...</span><br><span class="line">[------------] Model file: ./model.out</span><br><span class="line">[------------] Time cost <span class="keyword">for</span> saving model: <span class="number">0.00</span> (sec)</span><br><span class="line">[ ACTION     ] Finish training</span><br><span class="line">[ ACTION     ] Clear the xLearn environment ...</span><br><span class="line">[------------] Total time cost: <span class="number">0.02</span> (sec)</span><br><span class="line">----------------------------------------------------------------------------------------------</span><br><span class="line">           _</span><br><span class="line">          | |</span><br><span class="line">     __  _| |     ___  __ _ _ __ _ __</span><br><span class="line">     \ \/ / |    / _ \/ _` | <span class="string">'__| '</span>_ \ </span><br><span class="line">      &gt;  &lt;| |___|  __/ (_| | |  | | | |</span><br><span class="line">     /_/\_\_____/\___|\__,_|_|  |_| |_|</span><br><span class="line"></span><br><span class="line">        xLearn   -- <span class="number">0.31</span> Version --</span><br><span class="line">----------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">[ ACTION     ] Load model ...</span><br><span class="line">[------------] Load model <span class="keyword">from</span> ./model.out</span><br><span class="line">[------------] Loss function: cross-entropy</span><br><span class="line">[------------] Score function: ffm</span><br><span class="line">[------------] Number of Feature: <span class="number">9991</span></span><br><span class="line">[------------] Number of K: <span class="number">4</span></span><br><span class="line">[------------] Number of field: <span class="number">18</span></span><br><span class="line">[------------] Time cost <span class="keyword">for</span> loading model: <span class="number">0.00</span> (sec)</span><br><span class="line">[ ACTION     ] Read Problem ...</span><br><span class="line">[------------] First check <span class="keyword">if</span> the text file has been already converted to binary format.</span><br><span class="line">[------------] Binary file (./small_test.txt.bin) found. Skip converting text to binary.</span><br><span class="line">[------------] Time cost <span class="keyword">for</span> reading problem: <span class="number">0.00</span> (sec)</span><br><span class="line">[ ACTION     ] Start to predict ...</span><br><span class="line">[------------] The test loss <span class="keyword">is</span>: <span class="number">0.528452</span></span><br><span class="line">[ ACTION     ] Clear the xLearn environment ...</span><br><span class="line">[------------] Total time cost: <span class="number">0.00</span> (sec)</span><br></pre></td></tr></table></figure>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a href="https://tech.meituan.com/deep-understanding-of-ffm-principles-and-practices.html" target="_blank" rel="noopener">美团技术团队</a><br><a href="https://blog.csdn.net/google19890102/article/details/45532745" target="_blank" rel="noopener">zhiyong_will</a><br><a href="https://blog.csdn.net/Leo00000001/article/details/71330927?locationNum=13&amp;fps=1" target="_blank" rel="noopener">Leo000000001</a><br><a href="https://www.jianshu.com/p/965d9d004675" target="_blank" rel="noopener">简书</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatQR.png" alt="Yangyiqing 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AlipayQR.png" alt="Yangyiqing 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/01/sparseMatrix/" rel="next" title="稀疏矩阵-使用scipy">
+                <i class="fa fa-chevron-left"></i> 稀疏矩阵-使用scipy
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2028/04/24/navigation/" rel="prev" title="目录导航">
+                目录导航 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"测试测试测试测试",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2150691" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515518958292&di=cbaba0939238e439af8713e60c58555b&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F15%2F26%2F35%2F72s58PIC528_1024.jpg"
+                alt="Yangyiqing" />
+            
+              <p class="site-author-name" itemprop="name">Yangyiqing</p>
+              <p class="site-description motion-element" itemprop="description">Easy come , Easy go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/NeoAlex18up" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/neo.yang.9674" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.instagram.com/qdneo/" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/5079778489/home?wvr=5" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/python/" title="python" target="_blank">python</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/机器学习/" title="机器学习" target="_blank">机器学习</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/数学原理/" title="数学原理" target="_blank">数学原理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yangyiqing.cn/tags/游戏/" title="游戏" target="_blank">游戏</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://malped.github.io/" title="大鼻子的博客" target="_blank">大鼻子的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是FM模型？"><span class="nav-number">1.</span> <span class="nav-text">什么是FM模型？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FM模型原理"><span class="nav-number">2.</span> <span class="nav-text">FM模型原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FM复杂度分析"><span class="nav-number">3.</span> <span class="nav-text">FM复杂度分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FFM模型"><span class="nav-number">4.</span> <span class="nav-text">FFM模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适用场景"><span class="nav-number">5.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FFM训练和参数"><span class="nav-number">6.</span> <span class="nav-text">FFM训练和参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FFM使用"><span class="nav-number">7.</span> <span class="nav-text">FFM使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by-Yangyiqing</span>
+
+  
+</div>
+
+
+    
+
+
+
+  <span class="post-meta-divider">个人博客 | 转载请注明出处</span>
+
+
+
+  <div class="theme-info"></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8pBLe47wGmYot2Yf640c9r42-gzGzoHsz',
+        appKey: 'ELRrPBsu8dq1c895H7R2gsht',
+        placeholder: '发表你的评论',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("8pBLe47wGmYot2Yf640c9r42-gzGzoHsz", "ELRrPBsu8dq1c895H7R2gsht");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
