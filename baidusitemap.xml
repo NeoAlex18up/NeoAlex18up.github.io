@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/05/11/jiangwei/</loc>
-    <lastmod>2018-05-11T04:24:18.594Z</lastmod>
+    <loc>http://yoursite.com/2017/06/09/word2vec/</loc>
+    <lastmod>2018-06-09T11:45:23.228Z</lastmod>
     <data>
         <display>
-        <title>机器学习降维-原理及实践</title>
-        <pubTime>2017-05-11T03:14:07.000Z</pubTime>
+        <title>word2vec</title>
+        <pubTime>2017-06-09T09:46:02.000Z</pubTime>
         
         <tag>机器学习</tag>
          
@@ -22,13 +22,47 @@
     
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-05-11T04:23:51.484Z</lastmod>
+    <lastmod>2018-06-09T11:03:07.473Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
         <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/04/24/tensorflow-regression/</loc>
+    <lastmod>2018-06-07T06:05:22.082Z</lastmod>
+    <data>
+        <display>
+        <title>tensorflow-regression</title>
+        <pubTime>2018-04-24T08:10:34.000Z</pubTime>
+        
+        <tag>tensorflow</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/05/11/jiangwei/</loc>
+    <lastmod>2018-05-11T04:24:18.594Z</lastmod>
+    <data>
+        <display>
+        <title>机器学习降维-原理及实践</title>
+        <pubTime>2017-05-11T03:14:07.000Z</pubTime>
+        
+        <tag>机器学习</tag>
          
          
            
@@ -63,23 +97,6 @@
         <pubTime>2018-05-01T15:08:52.000Z</pubTime>
         
         <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/04/24/tensorflow-regression/</loc>
-    <lastmod>2018-04-25T05:15:04.176Z</lastmod>
-    <data>
-        <display>
-        <title>tensorflow-regression</title>
-        <pubTime>2018-04-24T08:10:34.000Z</pubTime>
-        
-        <tag>tensorflow</tag>
          
          
            
