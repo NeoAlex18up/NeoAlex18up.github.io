@@ -90,7 +90,13 @@
 <meta property="og:description" content="零碎知识点记录">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/1.png">
-<meta property="og:updated_time" content="2018-06-14T02:15:26.370Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/5.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/6.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/7.png">
+<meta property="og:updated_time" content="2018-06-14T03:51:23.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小知识点记录">
 <meta name="twitter:description" content="零碎知识点记录">
@@ -393,7 +399,26 @@
       
 
       
-        <h1 id="Logits"><a href="#Logits" class="headerlink" title="Logits:"></a>Logits:</h1><p><img src="/2017/06/14/suishou/1.png" width="880" alt="none" align="center"></p>
+        <h1 id="Logits"><a href="#Logits" class="headerlink" title="Logits:"></a>Logits:</h1><p><img src="/2017/06/14/suishou/1.png" width="650" alt="none" align="center"></p>
+<h1 id="累积分布函数"><a href="#累积分布函数" class="headerlink" title="累积分布函数"></a>累积分布函数</h1><p><strong>重要：</strong></p>
+<p><strong>1.累积分布函数CDF主要是为了处理连续型随机变量C.R.V用的，因为对于连续型随机变量C.R.V只能求解区域概率，而不能求解数轴上一个点的概率，CDF其实就是一个概率的累加。</strong></p>
+<p><strong>2.先有累积分布函数，再有概率密度函数。</strong></p>
+<p><strong>3.概率密度函数是累积分布函数的导数，累积分布函数是概率密度函数的积分</strong></p>
+<p><strong>4.累积分布函数的一个点是有意义的，它表示某个概率F(x) = F(X&lt;=x),但是概率密度函数单看一个点是没有意义的，要看某个区域的积分才有意义，而其就相当于累积分布函数的F(x1&lt;=x&lt;=x2)</strong></p>
+<p><strong>5.累积分布函数的一个点的值代表随机变量落在一个区域内的概率而不是一个点的概率！</strong></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>累积分布函数(Cumulative Distribution Function)，又叫分布函数，是概率密度函数的积分，<strong>能完整描述一个实随机变量X的概率分布</strong>。一般以大写CDF标记,，与概率密度函数probability density function（小写pdf）相对。</p>
+<p><img src="/2017/06/14/suishou/2.png" width="140" alt="none" align="center"></p>
+<p>它表示对于离散变量而言所有小于等于a的值出现的概率之和(<strong>注意是离散变量，因为累积分布函数只能表示区域概率</strong>)</p>
+<p><img src="/2017/06/14/suishou/3.jpg" width="440" alt="none" align="center"></p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>单调递增，有界[0,1]，右连续。<br><strong>X的值落在(a,b]之间的概率为:</strong></p>
+<p><img src="/2017/06/14/suishou/4.png" width="200" alt="none" align="center"></p>
+<h2 id="反函数"><a href="#反函数" class="headerlink" title="反函数"></a>反函数</h2><p><img src="/2017/06/14/suishou/5.png" width="800" alt="none" align="center"></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><img src="/2017/06/14/suishou/6.png" width="670" alt="none" align="center"></p>
+<p><strong>注意：</strong> <strong>对于已知的离散的值和一段已知的连续区间去计算累积分布是有区别的</strong>，比如离散序列[1 2 3 4 5 6 7],那么F(1) = F(x&lt;=1) = 1/7 , 而如果是[1,7]的连续区间，那么F(1)=0，F(2) = 1/6，因为累积分布计算的是一个区域的值，对于连续区间[1,7]来讲，&lt;=1只有1一个点，它的概率相当于0.</p>
+<h1 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h1><p>在数学中，连续型随机变量的概率密度函数（在不至于混淆时可以简称为密度函数）<strong>是一个描述这个随机变量的输出值，在某个确定的取值点附近的可能性的函数</strong>。而<strong>随机变量的取值落在某个区域之内的概率则为概率密度函数在这个区域上的积分</strong>。当概率密度函数存在的时候，累积分布函数是概率密度函数的积分。概率密度函数一般以小写标记。</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>如果某累积分布函数可导，则其导数就是概率密度函数。</p>
+<h2 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h2><p>性质比较重要，其在负无穷到正无穷区间上的积分为1.</p>
+<p><img src="/2017/06/14/suishou/7.png" width="220" alt="none" align="center"></p>
 
       
     </div>
@@ -695,7 +720,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logits"><span class="nav-number">1.</span> <span class="nav-text">Logits:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logits"><span class="nav-number">1.</span> <span class="nav-text">Logits:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#累积分布函数"><span class="nav-number">2.</span> <span class="nav-text">累积分布函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性质"><span class="nav-number">2.2.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反函数"><span class="nav-number">2.3.</span> <span class="nav-text">反函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.4.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概率密度函数"><span class="nav-number">3.</span> <span class="nav-text">概率密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性质-1"><span class="nav-number">3.2.</span> <span class="nav-text">性质</span></a></li></ol></li></ol></div>
             
 
           </div>
