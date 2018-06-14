@@ -5,13 +5,30 @@
     
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-06-11T08:05:57.176Z</lastmod>
+    <lastmod>2018-06-14T02:15:34.919Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
         <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/06/14/suishou/</loc>
+    <lastmod>2018-06-14T02:15:26.370Z</lastmod>
+    <data>
+        <display>
+        <title>小知识点记录</title>
+        <pubTime>2017-06-14T02:07:42.000Z</pubTime>
+        
+        <tag>机器学习</tag>
          
          
            

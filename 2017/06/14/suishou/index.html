@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="tensorflow," />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -81,21 +81,20 @@
 
 
 
-<meta name="description" content="tensorflow 实现 线性回归 Lasso回归等">
-<meta name="keywords" content="tensorflow">
+<meta name="description" content="零碎知识点记录">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow-regression">
-<meta property="og:url" content="http://yoursite.com/2018/04/24/tensorflow-regression/index.html">
+<meta property="og:title" content="小知识点记录">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/suishou/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="tensorflow 实现 线性回归 Lasso回归等">
+<meta property="og:description" content="零碎知识点记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/04/24/tensorflow-regression/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/04/24/tensorflow-regression/2.png">
-<meta property="og:updated_time" content="2018-06-07T06:05:22.082Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/14/suishou/1.png">
+<meta property="og:updated_time" content="2018-06-14T02:15:26.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow-regression">
-<meta name="twitter:description" content="tensorflow 实现 线性回归 Lasso回归等">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/24/tensorflow-regression/1.png">
+<meta name="twitter:title" content="小知识点记录">
+<meta name="twitter:description" content="零碎知识点记录">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/14/suishou/1.png">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/24/tensorflow-regression/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/14/suishou/"/>
 
 
 
 
 
-  <title>tensorflow-regression | 杨一瓶</title>
+  <title>小知识点记录 | 杨一瓶</title>
   
 
 
@@ -302,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/tensorflow-regression/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/suishou/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -319,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tensorflow-regression</h1>
+          <h1 class="post-title" itemprop="name headline">小知识点记录</h1>
         
 
         <div class="post-meta">
@@ -331,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T16:10:34+08:00">
-                2018-04-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T10:07:42+08:00">
+                2017-06-14
               </time>
             
 
@@ -350,8 +349,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/24/tensorflow-regression/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/24/tensorflow-regression/" itemprop="commentCount"></span>
+                <a href="/2017/06/14/suishou/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/14/suishou/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,7 +358,7 @@
 
           
           
-             <span id="/2018/04/24/tensorflow-regression/" class="leancloud_visitors" data-flag-title="tensorflow-regression">
+             <span id="/2017/06/14/suishou/" class="leancloud_visitors" data-flag-title="小知识点记录">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,7 +376,7 @@
 
           
               <div class="post-description">
-                  <center>tensorflow 实现 线性回归 Lasso回归等</center>
+                  <center>零碎知识点记录</center>
               </div>
           
 
@@ -394,15 +393,7 @@
       
 
       
-        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>这里使用天池糖尿病比赛的数据,数据量为6633条数据,90维。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入数据</span></span><br><span class="line">train = pd.read_csv(<span class="string">'trainSet.csv'</span>)</span><br><span class="line">y = train[<span class="string">'血糖'</span>]</span><br><span class="line">train = train.drop(<span class="string">'血糖'</span>,axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 填补空值</span></span><br><span class="line">train = train.fillna(method = <span class="string">'bfill'</span>)</span><br><span class="line">train = train.fillna(method = <span class="string">'pad'</span>)</span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">scaler = MinMaxScaler()</span><br><span class="line">train = scaler.fit_transform(train)</span><br><span class="line"><span class="comment"># 定义占位符</span></span><br><span class="line">trainSet = tf.placeholder(tf.float32,shape=[<span class="keyword">None</span>,<span class="number">90</span>])</span><br><span class="line">train_y = tf.placeholder(tf.float32,shape=[<span class="keyword">None</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义线性回归的变量 W and b</span></span><br><span class="line">W = tf.Variable(tf.random_normal(shape=[<span class="number">90</span>,<span class="number">1</span>]))</span><br><span class="line">b = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义相关参数</span></span><br><span class="line">learning_rate = <span class="number">0.05</span></span><br><span class="line">batch_size = <span class="number">50</span></span><br><span class="line">iterations = <span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义目标函数</span></span><br><span class="line">f = tf.add(tf.matmul(trainSet,W),b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 声明损失函数，这里用平均方差作为损失函数</span></span><br><span class="line">loss = tf.reduce_mean(tf.square(train_y-f))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 声明优化函数,梯度下降</span></span><br><span class="line">opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)</span><br><span class="line">train_step = opt.minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始迭代训练</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    <span class="comment"># 可视化</span></span><br><span class="line">    writer = tf.summary.FileWriter(<span class="string">""</span>, sess.graph)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):</span><br><span class="line">        sess.run(train_step,feed_dict=&#123;train_y:y,trainSet:train&#125;)</span><br><span class="line">        <span class="comment"># 打印当前的损失</span></span><br><span class="line">        temp_loss = sess.run(loss,feed_dict=&#123;train_y:y,trainSet:train&#125;)</span><br><span class="line">        print(temp_loss)</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7.05357</span></span><br><span class="line"><span class="number">6.78493</span></span><br><span class="line"><span class="number">6.57317</span></span><br><span class="line"><span class="number">6.37899</span></span><br><span class="line"><span class="number">6.19179</span></span><br><span class="line"><span class="number">6.01143</span></span><br><span class="line"><span class="number">5.83728</span></span><br><span class="line"><span class="number">5.67136</span></span><br><span class="line"><span class="number">5.51442</span></span><br><span class="line"><span class="number">5.36657</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="number">2.13792</span></span><br><span class="line"><span class="number">2.13694</span></span><br><span class="line"><span class="number">2.13595</span></span><br><span class="line"><span class="number">2.13495</span></span><br><span class="line"><span class="number">2.13402</span></span><br><span class="line"><span class="number">2.13303</span></span><br><span class="line"><span class="number">2.13209</span></span><br></pre></td></tr></table></figure></p>
-<p>Tensorboard 计算图<br><img src="/2018/04/24/tensorflow-regression/1.png" alt=""></p>
-<h1 id="Tensorflow命名空间"><a href="#Tensorflow命名空间" class="headerlink" title="Tensorflow命名空间"></a>Tensorflow命名空间</h1><p>可以看到TensorBoard比较混乱，可以使用name_scope“命名空间”来对代码进行整理<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入数据</span></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"input_preProcess"</span>):</span><br><span class="line">    train = pd.read_csv(<span class="string">'trainSet.csv'</span>)</span><br><span class="line">    y = train[<span class="string">'血糖'</span>]</span><br><span class="line">    train = train.drop(<span class="string">'血糖'</span>,axis=<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 填补空值</span></span><br><span class="line">    train = train.fillna(method = <span class="string">'bfill'</span>)</span><br><span class="line">    train = train.fillna(method = <span class="string">'pad'</span>)</span><br><span class="line">    <span class="comment"># 归一化</span></span><br><span class="line">    scaler = MinMaxScaler()</span><br><span class="line">    train = scaler.fit_transform(train)</span><br><span class="line">    <span class="comment"># 定义占位符</span></span><br><span class="line">    trainSet = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, <span class="number">90</span>])</span><br><span class="line">    train_y = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>])</span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"inference"</span>):</span><br><span class="line">    <span class="comment"># 定义线性回归的变量 W and b</span></span><br><span class="line">    W = tf.Variable(tf.random_normal(shape=[<span class="number">90</span>,<span class="number">1</span>]))</span><br><span class="line">    b = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>]))</span><br><span class="line">    <span class="comment"># 定义相关参数</span></span><br><span class="line">    learning_rate = <span class="number">0.05</span></span><br><span class="line">    batch_size = <span class="number">50</span></span><br><span class="line">    iterations = <span class="number">200</span></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"object_function"</span>):</span><br><span class="line">    <span class="comment"># 定义目标函数</span></span><br><span class="line">    f = tf.add(tf.matmul(trainSet,W),b)</span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"Loss"</span>):</span><br><span class="line">    <span class="comment"># 声明损失函数，这里用平均方差作为损失函数</span></span><br><span class="line">    loss = tf.reduce_mean(tf.square(train_y-f))</span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"optimizer"</span>):</span><br><span class="line">    <span class="comment"># 声明优化函数,梯度下降</span></span><br><span class="line">    opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)</span><br><span class="line">    train_step = opt.minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始迭代训练</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    <span class="comment"># 可视化</span></span><br><span class="line">    writer = tf.summary.FileWriter(<span class="string">""</span>, sess.graph)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):</span><br><span class="line">        sess.run(train_step,feed_dict=&#123;train_y:y,trainSet:train&#125;)</span><br><span class="line">        <span class="comment"># 打印当前的损失</span></span><br><span class="line">        temp_loss = sess.run(loss,feed_dict=&#123;train_y:y,trainSet:train&#125;)</span><br><span class="line">        print(temp_loss)</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure></p>
-<p>更新后的TensorBoard视图:<br><img src="/2018/04/24/tensorflow-regression/2.png" alt=""></p>
-<h1 id="TF实现MNIST手写数字识别"><a href="#TF实现MNIST手写数字识别" class="headerlink" title="TF实现MNIST手写数字识别"></a>TF实现MNIST手写数字识别</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读入数据</span></span><br><span class="line">MNIST = input_data.read_data_sets(<span class="string">"data"</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义相关超参</span></span><br><span class="line">eta = <span class="number">0.01</span></span><br><span class="line">batch_size = <span class="number">128</span></span><br><span class="line">n_epochs = <span class="number">25</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为输入和输出定义placeholder</span></span><br><span class="line"><span class="comment"># 因为每个在MNIST中的像素是28*28 = 784</span></span><br><span class="line"><span class="comment"># 所以每一个图像都有784个特征，是一个1x784的张量</span></span><br><span class="line">X = tf.placeholder(<span class="string">'float32'</span>,[batch_size,<span class="number">784</span>])</span><br><span class="line">y = tf.placeholder(<span class="string">'float32'</span>,[batch_size,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建要调整的参数变量 weights and bias</span></span><br><span class="line"><span class="comment"># 784，10 是因为要输出一个长度为10的结果向量</span></span><br><span class="line">w = tf.Variable(tf.random_normal(shape=[<span class="number">784</span>,<span class="number">10</span>],stddev=<span class="number">0.1</span>), name=<span class="string">'weights'</span>)</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">1</span>,<span class="number">10</span>]), name=<span class="string">'bias'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义假设函数</span></span><br><span class="line">logits = tf.matmul(X,w) + b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义损失函数</span></span><br><span class="line">entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits,labels=y)</span><br><span class="line">loss = tf.reduce_mean(entropy)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 梯度下降</span></span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(learning_rate=eta).minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化变量</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里batch_size是每一次训练多少个样本，这里要算每一轮要训练多少次</span></span><br><span class="line">n_batches = int(MNIST.train.num_examples/batch_size)</span><br><span class="line"><span class="comment"># 训练多少轮</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_epochs):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(n_batches):</span><br><span class="line">        <span class="comment"># 该循环的每个步骤中，我们都会随机抓取训练数据中的batch_size个批处理数据点，然后我们用这些数据点作为参数替换之前的占位符来运行train_step</span></span><br><span class="line">        X_batch,Y_batch = MNIST.train.next_batch(batch_size)</span><br><span class="line">        sess.run([optimizer,loss],&#123;X:X_batch,y:Y_batch&#125;)</span><br><span class="line"><span class="comment"># 测试模型</span></span><br><span class="line">corrects = <span class="number">0</span></span><br><span class="line">n_batches = int(MNIST.test.num_examples/batch_size)</span><br><span class="line">total_correct_preds = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_batches):</span><br><span class="line">    X_batch, Y_batch = MNIST.test.next_batch(batch_size)</span><br><span class="line">    _,loss_batch,logits_batch = sess.run([optimizer,loss,logits],feed_dict=&#123;X:X_batch,y:Y_batch&#125;)</span><br><span class="line">    preds = tf.nn.softmax(logits_batch)</span><br><span class="line">    corrects_preds = tf.equal(tf.argmax(preds,<span class="number">1</span>),tf.argmax(Y_batch,<span class="number">1</span>))</span><br><span class="line">    print(sess.run(corrects_preds))</span><br><span class="line">    accuracy = tf.reduce_sum(tf.cast(corrects_preds,tf.float32))</span><br><span class="line">    print(sess.run(accuracy))</span><br><span class="line">    total_correct_preds += sess.run(accuracy)</span><br><span class="line">print(<span class="string">'Accuracy'</span>,total_correct_preds/MNIST.test.num_examples)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output:Accuracy <span class="number">0.9076</span></span><br></pre></td></tr></table></figure>
-<p>(github挂了看不了文档，未完待续)</p>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p><a href="https://blog.csdn.net/qq_33297776/article/details/79339684" target="_blank" rel="noopener">GuanghaoChen_NEU</a></p>
+        <h1 id="Logits"><a href="#Logits" class="headerlink" title="Logits:"></a>Logits:</h1><p><img src="/2017/06/14/suishou/1.png" width="880" alt="none" align="center"></p>
 
       
     </div>
@@ -449,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -462,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/tensorboard/" rel="next" title="Tensorflow-可视化">
-                <i class="fa fa-chevron-left"></i> Tensorflow-可视化
+              <a href="/2017/06/09/word2vec/" rel="next" title="word2vec">
+                <i class="fa fa-chevron-left"></i> word2vec
               </a>
             
           </div>
@@ -472,8 +463,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/01/sparseMatrix/" rel="prev" title="稀疏矩阵-使用scipy">
-                稀疏矩阵-使用scipy <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/10/Tensorflow/" rel="prev" title="Tensorflow">
+                Tensorflow <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -704,7 +695,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow命名空间"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow命名空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TF实现MNIST手写数字识别"><span class="nav-number">3.</span> <span class="nav-text">TF实现MNIST手写数字识别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logits"><span class="nav-number">1.</span> <span class="nav-text">Logits:</span></a></li></ol></div>
             
 
           </div>
