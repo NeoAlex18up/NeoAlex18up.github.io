@@ -4,12 +4,29 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/06/14/suishou/</loc>
-    <lastmod>2018-06-14T03:51:23.091Z</lastmod>
+    <loc>http://yoursite.com/2028/04/24/navigation/</loc>
+    <lastmod>2018-06-21T05:35:07.675Z</lastmod>
     <data>
         <display>
-        <title>小知识点记录</title>
-        <pubTime>2017-06-14T02:07:42.000Z</pubTime>
+        <title>目录导航</title>
+        <pubTime>2028-04-24T03:21:51.000Z</pubTime>
+        
+        <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/06/21/auc/</loc>
+    <lastmod>2018-06-21T05:34:00.185Z</lastmod>
+    <data>
+        <display>
+        <title>加权AUC原理与实现</title>
+        <pubTime>2017-06-21T05:32:02.000Z</pubTime>
         
         <tag>机器学习</tag>
          
@@ -21,14 +38,31 @@
 
     
   <url>
-    <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-06-14T02:15:34.919Z</lastmod>
+    <loc>http://yoursite.com/2017/06/14/relu/</loc>
+    <lastmod>2018-06-16T01:25:43.282Z</lastmod>
     <data>
         <display>
-        <title>目录导航</title>
-        <pubTime>2028-04-24T03:21:51.000Z</pubTime>
+        <title>反向传播 | 梯度消失(爆炸) | Relu及其变种</title>
+        <pubTime>2017-06-14T07:27:27.000Z</pubTime>
         
-        <tag>导航</tag>
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/06/14/suishou/</loc>
+    <lastmod>2018-06-14T06:29:20.448Z</lastmod>
+    <data>
+        <display>
+        <title>小知识点记录</title>
+        <pubTime>2017-06-14T02:07:42.000Z</pubTime>
+        
+        <tag>机器学习</tag>
          
          
            
