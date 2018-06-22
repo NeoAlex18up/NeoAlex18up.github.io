@@ -99,13 +99,13 @@
 <meta property="og:image" content="http://yoursite.com/2018/06/22/bn/9.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/22/bn/11.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/22/bn/12.png">
-<meta property="og:image" content="http://yoursite.com/Users/yangyiqing/Desktop/temp_blog/bn_ln/14.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/22/bn/14.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/22/bn/13.png">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=x%5Cin+%5Cmathcal%7BX%7D">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=P_s%28Y%7CX%3Dx%29%3DP_t%28Y%7CX%3Dx%29">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=P_s%28X%29%5Cne+P_t%28X%29">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=0.9%5E%7B30%7D%5Capprox+0.04">
-<meta property="og:updated_time" content="2018-06-22T07:44:32.534Z">
+<meta property="og:updated_time" content="2018-06-22T07:55:57.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Batch Normalization">
 <meta name="twitter:description" content="Batch Normalization原理及实现">
@@ -445,7 +445,7 @@
 <p><img src="/2018/06/22/bn/11.png" width="110" alt="none" align="center"></p>
 <p>其实因为偏置参数b经过BN层后其实是没有用的，最后也会被均值归一化，当然BN层后面还有个β参数作为偏置项，所以b这个参数就可以不用了。因此最后把BN层+激活函数层就变成了：</p>
 <p><img src="/2018/06/22/bn/12.png" width="130" alt="none" align="center"></p>
-<p><img src="/Users/yangyiqing/Desktop/temp_blog/bn_ln/14.png" width="630" alt="none" align="center"></p>
+<p><img src="/2018/06/22/bn/14.png" width="630" alt="none" align="center"></p>
 <p>我们引入一些 batch normalization 的公式. 这三步就是我们在刚刚一直说的 normalization 工序, 但是公式的后面还有一个反向操作, 将 normalize 后的数据再扩展和平移. <strong>原来这是为了让神经网络自己去学着使用和修改这个扩展参数 gamma, 和 平移参数 β, 这样神经网络就能自己慢慢琢磨出前面的 normalization 操作到底有没有起到优化的作用, 如果没有起到作用, 我就使用 gamma 和 belt 来抵消一些 normalization 的操作.</strong></p>
 <h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><ol>
 <li><p>减少了参数的人为选择,<strong>可以取消dropout和L2正则项参数</strong>,或者采取更小的L2正则项约束参数</p>
