@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[目录导航]]></title>
     <url>%2F2028%2F04%2F24%2Fnavigation%2F</url>
-    <content type="text"><![CDATA[机器学习理论 [1.梯度提升树GBDT] [ 2.浅谈boosting与Adaboost] [ 3.浅谈SVM与感知机] [ 4.广义线性模型] [ 5.逻辑斯蒂回归] [ 6.对生成模型与判别模型的理解] [ 7.决策树原理] [ 8.决策树生成代码] [ 9.稀疏矩阵实践及意义] [ 10.FM和FFM模型原理及实践] [ 11.Softmax|skip-gram|CBOW|negative sampling] [ 12.零碎知识点] [ 13.AUC、加权AUC原理] 数据挖掘比赛 [1.2017 CCF 大数据竞赛top4%] [2.2017-JDD京东金融算法大赛15th解决方案] 算法题 [1.剑指offer] [2.Leetcode] Tensorflow [1.Tensorflow基础] [2.Tensorflow可视化] [3.Tensorflow回归]]]></content>
+    <content type="text"><![CDATA[机器学习理论 [1.梯度提升树GBDT] [ 2.浅谈boosting与Adaboost] [ 3.浅谈SVM与感知机] [ 4.广义线性模型] [ 5.逻辑斯蒂回归] [ 6.对生成模型与判别模型的理解] [ 7.决策树原理] [ 8.决策树生成代码] [ 9.稀疏矩阵实践及意义] [ 10.FM和FFM模型原理及实践] [ 11.Softmax|skip-gram|CBOW|negative sampling] [ 12.零碎知识点] [ 13.AUC、加权AUC原理] 14.Batch Normalization] 数据挖掘比赛 [1.2017 CCF 大数据竞赛top4%] [2.2017-JDD京东金融算法大赛15th解决方案] 算法题 [1.剑指offer] [2.Leetcode] Tensorflow [1.Tensorflow基础] [2.Tensorflow可视化] [3.Tensorflow回归]]]></content>
       <tags>
         <tag>导航</tag>
       </tags>
