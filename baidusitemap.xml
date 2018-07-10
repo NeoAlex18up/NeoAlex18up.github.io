@@ -5,13 +5,30 @@
     
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-06-22T07:56:32.238Z</lastmod>
+    <lastmod>2018-07-10T03:58:45.332Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
         <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/07/10/youtube/</loc>
+    <lastmod>2018-07-10T03:57:01.579Z</lastmod>
+    <data>
+        <display>
+        <title>DNN for Youtube Recommendation</title>
+        <pubTime>2018-07-10T03:54:39.000Z</pubTime>
+        
+        <tag>推荐算法</tag>
          
          
            
