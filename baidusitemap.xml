@@ -5,13 +5,30 @@
     
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-07-10T03:58:45.332Z</lastmod>
+    <lastmod>2018-07-18T04:25:52.961Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
         <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/07/18/xDeepFM/</loc>
+    <lastmod>2018-07-18T04:21:02.574Z</lastmod>
+    <data>
+        <display>
+        <title>xDeepFM:Combining Explicit and Implicit Feature Interactions for Recommender Systems</title>
+        <pubTime>2018-07-18T04:16:35.000Z</pubTime>
+        
+        <tag>paper</tag>
          
          
            
