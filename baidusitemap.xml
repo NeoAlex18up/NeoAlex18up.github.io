@@ -5,13 +5,30 @@
     
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-07-24T03:07:42.417Z</lastmod>
+    <lastmod>2018-07-25T07:02:57.455Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
         <pubTime>2028-04-24T03:21:51.000Z</pubTime>
         
         <tag>导航</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/07/25/markov/</loc>
+    <lastmod>2018-07-25T07:01:16.743Z</lastmod>
+    <data>
+        <display>
+        <title>隐马尔科夫模型和马尔科夫链</title>
+        <pubTime>2018-07-25T06:59:00.000Z</pubTime>
+        
+        <tag>机器学习</tag>
          
          
            
