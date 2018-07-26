@@ -4,25 +4,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/07/26/mdp/</loc>
-    <lastmod>2018-07-26T08:41:58.581Z</lastmod>
-    <data>
-        <display>
-        <title>马尔科夫决策过程</title>
-        <pubTime>2018-07-26T08:28:20.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-07-26T08:39:37.312Z</lastmod>
+    <lastmod>2018-07-26T08:47:20.593Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
@@ -39,11 +22,28 @@
     
   <url>
     <loc>http://yoursite.com/2018/07/25/markov/</loc>
-    <lastmod>2018-07-25T07:01:16.743Z</lastmod>
+    <lastmod>2018-07-26T08:47:09.480Z</lastmod>
     <data>
         <display>
         <title>隐马尔科夫模型和马尔科夫链</title>
         <pubTime>2018-07-25T06:59:00.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/07/26/mdp/</loc>
+    <lastmod>2018-07-26T08:41:58.581Z</lastmod>
+    <data>
+        <display>
+        <title>马尔科夫决策过程</title>
+        <pubTime>2018-07-26T08:28:20.000Z</pubTime>
         
         <tag>机器学习</tag>
          
