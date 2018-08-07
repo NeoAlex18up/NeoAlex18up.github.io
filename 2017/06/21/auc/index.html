@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/06/21/auc/12.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/21/auc/13.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/06/21/auc/14.jpg">
-<meta property="og:updated_time" content="2018-08-07T07:28:15.186Z">
+<meta property="og:updated_time" content="2018-08-07T09:07:38.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加权AUC原理与实现">
 <meta name="twitter:description" content="AUC原理和几种计算方法，加权AUC">
@@ -429,6 +429,7 @@
 <p><img src="/2017/06/21/auc/7.png" width="200"></p>
 <p>先上公式：</p>
 <p><img src="/2017/06/21/auc/8.png" width="300"></p>
+<p><strong>按照score从小到大的顺序排序，分子是所有正样本的index累加(从后网前找，如果正样本和相同的score的负样本相邻，则取平均index)，然后减去正样本M的$\frac{M(1+M)}{2}$,分子是正样本的数量乘以负样本的数量$M*N$。</strong></p>
 <p>下面我们证明一下这个计算公式和方法2计算是一致的</p>
 <p>首先是分母部分，T*F表示所有正负样本pair数，对于分子部分</p>
 <p>设每个正样本i的rank值为Ri，其score为si，</p>
