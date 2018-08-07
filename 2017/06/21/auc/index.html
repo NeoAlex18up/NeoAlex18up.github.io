@@ -89,10 +89,20 @@
 <meta property="og:site_name" content="杨一瓶">
 <meta property="og:description" content="AUC原理和几种计算方法，加权AUC">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-21T10:45:52.531Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/6.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/7.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/8.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/11.png">
+<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/12.png">
+<meta property="og:updated_time" content="2018-08-07T03:36:23.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加权AUC原理与实现">
 <meta name="twitter:description" content="AUC原理和几种计算方法，加权AUC">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/21/auc/1.png">
 
 
 
@@ -392,21 +402,21 @@
 
       
         <h1 id="AUC原理"><a href="#AUC原理" class="headerlink" title="AUC原理"></a>AUC原理</h1><p>AUC的直观解释是ROC曲线下的面积，ROC曲线由TPR和FPR组成：（其实AUC只是Area under curve,这个curve不一定是ROC,当样本不均衡的时候可以用precision-recall curve,但是这里只讨论ROC曲线下的面积）</p>
-<p>&lt;img src=”auc/1.png” width=”200”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/1.png" width="250"></p>
 <p><strong>TPR(True positive rate):</strong> TP / (TP + FN) 表示预测正确的正类占总实际总正类的比例</p>
 <p>，显然TPR越大，模型对正类的预测越准。(但是考虑全部预测为正呢，TPR为1，但是模型没有任何预测能力，因此还有FPR)</p>
 <p><strong>FPR(False Positive Rate):</strong>FP / (FP + TN) 表示预测错的正类占实际所有负类的比例(本来是负的，预测为正的比例可以修正盲目的预测为正而带来的TPR的提升)，</p>
 <p><strong>我们希望的是FPR越小而TPR越大。</strong>即图中(0,1)点，故ROC曲线越靠拢(0,1)点，越偏离45度对角线越好，<strong>Sensitivity、Specificity</strong>越大效果越好。</p>
-<p>&lt;img src=”auc/6.png” width=”200”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/6.png" width="250"></p>
 <p><strong>ROC曲线的绘制：</strong>每个样本都有一个pred值和true label值得pair, 有一个阈值来决定pred值超过多少就判定为正类，将样本按pred值排序，遍历每一个pred值将其作为当前的阈值，可以算出一个(TPR,FPR)对儿，这样有多少个阈值就有多少个R对儿，就可以有多少个点来绘制ROC曲线，即:</p>
 <center>阈值总个数 = (FPR,TPR)对数 = ROC曲线点数</center>
 
 <p>举例：</p>
-<p>&lt;img src=”auc/2.png” width=”150”, alt=”none” align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/2.png" width="150"></p>
 <p>根据每一个阈值可以计算出下表：</p>
-<p>&lt;img src=”auc/3.png” width=”250”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/3.png" width="400"></p>
 <p>然后根据横轴(FPR)和纵轴(TPR)绘制ROC曲线(间隔根据R值来)：</p>
-<p>&lt;img src=”auc/4.png” width=”450”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/4.png" width="450"></p>
 <p>然后就可以计算ROC曲线下面积也就是AUC的值了，但是这样做会有缺点就是计算比较麻烦(注意图中的斜向上的梯形部分，这是由于两个样本有相同的pred值但是它们的true label不同导致的)，实际中我们通常使用其他方法。</p>
 <p>#AUC实际意义</p>
 <p>AUC表示ROC曲线下面积，这是它的物理意义，<strong>而它的实际意义(概率)表示随机抽取一个正样本和负样本，正样本的pred大于负样本的pred的概率</strong>。这也很好理解，当auc为0.5的时候，正样本大于负样本的概率为0.5相当于随机，auc为1的时候，随机选取正样本的pred一定大于负样本的pred，表示可以将所有的正样本分出来，分类性能完美。</p>
@@ -414,9 +424,9 @@
 <p>有了等价这两个字，就可以妥妥的用其他方法来<strong>计算auc了：</strong></p>
 <p>1.最笨也是最直观的方法就是，假设有M个正样本和N个负样本，那么就依次遍历取MxN个样本对儿，其中(<strong>T_score &gt; F_score pairs) / M x N</strong> 就是auc值，当T_score = F_score 的时候按0.5算。这种最简单的计算方法的时间复杂度$O(n^2)$</p>
 <p>2.先将score按升序排序</p>
-<p>&lt;img src=”auc/7.png” width=”250”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/7.png" width="200"></p>
 <p>先上公式：</p>
-<p>&lt;img src=”auc/8.png” width=”350”, alt=”none”, align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/8.png" width="300"></p>
 <p>下面我们证明一下这个计算公式和方法2计算是一致的</p>
 <p>首先是分母部分，T*F表示所有正负样本pair数，对于分子部分</p>
 <p>设每个正样本i的rank值为Ri，其score为si，</p>
@@ -429,9 +439,9 @@
 </ol>
 <p>   我们看到第二项就是p*q个正负样本pair的加权和，而第一项是rank从r,r+1,…,r+p-1这p个正样本的rank和，它表示这p个正样本和r前面的样本组成的pair数（这p个样本和自己的pair和之前的正样本pair也算在内）。</p>
 <p>从1和2分析看，所有正样本rank和会把正样本自己（共T个pair）和自己之前的所有正样本组成的pair（共T<em>(T-1)/2个pair）都计算一遍，并且权重为1，因此最后要去掉这个计数，这个计数就是T</em>(T+1)/2个pair，因此方法3的公式的分子算出来是正确正负样本pair的加权和。</p>
-<h1 id="加权AUC-WAUC"><a href="#加权AUC-WAUC" class="headerlink" title="加权AUC(WAUC)"></a>加权AUC(WAUC)</h1><p>&lt;img src=”auc/11.png” width=”850”,alt=”none”,align=”center”&gt;</p>
+<h1 id="加权AUC-WAUC"><a href="#加权AUC-WAUC" class="headerlink" title="加权AUC(WAUC)"></a>加权AUC(WAUC)</h1><p><img src="/2017/06/21/auc/11.png" width="700"></p>
 <p>这是论文中给出的WAUC的计算方法，但是我们常说的WAUC如下：</p>
-<p>&lt;img src=”auc/12.png” width=”850”,alt=”none”,align=”center”&gt;</p>
+<p><img src="/2017/06/21/auc/12.png" width="750"></p>
 <p>相当于本来的ranking是针对点击率，但是对score进行bid加权以后，是对价格bid*点击率CTR的结果进行ranking，这对于我们期待的效果是更合理的，因为我们想得到的是最大的利润而不是更大的点击率。</p>
 
       

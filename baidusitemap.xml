@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/06/21/auc/</loc>
+    <lastmod>2018-08-07T03:36:23.603Z</lastmod>
+    <data>
+        <display>
+        <title>加权AUC原理与实现</title>
+        <pubTime>2017-06-21T05:32:02.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
     <lastmod>2018-07-26T08:47:20.593Z</lastmod>
     <data>
@@ -95,23 +112,6 @@
         <display>
         <title>Batch Normalization</title>
         <pubTime>2018-06-22T07:42:29.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/06/21/auc/</loc>
-    <lastmod>2018-06-21T10:45:52.531Z</lastmod>
-    <data>
-        <display>
-        <title>加权AUC原理与实现</title>
-        <pubTime>2017-06-21T05:32:02.000Z</pubTime>
         
         <tag>机器学习</tag>
          
