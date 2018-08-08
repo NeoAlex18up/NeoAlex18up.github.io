@@ -3,10 +3,9 @@
 
 
     
-    
   <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
-    <lastmod>2018-08-07T12:33:53.175Z</lastmod>
+    <lastmod>2018-08-08T06:43:43.267Z</lastmod>
     <data>
         <display>
         <title>目录导航</title>
@@ -20,6 +19,24 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://yoursite.com/2018/08/08/drop/</loc>
+    <lastmod>2018-08-08T06:42:34.847Z</lastmod>
+    <data>
+        <display>
+        <title>Drop-out</title>
+        <pubTime>2018-08-08T06:40:15.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://yoursite.com/2018/08/07/l1/</loc>

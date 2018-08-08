@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta name="description" content="Dropout如何防止过拟合和源码">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈SVM与感知机">
-<meta property="og:url" content="http://yoursite.com/2018/03/16/svm/index.html">
+<meta property="og:title" content="Drop-out">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/drop/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta property="og:description" content="Dropout如何防止过拟合和源码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T12:39:23.646Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/drop/1.png">
+<meta property="og:updated_time" content="2018-08-08T06:42:34.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈SVM与感知机">
-<meta name="twitter:description" content="感知机，线性可分，非线性内核(未写完待续)&amp;gt;">
+<meta name="twitter:title" content="Drop-out">
+<meta name="twitter:description" content="Dropout如何防止过拟合和源码">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/08/drop/1.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/16/svm/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/drop/"/>
 
 
 
 
 
-  <title>浅谈SVM与感知机 | 杨一瓶</title>
+  <title>Drop-out | 杨一瓶</title>
   
 
 
@@ -299,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/svm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/drop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -316,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈SVM与感知机</h1>
+          <h1 class="post-title" itemprop="name headline">Drop-out</h1>
         
 
         <div class="post-meta">
@@ -328,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T19:36:46+08:00">
-                2018-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T14:40:15+08:00">
+                2018-08-08
               </time>
             
 
@@ -347,8 +349,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/16/svm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/16/svm/" itemprop="commentCount"></span>
+                <a href="/2018/08/08/drop/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/drop/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +358,7 @@
 
           
           
-             <span id="/2018/03/16/svm/" class="leancloud_visitors" data-flag-title="浅谈SVM与感知机">
+             <span id="/2018/08/08/drop/" class="leancloud_visitors" data-flag-title="Drop-out">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +376,7 @@
 
           
               <div class="post-description">
-                  <center>感知机，线性可分，非线性内核(未写完待续)</center>>
+                  <center>Dropout如何防止过拟合和源码</center>
               </div>
           
 
@@ -391,23 +393,16 @@
       
 
       
-        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>感知机是SVM和神经网络的基础，所以在介绍SVM之前，先谈谈感知机。</p>
-<p><strong>感知机是一个二分类的线性分类模型。</strong>其表示从输入空间到输出空间的如下函数，输出为-1,1:<br>$$f(x)=sign(w·x+b)$$</p>
-<p>其中，w是权值向量，b为偏置bias,sign是符号函数</p>
-<h2 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h2><p><strong>其几何意义为:</strong><br>$$w·x+b=0$$<br>对应于特征空间中的一个<strong>分离超平面</strong>，其中<strong>w表示超平面的法向量</strong>，而<strong>b对应超平面的截距</strong>。</p>
-<h2 id="感知机-线性可分"><a href="#感知机-线性可分" class="headerlink" title="感知机-线性可分"></a>感知机-线性可分</h2><p><strong>线性可分</strong>的意思是存在一个超平面可以将正负样本点完全分开。</p>
-<blockquote>
-<p>在线性可分的情况下，感知机的<strong>学习策略</strong>是：<br>“<strong>使得误分类点到超平面的总距离最小</strong>”</p>
-</blockquote>
-<p>所有误分类点到超平面S的总距离为:<br>$$-\frac{1}{||w||}\sum_{x_i∈M}y_i(w·x_i+b)$$<br>所以可以得到其损失函数，它是关于w,b的连续可导函数:<br>$$L(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$</p>
-<h2 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h2><p>感知机的学习算法即上式(损失函数)的最优化问题，其方法为<strong>随机梯度下降法</strong>。<br>$$minL(w,b)=-\sum_{x_i∈M}y_i(w·x_i+b)$$<br>随机梯度下降一次只选取一个误分类点使其梯度下降,其梯度计算为:<br>$$L_w(w,b)=-\sum_{x_i∈M}y_ix_i$$<br>$$L_b(w,b)=-\sum_{x_i∈M}y_i$$</p>
-<p>所以下面给出感知机学习算法步骤(原始形式):<br>给定训练集和学习率$\eta$<br>(1) 选取初始值$w_0,b_0$<br>(2) 随机选取一个误分类点$y_i(w·w_i+b)≤0$更新w,b:<br>$$w←w+\eta y_ix_i$$<br>$$b←b+\eta y_i$$<br>(3)重复(2)直到没有误分类点</p>
-<h2 id="感知机学习算法几何解释"><a href="#感知机学习算法几何解释" class="headerlink" title="感知机学习算法几何解释"></a>感知机学习算法几何解释</h2><p>当一个样本点被误分到分离超平面的另一端时，调整w,b的值，使分离超平面向该误分类点的一侧移动，以减少该误分类点与超平面间的距离，如此循环直到该误分类点被正确分类。由于<strong>其结束的条件是所有样本点被正确分类，所以，在线性可分数据集中，感知机有无数个解。</strong></p>
-<h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>SVM(support vector machines,SVM)是一种二分类模型。其核心是<strong>核技巧</strong>，可以用来解决非线性问题，当<strong>使用非线性核</strong>的时候，SVM是非线性模型，其相当于把<strong>隐式地在高维的特征空间中学习线性支持向量机</strong>。</p>
-<h2 id="SVM与感知机的区别"><a href="#SVM与感知机的区别" class="headerlink" title="SVM与感知机的区别"></a>SVM与感知机的区别</h2><p>1.学习策略不同，感知机的学习策略为使得误分类点的距离最小，而SVM的学习策略是间隔最大化，这样使得在同样解决线性可分的问题时，感知机可以有无数个解，而svm只有一个最优解。</p>
-<ol>
-<li>感知机拥有核技巧，可以解决非线性问题<h2 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h2>我们知道SVM和感知机的最大区别之一就是SVM采用的是<strong>间隔最大化</strong>的策略，使得其存在<strong>唯一最优解</strong>下面介绍函数间隔和几何间隔：<br><strong>(1) 函数间隔</strong><br>$|w·x+b|$表示一个点离超平面的远近，而加上$y_i$可以判断其是否被正确分类，所以<strong>函数间隔就是组合两者：表示一个样本点被分类的正确性和确信度(离得越远越确定):</strong><br>$$\gamma_i = y_i(w·x_i+b)$$<br>整个函数集的函数间隔就是<strong>所有样本点函数间隔最小值</strong>。<br><strong>(2) 几何间隔</strong><br>使用函数间隔会有缺点：<br><strong>成倍缩放w和b，超平面位置不变</strong>，但是函数间隔为会改变。<br>所以引入了几何间隔的概念(做了一个L2归一化)使得超平面确定了，其间隔也确定，几何间隔为:<br>$$\gamma = -(\frac{w}{||w||}·x_i+\frac{b}{||w||})$$</li>
-</ol>
+        <p>Drop out 是随机的丢弃一部分的神经元，在本次的训练中不参与计算和更新，drop out可以有效的防止过拟合，具体的原因：</p>
+<p><strong>1.相当于多个神经网络的ensemble</strong></p>
+<p><strong>Drop out 掉不同的神经元就相当于在训练不同的神经网络，整个drop out的过程就相当于对很多个不同的神经网络取平均</strong>，而不同的网络产生不同的过拟合，一些互为反向的过拟合可以互相抵消来削弱整体上的过拟合。</p>
+<p><img src="/2018/08/08/drop/1.png"></p>
+<p><strong>2.减少神经元之间复杂的共适应关系</strong></p>
+<p>因为drop-out的关系导致两个神经元不一定每次都在一个drop-out网络中出现，（<strong>这样权值的更新不再依赖于有固定关系的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况</strong>），迫使网络去学习更加鲁邦的特征，换句话说假如我们的神经网络是在做出某种预测，它不应该对一些特定的线索片段太过敏感，即使丢失特定的线索，它也应该可以从众多其它线索中学习一些共同的模式（鲁棒性）</p>
+<p><strong>3.Tensorflow - tf.nn.dropout()源码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@tf_export("nn.dropout")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dropout</span><span class="params">(x, keep_prob, noise_shape=None, seed=None, name=None)</span>:</span>  <span class="comment"># pylint: disable=invalid-name</span></span><br><span class="line">  <span class="string">"""Computes dropout.</span></span><br><span class="line"><span class="string">  根据概率keep_prob,将输入根据1/keep_prob进行缩放，否则输出0，缩放的目的是为了保持期望和不变。</span></span><br><span class="line"><span class="string">  By default, each element is kept or dropped independently.  If `noise_shape`</span></span><br><span class="line"><span class="string">  is specified, it must be</span></span><br><span class="line"><span class="string">  [broadcastable](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)</span></span><br><span class="line"><span class="string">  to the shape of `x`, and only dimensions with `noise_shape[i] == shape(x)[i]`</span></span><br><span class="line"><span class="string">  will make independent decisions.  For example, if `shape(x) = [k, l, m, n]`</span></span><br><span class="line"><span class="string">  and `noise_shape = [k, 1, 1, n]`, each batch and channel component will be</span></span><br><span class="line"><span class="string">  kept independently and each row and column will be kept or not kept together.</span></span><br><span class="line"><span class="string">  Args:</span></span><br><span class="line"><span class="string">    x: A floating point tensor.</span></span><br><span class="line"><span class="string">    keep_prob: A scalar `Tensor` with the same type as x. The probability</span></span><br><span class="line"><span class="string">      that each element is kept.</span></span><br><span class="line"><span class="string">    noise_shape: A 1-D `Tensor` of type `int32`, representing the</span></span><br><span class="line"><span class="string">      shape for randomly generated keep/drop flags.</span></span><br><span class="line"><span class="string">    seed: A Python integer. Used to create random seeds. See</span></span><br><span class="line"><span class="string">      @&#123;tf.set_random_seed&#125;</span></span><br><span class="line"><span class="string">      for behavior.</span></span><br><span class="line"><span class="string">    name: A name for this operation (optional).</span></span><br><span class="line"><span class="string">  Returns:</span></span><br><span class="line"><span class="string">    A Tensor of the same shape of `x`.</span></span><br><span class="line"><span class="string">  Raises:</span></span><br><span class="line"><span class="string">    ValueError: If `keep_prob` is not in `(0, 1]` or if `x` is not a floating</span></span><br><span class="line"><span class="string">      point tensor.</span></span><br><span class="line"><span class="string">  """</span></span><br><span class="line">  <span class="keyword">with</span> ops.name_scope(name, <span class="string">"dropout"</span>, [x]) <span class="keyword">as</span> name:</span><br><span class="line">    x = ops.convert_to_tensor(x, name=<span class="string">"x"</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> x.dtype.is_floating:</span><br><span class="line">      <span class="keyword">raise</span> ValueError(<span class="string">"x has to be a floating point tensor since it's going to"</span></span><br><span class="line">                       <span class="string">" be scaled. Got a %s tensor instead."</span> % x.dtype)</span><br><span class="line">    <span class="keyword">if</span> isinstance(keep_prob, numbers.Real) <span class="keyword">and</span> <span class="keyword">not</span> <span class="number">0</span> &lt; keep_prob &lt;= <span class="number">1</span>:</span><br><span class="line">      <span class="keyword">raise</span> ValueError(<span class="string">"keep_prob must be a scalar tensor or a float in the "</span></span><br><span class="line">                       <span class="string">"range (0, 1], got %g"</span> % keep_prob)</span><br><span class="line">    keep_prob = ops.convert_to_tensor(</span><br><span class="line">        keep_prob, dtype=x.dtype, name=<span class="string">"keep_prob"</span>)</span><br><span class="line">    keep_prob.get_shape().assert_is_compatible_with(tensor_shape.scalar())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Do nothing if we know keep_prob == 1</span></span><br><span class="line">    <span class="keyword">if</span> tensor_util.constant_value(keep_prob) == <span class="number">1</span>:</span><br><span class="line">      <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    noise_shape = _get_noise_shape(x, noise_shape)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># uniform [keep_prob, 1.0 + keep_prob)</span></span><br><span class="line">    random_tensor = keep_prob</span><br><span class="line">    random_tensor += random_ops.random_uniform(</span><br><span class="line">        noise_shape, seed=seed, dtype=x.dtype)</span><br><span class="line">    <span class="comment"># 0. if [keep_prob, 1.0) and 1. if [1.0, 1.0 + keep_prob)</span></span><br><span class="line">    binary_tensor = math_ops.floor(random_tensor)</span><br><span class="line">    ret = math_ops.div(x, keep_prob) * binary_tensor</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> context.executing_eagerly():</span><br><span class="line">      ret.set_shape(x.get_shape())</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+<p><strong>4.具体使用</strong></p>
+<p>train的时候置为x(0,1], test的时候置为1即可</p>
 
       
     </div>
@@ -467,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/16/广义线性模型/" rel="next" title="广义线性模型">
-                <i class="fa fa-chevron-left"></i> 广义线性模型
+              <a href="/2018/08/07/l1/" rel="next" title="L1和L2正则化">
+                <i class="fa fa-chevron-left"></i> L1和L2正则化
               </a>
             
           </div>
@@ -477,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/19/adaboost/" rel="prev" title="浅谈boosting与Adaboost">
-                浅谈boosting与Adaboost <i class="fa fa-chevron-right"></i>
+              <a href="/2028/04/24/navigation/" rel="prev" title="目录导航">
+                目录导航 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,17 +555,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -699,22 +685,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机"><span class="nav-number">1.</span> <span class="nav-text">感知机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何意义"><span class="nav-number">1.2.</span> <span class="nav-text">几何意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机-线性可分"><span class="nav-number">1.3.</span> <span class="nav-text">感知机-线性可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法"><span class="nav-number">1.4.</span> <span class="nav-text">感知机学习算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机学习算法几何解释"><span class="nav-number">1.5.</span> <span class="nav-text">感知机学习算法几何解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">2.</span> <span class="nav-text">线性支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM与感知机的区别"><span class="nav-number">2.1.</span> <span class="nav-text">SVM与感知机的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔最大化"><span class="nav-number">2.2.</span> <span class="nav-text">间隔最大化</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
