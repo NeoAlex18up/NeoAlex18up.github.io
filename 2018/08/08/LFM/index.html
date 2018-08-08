@@ -81,30 +81,25 @@
 
 
 
-<meta name="description" content="AUC原理和几种计算方法，加权AUC">
+<meta name="description" content="LFM隐因子模型原理及源码">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="加权AUC原理与实现">
-<meta property="og:url" content="http://yoursite.com/2017/06/21/auc/index.html">
+<meta property="og:title" content="LFM隐因子模型">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/LFM/index.html">
 <meta property="og:site_name" content="杨一瓶">
-<meta property="og:description" content="AUC原理和几种计算方法，加权AUC">
+<meta property="og:description" content="LFM隐因子模型原理及源码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/1.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/6.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/2.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/3.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/4.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/7.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/8.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/11.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/12.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/13.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/21/auc/14.jpg">
-<meta property="og:updated_time" content="2018-08-07T09:07:38.171Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/08/LFM/6.png">
+<meta property="og:updated_time" content="2018-08-08T08:05:14.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="加权AUC原理与实现">
-<meta name="twitter:description" content="AUC原理和几种计算方法，加权AUC">
-<meta name="twitter:image" content="http://yoursite.com/2017/06/21/auc/1.png">
+<meta name="twitter:title" content="LFM隐因子模型">
+<meta name="twitter:description" content="LFM隐因子模型原理及源码">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/08/LFM/1.png">
 
 
 
@@ -134,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/21/auc/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/LFM/"/>
 
 
 
 
 
-  <title>加权AUC原理与实现 | 杨一瓶</title>
+  <title>LFM隐因子模型 | 杨一瓶</title>
   
 
 
@@ -311,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/21/auc/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/LFM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangyiqing">
@@ -328,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">加权AUC原理与实现</h1>
+          <h1 class="post-title" itemprop="name headline">LFM隐因子模型</h1>
         
 
         <div class="post-meta">
@@ -340,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-21T13:32:02+08:00">
-                2017-06-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T16:04:01+08:00">
+                2018-08-08
               </time>
             
 
@@ -359,8 +354,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/21/auc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/06/21/auc/" itemprop="commentCount"></span>
+                <a href="/2018/08/08/LFM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/08/LFM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,7 +363,7 @@
 
           
           
-             <span id="/2017/06/21/auc/" class="leancloud_visitors" data-flag-title="加权AUC原理与实现">
+             <span id="/2018/08/08/LFM/" class="leancloud_visitors" data-flag-title="LFM隐因子模型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -386,7 +381,7 @@
 
           
               <div class="post-description">
-                  <center>AUC原理和几种计算方法，加权AUC</center>
+                  <center>LFM隐因子模型原理及源码</center>
               </div>
           
 
@@ -403,57 +398,24 @@
       
 
       
-        <h1 id="AUC原理"><a href="#AUC原理" class="headerlink" title="AUC原理"></a>AUC原理</h1><p>AUC的直观解释是ROC曲线下的面积，ROC曲线由TPR和FPR组成：（其实AUC只是Area under curve,这个curve不一定是ROC,当样本不均衡的时候可以用precision-recall curve,但是这里只讨论ROC曲线下的面积）</p>
-<p><img src="/2017/06/21/auc/1.png" width="250"></p>
-<p><strong>TPR(True positive rate):</strong> TP / (TP + FN) 表示预测正确的正类占总实际总正类的比例</p>
-<p>，显然TPR越大，模型对正类的预测越准。(但是考虑全部预测为正呢，TPR为1，但是模型没有任何预测能力，因此还有FPR)</p>
-<p><strong>FPR(False Positive Rate):</strong>FP / (FP + TN) 表示预测错的正类占实际所有负类的比例(本来是负的，预测为正的比例可以修正盲目的预测为正而带来的TPR的提升)，</p>
-<p><strong>我们希望的是FPR越小而TPR越大。</strong>即图中(0,1)点，故ROC曲线越靠拢(0,1)点，越偏离45度对角线越好，<strong>Sensitivity、Specificity</strong>越大效果越好。</p>
-<p><img src="/2017/06/21/auc/6.png" width="250"></p>
-<p><strong>ROC曲线的绘制：</strong>每个样本都有一个pred值和true label值得pair, 有一个阈值来决定pred值超过多少就判定为正类，将样本按pred值排序，遍历每一个pred值将其作为当前的阈值，可以算出一个(TPR,FPR)对儿，这样有多少个阈值就有多少个R对儿，就可以有多少个点来绘制ROC曲线，即:</p>
-<center>阈值总个数 = (FPR,TPR)对数 = ROC曲线点数</center>
-
-<p>举例：</p>
-<p><img src="/2017/06/21/auc/2.png" width="150"></p>
-<p>根据每一个阈值可以计算出下表：</p>
-<p><img src="/2017/06/21/auc/3.png" width="400"></p>
-<p>然后根据横轴(FPR)和纵轴(TPR)绘制ROC曲线(间隔根据R值来)：</p>
-<p><img src="/2017/06/21/auc/4.png" width="450"></p>
-<p>然后就可以计算ROC曲线下面积也就是AUC的值了，但是这样做会有缺点就是计算比较麻烦(注意图中的斜向上的梯形部分，这是由于两个样本有相同的pred值但是它们的true label不同导致的)，实际中我们通常使用其他方法。</p>
-<p>#AUC实际意义</p>
-<p>AUC表示ROC曲线下面积，这是它的物理意义，<strong>而它的实际意义(概率)表示随机抽取一个正样本和负样本，正样本的pred大于负样本的pred的概率</strong>。这也很好理解，当auc为0.5的时候，正样本大于负样本的概率为0.5相当于随机，auc为1的时候，随机选取正样本的pred一定大于负样本的pred，表示可以将所有的正样本分出来，分类性能完美。</p>
-<p>AUC的实际意义来自于其和Wilcoxon-Mann-Witney Test<strong>等价</strong>。</p>
-<p>有了等价这两个字，就可以妥妥的用其他方法来<strong>计算auc了：</strong></p>
-<p>1.最笨也是最直观的方法就是，假设有M个正样本和N个负样本，那么就依次遍历取MxN个样本对儿，其中(<strong>T_score &gt; F_score pairs) / M x N</strong> 就是auc值，当T_score = F_score 的时候按0.5算。这种最简单的计算方法的时间复杂度$O(n^2)$</p>
-<p>2.先将score按升序排序</p>
-<p><img src="/2017/06/21/auc/7.png" width="200"></p>
-<p>先上公式：</p>
-<p><img src="/2017/06/21/auc/8.png" width="300"></p>
-<p><strong>按照score从小到大的顺序排序，分子是所有正样本的index累加(从后网前找，如果正样本和相同的score的负样本相邻，则取平均index)，然后减去正样本M的$\frac{M(1+M)}{2}$,分子是正样本的数量乘以负样本的数量$M*N$。</strong></p>
-<p>下面我们证明一下这个计算公式和方法2计算是一致的</p>
-<p>首先是分母部分，T*F表示所有正负样本pair数，对于分子部分</p>
-<p>设每个正样本i的rank值为Ri，其score为si，</p>
-<ol>
-<li><p>若Ri的score唯一，表示si大于Ri-1个样本，样本i和这Ri-1个样本组成的pair权值为1，所有此类正样本的rank之和表示和之前的所有Ri个样本组成的pair数（包括和自己的pair以及之前的正样本pair也算在内）</p>
-</li>
-<li><p>如Ri的score不唯一，不妨设此时有p个正样本和q个负样本score和i相同，那么此时有p*q个pair权值为0.5。</p>
-<p>假设这连续p+q个样本中的第一个rank为t，则第p+q个样本的rank为t+p+q-1，根据方法3所述，这p+q个样本的rank值用平均rank来代替，为(t+t+p+q-1)/2，则p个正样本的ranker和为$(t+t+p+q-1)<em>p</em>0.5=p<em>(t+t+p-1)/2+0.5</em>p*q。$</p>
-</li>
-</ol>
-<p>   我们看到第二项就是p*q个正负样本pair的加权和，而第一项是rank从r,r+1,…,r+p-1这p个正样本的rank和，它表示这p个正样本和r前面的样本组成的pair数（这p个样本和自己的pair和之前的正样本pair也算在内）。</p>
-<p>从1和2分析看，所有正样本rank和会把正样本自己（共T个pair）和自己之前的所有正样本组成的pair（共T<em>(T-1)/2个pair）都计算一遍，并且权重为1，因此最后要去掉这个计数，这个计数就是T</em>(T+1)/2个pair，因此方法3的公式的分子算出来是正确正负样本pair的加权和。</p>
-<h1 id="加权AUC-WAUC"><a href="#加权AUC-WAUC" class="headerlink" title="加权AUC(WAUC)"></a>加权AUC(WAUC)</h1><p><img src="/2017/06/21/auc/11.png" width="700"></p>
-<p>这是论文中给出的WAUC的计算方法，但是我们常说的WAUC如下：</p>
-<p><img src="/2017/06/21/auc/12.png" width="750"></p>
-<p>相当于本来的ranking是针对点击率，但是对score进行bid加权以后，是对价格bid*点击率CTR的结果进行ranking，这对于我们期待的效果是更合理的，因为我们想得到的是最大的利润而不是更大的点击率。</p>
-<h1 id="AP和MAP"><a href="#AP和MAP" class="headerlink" title="AP和MAP"></a>AP和MAP</h1><h2 id="AP-Average-Precision"><a href="#AP-Average-Precision" class="headerlink" title="AP: Average Precision"></a>AP: Average Precision</h2><p><strong>AP值是PR曲线下的面积，常说的AUC一般值TPR和FPR曲线下的面积。</strong></p>
-<p>关于AP值的计算，假设我们有数据</p>
-<p><img src="/2017/06/21/auc/13.jpg" width="300"></p>
-<p>第一列是index，第二列是confidence，第三列是label。</p>
-<p><strong>首先按照confidence从大到小排序</strong></p>
-<p><strong>从头开始，依次计算1个样本，2个样本….n个样本的recall值和这个recall值可以对应的最大precision值(有几个正样本就有几个recall值，因为recall是从真正正样本中召回的正样本数量)，然后将这些max precision值取平均就是Average precision值。</strong></p>
-<p><img src="/2017/06/21/auc/14.jpg"></p>
-<h2 id="MAP-mean-average-precision"><a href="#MAP-mean-average-precision" class="headerlink" title="MAP: mean average precision"></a>MAP: mean average precision</h2><p>多类的检测中，取每个类AP的平均值，即为mAP。</p>
+        <h1 id="LFM-隐因子模型"><a href="#LFM-隐因子模型" class="headerlink" title="LFM-隐因子模型"></a>LFM-隐因子模型</h1><p><strong>声明：本文绝大部分转自<a href="https://www.cnblogs.com/zhangchaoyang/articles/5517186.html" target="_blank" rel="noopener">博客园-Orisun</a></strong></p>
+<p>LFM即隐因子模型，我们可以把隐因子理解为主题模型中的主题、HMM中的隐藏变量。比如一个用户喜欢《推荐系统实践》这本书，背后的原因可能是该用户喜欢推荐系统、或者是喜欢数据挖掘、亦或者是喜欢作者项亮本人等等，假如真的是由于这3个原因导致的，那如果项亮出了另外一本数据挖掘方面的书，我们可以推测该用户也会喜欢，这“背后的原因”我们称之为隐因子。所以LFM的其中思路就是先计算用户对各个隐因子的喜好程度$(p_1,p_2,p_3….p_f)$，再计算物品在各个隐因子上的概率分布$(q_1,q_2,q_3….q_f)$，<strong>两个向量做内积即得到用户对物品的喜好程度</strong>，下面就讲这两个向量怎么求。</p>
+<p>假设我们已经有了一个评分矩阵$R_{m,n}$， $m$个用户对$n$个物品的评分全在这个矩阵里，当然这是一个高度稀疏的矩阵，我们用$r_{u,i}$表示用户$u$对物品$i$的评分。LFM认为$R_{m,n}=P_{m,f} · Q_{f,n}$，即$R$是两个矩阵的乘积(所以LFM又被称为矩阵分解法，MF，matrix factorization model )，$F$是隐因子的个数，$P$ 的每一行代表一个用户对各个隐因子的偏向程度(举个例子比如用户对电影的评分矩阵分解以后，用户矩阵的隐因子可以认为是电影的类别，比如喜剧片，恐怖片等)，$Q$的每一列代表一个物品在各个隐因子上的概率分布：</p>
+<p><img src="/2018/08/08/LFM/1.png" width="180"></p>
+<p><strong>上面的式子表示用户$u$对物品$i$的评分为，用户$u$的行向量中的每个元素乘以物品$i$的列向量中的对应元素的乘积的累加和</strong>。</p>
+<p>机器学习训练的目标是使得<strong>对所有的$r_{u,i}≠0$,</strong> $r_{u,i}$和$r’_{u,i}$尽可能相等，即使得<strong>平方差loss最小：</strong></p>
+<p><img src="/2018/08/08/LFM/2.png" width="260"></p>
+<p>为了防止过拟合，可以加个<strong>L2正则项：</strong></p>
+<p><img src="/2018/08/08/LFM/3.png" width="450"></p>
+<p>采用梯度下降法求解上面的无约束最优化问题，在第$t+1$轮迭代中$P$和$Q$的值分别应该是:</p>
+<p><img src="/2018/08/08/LFM/4.png" width="600"></p>
+<p>以上就是梯度下降法的所有公式，我们注意到：</p>
+<p><img src="/2018/08/08/LFM/5.png" width="700"></p>
+<p>随机梯度下降法(SGD,Stochastic Gradient Descent)没有严密的理论证明，但是在实践中它通常比传统的梯度下降法需要更少的迭代次数就可以收敛，它有两个特点：</p>
+<p><img src="/2018/08/08/LFM/6.png" width="700"></p>
+<p>SGD单轮迭代的时间复杂度也是$m <em> F </em> n’$，但由于它是单个参数地更新，且更新单个参数时只利用到一个样本（一个评分），更新后的参数立即可用于更新剩下的参数，所以SGD比批量的梯度下降需要更少的迭代次数。</p>
+<p><strong>在训练模型的时候我们只要求模型尽量拟合$r_{u,i} ≠ 0$的情况，对于$r_{u,i}=0$的情况我们也不希望$r’<em>{u,i}=0$，因为$r</em>{u,i}=0$只表示用户$u$没有对物品$i$评分，并不代表用$u$户对物品$i$的喜好程度为0。而恰恰$r’<em>{u,i}$能反映用户$u$对物品$i$的喜好程度，对所有$r’</em>{u,i}$降序排列，取出$TopK$就是用户$u$的推荐列表。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line">__author__ = <span class="string">"orisun"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LFM</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, rating_data, F, alpha=<span class="number">0.1</span>, lmbd=<span class="number">0.1</span>, max_iter=<span class="number">500</span>)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">            rating_data是list&lt;(user,list&lt;(position,rate)&gt;)&gt;类型</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.F = F</span><br><span class="line">        self.P = dict()  <span class="comment"># R=PQ^T，代码中的Q相当于博客中Q的转置</span></span><br><span class="line">        self.Q = dict()</span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        self.lmbd = lmbd</span><br><span class="line">        self.max_iter = max_iter</span><br><span class="line">        self.rating_data = rating_data</span><br><span class="line"></span><br><span class="line">        <span class="string">'''随机初始化矩阵P和Q'''</span></span><br><span class="line">        <span class="keyword">for</span> user, rates <span class="keyword">in</span> self.rating_data:</span><br><span class="line">            self.P[user] = [random.random() / math.sqrt(self.F)</span><br><span class="line">                            <span class="keyword">for</span> x <span class="keyword">in</span> range(self.F)]</span><br><span class="line">            <span class="keyword">for</span> item, _ <span class="keyword">in</span> rates:</span><br><span class="line">                <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> self.Q:</span><br><span class="line">                    self.Q[item] = [random.random() / math.sqrt(self.F)</span><br><span class="line">                                    <span class="keyword">for</span> x <span class="keyword">in</span> range(self.F)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">            随机梯度下降法训练参数P和Q</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> range(self.max_iter):</span><br><span class="line">            <span class="keyword">for</span> user, rates <span class="keyword">in</span> self.rating_data:</span><br><span class="line">                <span class="keyword">for</span> item, rui <span class="keyword">in</span> rates:</span><br><span class="line">                    hat_rui = self.predict(user, item)</span><br><span class="line">                    err_ui = rui - hat_rui</span><br><span class="line">                    <span class="keyword">for</span> f <span class="keyword">in</span> range(self.F):</span><br><span class="line">                        self.P[user][f] += self.alpha * (err_ui * self.Q[item][f] - self.lmbd * self.P[user][f])</span><br><span class="line">                        self.Q[item][f] += self.alpha * (err_ui * self.P[user][f] - self.lmbd * self.Q[item][f])</span><br><span class="line">            self.alpha *= <span class="number">0.9</span>  <span class="comment"># 每次迭代步长要逐步缩小</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, user, item)</span>:</span></span><br><span class="line">        <span class="string">'''预测用户user对物品item的评分</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> sum(self.P[user][f] * self.Q[item][f] <span class="keyword">for</span> f <span class="keyword">in</span> range(self.F))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="string">'''用户有A B C，物品有a b c d'''</span></span><br><span class="line">    rating_data = list()</span><br><span class="line">    rate_A = [(<span class="string">'a'</span>, <span class="number">1.0</span>), (<span class="string">'b'</span>, <span class="number">1.0</span>)]</span><br><span class="line">    rating_data.append((<span class="string">'A'</span>, rate_A))</span><br><span class="line">    rate_B = [(<span class="string">'b'</span>, <span class="number">1.0</span>), (<span class="string">'c'</span>, <span class="number">1.0</span>)]</span><br><span class="line">    rating_data.append((<span class="string">'B'</span>, rate_B))</span><br><span class="line">    rate_C = [(<span class="string">'c'</span>, <span class="number">1.0</span>), (<span class="string">'d'</span>, <span class="number">1.0</span>)]</span><br><span class="line">    rating_data.append((<span class="string">'C'</span>, rate_C))</span><br><span class="line"></span><br><span class="line">    lfm = LFM(rating_data, <span class="number">2</span>)</span><br><span class="line">    lfm.train()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]:</span><br><span class="line">        print(item, lfm.predict(<span class="string">'A'</span>, item))  <span class="comment"># 计算用户A对各个物品的喜好程度</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -513,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/14/relu/" rel="next" title="反向传播 | 梯度消失(爆炸) | Relu及其变种">
-                <i class="fa fa-chevron-left"></i> 反向传播 | 梯度消失(爆炸) | Relu及其变种
+              <a href="/2018/08/08/drop/" rel="next" title="Drop-out">
+                <i class="fa fa-chevron-left"></i> Drop-out
               </a>
             
           </div>
@@ -523,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/10/Tensorflow/" rel="prev" title="Tensorflow">
-                Tensorflow <i class="fa fa-chevron-right"></i>
+              <a href="/2028/04/24/navigation/" rel="prev" title="目录导航">
+                目录导航 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -755,7 +717,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AUC原理"><span class="nav-number">1.</span> <span class="nav-text">AUC原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加权AUC-WAUC"><span class="nav-number">2.</span> <span class="nav-text">加权AUC(WAUC)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AP和MAP"><span class="nav-number">3.</span> <span class="nav-text">AP和MAP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AP-Average-Precision"><span class="nav-number">3.1.</span> <span class="nav-text">AP: Average Precision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAP-mean-average-precision"><span class="nav-number">3.2.</span> <span class="nav-text">MAP: mean average precision</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LFM-隐因子模型"><span class="nav-number">1.</span> <span class="nav-text">LFM-隐因子模型</span></a></li></ol></div>
             
 
           </div>
