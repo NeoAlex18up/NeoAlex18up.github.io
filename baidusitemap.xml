@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/06/21/auc/</loc>
+    <lastmod>2018-08-09T02:54:46.242Z</lastmod>
+    <data>
+        <display>
+        <title>加权AUC原理与实现</title>
+        <pubTime>2017-06-21T05:32:02.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2028/04/24/navigation/</loc>
     <lastmod>2018-08-08T08:06:25.710Z</lastmod>
     <data>
@@ -62,23 +79,6 @@
         <display>
         <title>L1和L2正则化</title>
         <pubTime>2018-08-07T12:30:52.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/06/21/auc/</loc>
-    <lastmod>2018-08-07T09:07:38.171Z</lastmod>
-    <data>
-        <display>
-        <title>加权AUC原理与实现</title>
-        <pubTime>2017-06-21T05:32:02.000Z</pubTime>
         
         <tag>机器学习</tag>
          
